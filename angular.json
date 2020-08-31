@@ -1,9 +1,9 @@
 {
     "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-    "defaultProject": "TCC-Front-end",
+    "defaultProject": "me-agenda-ai-portal",
     "newProjectRoot": "projects",
     "projects": {
-        "TCC-Front-end": {
+        "me-agenda-ai-portal": {
             "projectType": "application",
             "schematics": {
                 "@schematics/angular:component": {
@@ -17,7 +17,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/TCC-Front-end",
+                        "outputPath": "dist/Portal - Me agenda aí",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -69,18 +69,18 @@
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",
                     "options": {
-                        "browserTarget": "TCC-Front-end:build"
+                        "browserTarget": "me-agenda-ai-portal:build"
                     },
                     "configurations": {
                         "production": {
-                            "browserTarget": "TCC-Front-end:build:production"
+                            "browserTarget": "me-agenda-ai-portal:build:production"
                         }
                     }
                 },
                 "extract-i18n": {
                     "builder": "@angular-devkit/build-angular:extract-i18n",
                     "options": {
-                        "browserTarget": "TCC-Front-end:build"
+                        "browserTarget": "me-agenda-ai-portal:build"
                     }
                 },
                 "test": {
@@ -101,8 +101,8 @@
                         ],
                         "scripts": [
                             "node_modules/jquery/dist/jquery.min.js",
-                            "node_modules/bootstrap/dist/js/bootstrap.min.js"
-                            // "node_modules/popper.js/dist/esm/popper.min.js"
+                            "node_modules/bootstrap/dist/js/bootstrap.min.js",
+                            "node_modules/popper.js/dist/esm/popper.min.js"
                         ]
                     }
                 },
@@ -123,11 +123,11 @@
                     "builder": "@angular-devkit/build-angular:protractor",
                     "options": {
                         "protractorConfig": "e2e/protractor.conf.js",
-                        "devServerTarget": "TCC-Front-end:serve"
+                        "devServerTarget": "me-agenda-ai-portal:serve"
                     },
                     "configurations": {
                         "production": {
-                            "devServerTarget": "TCC-Front-end:serve:production"
+                            "devServerTarget": "me-agenda-ai-portal:serve:production"
                         }
                     }
                 }
