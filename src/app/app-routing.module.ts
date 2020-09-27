@@ -3,10 +3,12 @@ import {AgendarComponent} from './modules/agendamento/components/agendar/agendar
 import {MainMenuComponent} from './modules/shared/components/main-menu/main-menu.component';
 import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from './modules/shared/components/page-not-found/page-not-found.component';
+import {LoginComponent} from './modules/login/components/login/login.component';
 
 
 const routes: Routes = [
-    {path: '', redirectTo: 'home', pathMatch: 'full'},
+    {path: '', redirectTo: 'login', pathMatch: 'full'},
+    {path: 'login', component: LoginComponent},
     {
         path: 'home', component: MainMenuComponent, children: [
             {path: '', component: AgendarComponent}

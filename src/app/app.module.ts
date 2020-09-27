@@ -10,6 +10,9 @@ import {CommonModule} from '@angular/common';
 import {SharedModule} from './modules/shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AgendamentoModule} from './modules/agendamento/agendamento.module';
+import {LoginModule} from './modules/login/login.module';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {AuthenticationService} from './modules/login/services/authentication.service';
 
 @NgModule({
     declarations: [
@@ -22,7 +25,9 @@ import {AgendamentoModule} from './modules/agendamento/agendamento.module';
         AppRoutingModule,
         SharedModule,
         AgendamentoModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        LoginModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent],
