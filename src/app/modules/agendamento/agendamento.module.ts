@@ -10,9 +10,10 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatInputModule} from '@angular/material/input';
+import { MeusAgendamentosComponent } from './components/meus-agendamentos/meus-agendamentos.component';
 
 @NgModule({
-    declarations: [AgendarComponent],
+    declarations: [AgendarComponent, MeusAgendamentosComponent],
     imports: [
         MatProgressSpinnerModule,
         CommonModule,

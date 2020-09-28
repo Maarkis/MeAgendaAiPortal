@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
 import {NewScheduling} from '../models/new-scheduling';
 import {Observable} from 'rxjs';
 import {ResponseBase} from '../models/response-base';
-import {Scheduling} from '../models/scheduling';
+import {Scheduling, SchedulingStatus} from '../models/scheduling';
 
 @Injectable({
     providedIn: 'root'
@@ -12,10 +12,31 @@ import {Scheduling} from '../models/scheduling';
 export class SchedulingService {
     URL: string = environment.API + '/Scheduling';
 
+    private getParams = (id: string): HttpParams => {
+        let params = new HttpParams();
+        params = params.append('userId', id.toString());
+        return params;
+    };
+
     constructor(private http: HttpClient) {
     }
 
     public createScheduling(scheduling: NewScheduling): Observable<ResponseBase<Scheduling>> {
         return this.http.post<ResponseBase<Scheduling>>(`${this.URL}/CreateScheduling`, scheduling);
+    }
+
+    public getClientSchedulingsByUserId(userId: string): Observable<ResponseBase<Scheduling[]>> {
+        const httpOptions = {
+            params: this.getParams(userId)
+        };
+        return this.http.get<ResponseBase<Scheduling[]>>(`${this.URL}/GetClientSchedulingsByUserId`, httpOptions);
+    }
+
+    public updateSchedulingStatus(updateScheduling:
+                                      {
+                                          schedulingId: string;
+                                          newStatus: SchedulingStatus
+                                      }): Observable<ResponseBase<Scheduling[]>> {
+        return this.http.post<ResponseBase<Scheduling[]>>(`${this.URL}/UpdateSchedulingStatus`, updateScheduling);
     }
 }

@@ -1,0 +1,38 @@
+<div class="container" *ngIf="scheduling">
+    <table class="table table-borderless">
+        <thead>
+        <tr>
+            <th scope="col">Empresa</th>
+            <th scope="col">Funcionário</th>
+            <th scope="col">Serviço</th>
+            <th scope="col">Data de início</th>
+            <th scope="col">Data de fim</th>
+            <th scope="col">Status</th>
+            <td scope="col"></td>
+        </tr>
+        </thead>
+        <tbody *ngFor="let schedule of scheduling; let i = index">
+        <tr [id]="schedule.schedulingId">
+            <th scope="row">{{schedule.companyName}}</th>
+            <th scope="row">{{schedule.employeeName}}</th>
+            <th scope="row">{{schedule.service}}</th>
+            <th scope="row">{{schedule.startTime}}</th>
+            <th scope="row">{{schedule.endTime}}</th>
+            <th scope="row" [ngClass]="schedule.status? 'color-agendado' : 'color-cancelado'">{{schedule.status === 0 ? 'Agendado' : 'Cancelado'}}</th>
+            <td class="text-right">
+                <div class="dropdown">
+                    <button class="btn-dot-menu"  type="button" [id]="i"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img src="assets/icon-system/3dotMenu.svg" alt="dotMenu">
+                    </button>
+                    <div class="dropdown-menu" role="menu" [attr.aria-labelledby]="i">
+                        <button (click)="cancelSchedule(schedule)" class="dropdown-item" type="button">Cancelar</button>
+                        <!--                                    <button (click)="deleteComoConheceu(cc)" class="dropdown-item" type="button">Excluir</button>-->
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
