@@ -1,34 +1,69 @@
-<div class="container">
-    <div class="d-flex flex-row">
-        <div class="p-2">Flex item 1</div>
-        <div class="p-2">Flex item 2</div>
-        <div class="p-2">Flex item 3</div>
-    </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-12 text-center">TESTE MATERIAL ANGULAR</div>
-        <div class="col-12 d-flex align-content-center ">
-            <mat-progress-spinner [mode]="'indeterminate'"></mat-progress-spinner>
-        </div>
-        <div class="col-12  text-center">
+<div class="container" *ngIf="companies">
+    <h1>Empresa: {{companies.companyName}}</h1>
 
-            <button mat-icon-button aria-label="Example icon-button with a heart icon">
-                <mat-icon>favorite</mat-icon>
-            </button>
+
+    <h3>Funcionário</h3>
+    <div class="row">
+        <div class="col-4" *ngFor="let employee of companies.employees; let i = index">
+            <mat-card class="example-card" [attr.id]="employee.employeeId"
+                      [ngClass]="employee.employeeId === selectEmployee? 'mat-card-select' : ''">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{employee.emplyeeName}}</mat-card-title>
+                    <mat-card-subtitle>{{employee.isManager ? 'Gerente' : 'Funcionário'}}</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image [attr.src]="findImage(i+1)"
+                     alt="Images persons">
+                <mat-card-actions>
+                    <button mat-button (click)="setEmployee(employee.employeeId)">Selecionar</button>
+                </mat-card-actions>
+            </mat-card>
         </div>
     </div>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-12 text-center">Bootstrap</div>
+
+    <mat-divider class="mt-4 mb-4"></mat-divider>
+
+    <h3 *ngIf="servicesEmployee">Serviços</h3>
+    <div class="row" *ngIf="servicesEmployee && servicesEmployee.length === 0">
         <div class="col-12">
-            AAAAA
+            Não tem serviços!
         </div>
-        <div class="col-6">1</div>
-        <div class="col-6">2</div>
-        <div class="col-6">3</div>
-        <div class="col-6">4</div>
+    </div>
+    <div class="row" *ngIf="servicesEmployee && servicesEmployee.length > 0">
+        <div class="col-4" *ngFor="let service of servicesEmployee; let i = index">
+            <mat-card class="example-card" [attr.id]="service.serviceId"
+                      [ngClass]="service.serviceId === selectService? 'mat-card-select' : ''">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image"></div>
+                    <mat-card-title>{{service.serviceName}}</mat-card-title>
+                    <mat-card-subtitle>{{service.serviceDuration}} Minutos</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-actions>
+                    <button mat-button (click)="setService(service.serviceId)">Selecionar</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </div>
+
+    <mat-divider class="mt-4 mb-4"></mat-divider>
+    <h3 *ngIf="selectService">Horário</h3>
+    <mat-form-field appearance="fill" *ngIf="selectService">
+        <mat-label>Data</mat-label>
+        <input matInput [matDatepicker]="picker" (dateChange)="addEvent($event.value)">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <section *ngIf="dateSelect">
+        <div class="example-button-row">
+            <button mat-button color="primary" [ngClass]="selectHoras === horas? 'mat-button-custom' :''  "
+                    (click)="setStartTime(horas)" *ngFor="let horas of horariosDisponiveis">{{horas}}</button>
+        </div>
+    </section>
+
+    <div class="row">
+        <div class="col-12 text-right mt-3 mb-3 ">
+            <button mat-raised-button class="mat-button-agendar" (click)="agendar()" [disabled]="!newScheduling" color="primary">Agendar</button>
+        </div>
     </div>
 </div>
-

@@ -26,5 +26,11 @@
 }
 
 
-html, body { }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body {
+}
+
+body {
+    margin: 1rem;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    height: 100%;
+}

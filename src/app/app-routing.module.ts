@@ -4,14 +4,16 @@ import {MainMenuComponent} from './modules/shared/components/main-menu/main-menu
 import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from './modules/shared/components/page-not-found/page-not-found.component';
 import {LoginComponent} from './modules/login/components/login/login.component';
+import {AuthGuardGuard} from './modules/shared/guards/auth-guard.guard';
 
 
 const routes: Routes = [
     {path: '', redirectTo: 'login', pathMatch: 'full'},
     {path: 'login', component: LoginComponent},
     {
-        path: 'home', component: MainMenuComponent, children: [
-            {path: '', component: AgendarComponent}
+        path: 'home', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
+            {path: '', redirectTo: 'agendar', pathMatch: 'prefix'},
+            {path: 'agendar', component: AgendarComponent}
         ]
     },
     {path: '**', component: PageNotFoundComponent}

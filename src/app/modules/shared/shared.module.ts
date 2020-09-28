@@ -4,6 +4,7 @@ import {MainMenuComponent} from './components/main-menu/main-menu.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AppRoutingModule} from '../../app-routing.module';
+import {ModalComponent} from './components/modal/modal.component';
 
 const routes: Routes = [
 
@@ -11,7 +12,8 @@ const routes: Routes = [
 @NgModule({
     declarations: [
         MainMenuComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        ModalComponent
     ],
     imports: [
         CommonModule,
