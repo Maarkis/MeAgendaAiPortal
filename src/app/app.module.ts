@@ -10,6 +10,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AgendamentoModule} from './modules/agendamento/agendamento.module';
 import {LoginModule} from './modules/login/login.module';
 import {HttpClientModule} from '@angular/common/http';
+import {HomeModule} from './modules/home/home.module';
+import {RouterModule} from '@angular/router';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -24,9 +27,11 @@ import {HttpClientModule} from '@angular/common/http';
         AgendamentoModule,
         BrowserAnimationsModule,
         LoginModule,
-        HttpClientModule
+        HttpClientModule,
+        HomeModule,
+        FormsModule,
+        ReactiveFormsModule,
     ],
-
     providers: [],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

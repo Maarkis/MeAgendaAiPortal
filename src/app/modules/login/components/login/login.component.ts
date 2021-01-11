@@ -4,6 +4,8 @@ import {ResponseBase} from '../../../shared/models/response-base';
 import {User} from '../../../shared/models/User';
 import {SessionService} from '../../../shared/services/session.service';
 import {Router} from '@angular/router';
+import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import {Authentication} from '../../model/authentication';
 
 @Component({
     selector: 'app-login',
@@ -13,29 +15,26 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
 
     public user: User;
+    formLogin: FormGroup;
 
-    constructor(private authentication: AuthenticationService, private sessionService: SessionService, private router: Router) {
+    constructor(private authentication: AuthenticationService,
+                private fb: FormBuilder,
+                private sessionService: SessionService,
+                private router: Router) {
     }
 
     ngOnInit(): void {
+        this.formLogin = this.createForm(new Authentication());
     }
 
-    login() {
-        this.authentication.loginMock().subscribe((response: ResponseBase<User>) => {
-            if (response.success) {
-                console.log(response);
-                this.user = response.result;
-                this.sessionService.isLogged(true);
-                this.sessionService.saveNameLocalStorage(this.user.name);
-                this.sessionService.saveEmailLocalStorage(this.user.email);
-                this.sessionService.saveUserIdLocalStorage(this.user.userId);
+    get form() {
+        return this.formLogin.controls;
+    }
 
-                this.router.navigate(['home']);
-
-            }
-        }, error => {
-            console.log(error);
+    private createForm(authentication: Authentication): FormGroup {
+        return this.fb.group({
+            email: new FormControl(authentication.email, [Validators.required, Validators.email]),
+            password: new FormControl(authentication.password, [Validators.required])
         });
-
     }
 }

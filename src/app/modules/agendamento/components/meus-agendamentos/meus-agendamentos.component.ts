@@ -58,8 +58,6 @@ export class MeusAgendamentosComponent implements OnInit {
                 }, error => {
                     console.log(error);
                 });
-
-
             }
         }, error => {
             console.log(error);

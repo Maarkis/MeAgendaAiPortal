@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1757" height="1085" viewBox="0 0 1757 1085">
+  <defs>
+    <filter id="Retângulo_96" x="0" y="0" width="1757" height="1085" filterUnits="userSpaceOnUse">
+      <feOffset dx="50" dy="50" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="49.5" result="blur"/>
+      <feFlood flood-color="#222" flood-opacity="0.059"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="Grupo_940" data-name="Grupo 940" transform="translate(-131.5 -60.5)">
+    <g transform="matrix(1, 0, 0, 1, 131.5, 60.5)" filter="url(#Retângulo_96)">
+      <rect id="Retângulo_96-2" data-name="Retângulo 96" width="1460" height="788" rx="30" transform="translate(98.5 98.5)" fill="#fff"/>
+    </g>
+    <ellipse id="Elipse_5" data-name="Elipse 5" cx="128" cy="124" rx="128" ry="124" transform="translate(1485 111)" opacity="0.08"/>
+  </g>
+</svg>

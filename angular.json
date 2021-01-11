@@ -34,9 +34,9 @@
               "src/styles.css"
             ],
             "scripts": [
-                "node_modules/jquery/dist/jquery.min.js",
-                "node_modules/popper.js/dist/umd/popper.min.js",
-                "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/popper.js/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {
@@ -147,5 +147,8 @@
       "styleext": "scss",
       "style": "scss"
     }
+  },
+  "cli": {
+    "analytics": "2ae98a84-7005-41b2-b706-e423687abd66"
   }
 }

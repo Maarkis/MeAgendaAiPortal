@@ -17,7 +17,7 @@ export class CompanyService {
         let params = new HttpParams();
         params = params.append('companyId', id.toString());
         return params;
-    };
+    }
 
     public getCompanyComplete(companyId: string): Observable<ResponseBase<Company>> {
         const httpOptions = {

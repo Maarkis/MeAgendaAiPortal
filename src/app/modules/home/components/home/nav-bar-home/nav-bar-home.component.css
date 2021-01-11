@@ -1,0 +1,17 @@
+.bg-dark {
+    background-color: #111111 !important;
+}
+.btn-login {
+    background-color: #FCC617;
+    color: #111111;
+    border: 1px solid #111111;
+    border-radius: 30px;
+}
+.text-btn-login {
+    padding: 0 20px;
+    color: #111111;
+    font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: #FFFFFF;
+}

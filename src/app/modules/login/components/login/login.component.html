@@ -1,33 +1,33 @@
-<div class="wrapper fadeInDown">
-    <div id="formContent">
-        <!-- Tabs Titles -->
-
-        <!-- Icon -->
-        <div class="fadeIn first mt-3 mb-3">
-            <span class="material-icons">login</span>
+<div class="container-fluid">
+    <div class="row vh-100">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 bg-calendar p-0">
 
         </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 p-0 bg-dark h-100 p-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-12">
+                    <p class="text-title">Faça agendamentos!</p>
+                </div>
+                <div class="col-12">
+                    <p class="text-subtitle">Entre na sua conta para mais agendamentos.</p>
+                </div>
 
-        <!-- Login Form -->
-        <form>
-            <label for="login">
-                <input type="text" id="login" class="fadeIn second" name="email"
-                       placeholder="E-mail">
-            </label>
-            <label for="password">
-                <input type="text" id="password" class="fadeIn third" name="password"
-                                         placeholder="senha">
-            </label >
+                <div class="col-12">
+                    <form class="form-login" [formGroup]="formLogin">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Email</mat-label>
+                            <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
 
-
-        </form>
-
-        <button type="button" class="btn-sm btn-primary mt-2 mb-2" (click)="login()">LOGIN</button>
-
-        <!-- Remind Passowrd -->
-        <div id="formFooter">
-            <a class="underlineHover" href="#">Forgot Password?</a>
+                            <!--                            <mat-error *ngIf="form.email.hasError('email') && !form.email.hasError('required')">-->
+                            <!--                                Please enter a valid email address-->
+                            <!--                            </mat-error>-->
+                            <!--                            <mat-error *ngIf="form.email.hasError('required')">-->
+                            <!--                                Email is <strong>required</strong>-->
+                            <!--                            </mat-error>-->
+                        </mat-form-field>
+                    </form>
+                </div>
+            </div>
         </div>
-
     </div>
 </div>

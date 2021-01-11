@@ -4,18 +4,19 @@ import {environment} from '../../../../environments/environment';
 import {Observable} from 'rxjs';
 import {ResponseBase} from '../../shared/models/response-base';
 import {User} from '../../shared/models/User';
+import {Authentication} from '../model/authentication';
 
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthenticationService {
-    URL: string = environment.API + '/User';
+    URL: string = environment.API + '/Authentication';
 
     constructor(private http: HttpClient) {    }
 
-    public loginMock(): Observable<ResponseBase<User>> {
-        return this.http.get<ResponseBase<User>>(`${this.URL}/LoginMock`);
+    public login(authentication: Authentication): Observable<ResponseBase<User>> {
+        return this.http.post<ResponseBase<User>>(`${this.URL}/Login`, authentication);
     }
 
 }

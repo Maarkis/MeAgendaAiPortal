@@ -6,13 +6,15 @@ import {PageNotFoundComponent} from './modules/shared/components/page-not-found/
 import {LoginComponent} from './modules/login/components/login/login.component';
 import {AuthGuardGuard} from './modules/shared/guards/auth-guard.guard';
 import {MeusAgendamentosComponent} from './modules/agendamento/components/meus-agendamentos/meus-agendamentos.component';
+import {HomeComponent} from './modules/home/components/home/home.component';
 
 
 const routes: Routes = [
-    {path: '', redirectTo: 'login', pathMatch: 'full'},
+    {path: '', redirectTo: 'home', pathMatch: 'full'},
+    {path: 'home', component: HomeComponent},
     {path: 'login', component: LoginComponent},
     {
-        path: 'home', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
+        path: 'components', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
             {path: '', redirectTo: 'agendar', pathMatch: 'prefix'},
             {path: 'agendar', component: AgendarComponent},
             {path: 'meus-agendamento', component: MeusAgendamentosComponent}

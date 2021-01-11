@@ -1,0 +1,45 @@
+.bg-home {
+    background: linear-gradient(to top, #F2F2F2 40%, #111111 0%);
+}
+
+.bg-container {
+    background-repeat: no-repeat;
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    border: 1px solid #FFFFFF;
+    /*box-shadow: 0 0 1em 0.1em #000000;*/
+
+}
+.text-title {
+    font-family: 'Roboto Bold', sans-serif;
+    color: #111111;
+    font-weight: bold;
+    font-size: 45px;
+    line-height: normal;
+}
+.text-subtitle {
+    color: #8D8D8D;
+    font-size: 26px;
+    line-height: normal;
+}
+
+.text-body {
+    color: #111111;
+    font-size: 18px;
+    line-height: 2.5;
+}
+.btn-get-started-now{
+    background-color: #FCC617;
+    border: 1px solid #FCC617;
+    border-radius: 10px;
+
+    padding: 15px 30px;
+
+    color: #111111;
+    font: bold 18px/24px Roboto, "Helvetica Neue", sans-serif
+}
+
+.img-cellphone-calendar {
+    width: 100%;
+    height: 100%;
+}
