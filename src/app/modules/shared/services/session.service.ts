@@ -6,7 +6,7 @@ import {UserAuthenticated} from '../models/authentication/authentication';
 })
 export class SessionService {
 
-    private authenticatedInSystem = false;
+    private authenticatedInSystem = Boolean(sessionStorage.getItem('authenticated'));
 
     constructor() {
     }
@@ -24,7 +24,7 @@ export class SessionService {
     get token(): string { return sessionStorage.getItem('token'); }
 
     public authenticated(logged: boolean): void {
-        this.authenticatedInSystem = true;
+        this.authenticatedInSystem = logged;
         sessionStorage.setItem('authenticated', String(logged));
     }
     get isAuthenticated(): boolean { return this.authenticatedInSystem; }

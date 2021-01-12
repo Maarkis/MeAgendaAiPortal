@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
     formLogin: FormGroup;
     public eyeHide = true;
 
+    private userLogged: boolean;
+
     private userAuthenticated: UserAuthenticated;
 
     constructor(private authenticationService: AuthenticationService,
@@ -33,8 +35,13 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.title.setTitle('Login | Me Agenda Aí');
-        this.formLogin = this.createForm(new Authentication());
+        this.userLogged = this.sessionService.isAuthenticated;
+        if (this.userLogged) {
+            this.router.navigate(['components']);
+        } else {
+            this.title.setTitle('Login | Me Agenda Aí');
+            this.formLogin = this.createForm(new Authentication());
+        }
     }
 
     // retorna todos os controls do form
