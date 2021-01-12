@@ -1,17 +1,21 @@
 .bg-dark {
-    background-color: #111111 !important;
+    background-color: var(--color-system-secundary) !important;
 }
+
 .btn-login {
-    background-color: #FCC617;
-    color: #111111;
-    border: 1px solid #111111;
+    background-color: var(--color-system-primary);
+    color: var(--color-system-secundary);
+    border: 1px solid var(--color-system-secundary);
     border-radius: 30px;
+    font: bold 18px/24px Roboto, "Helvetica Neue", sans-serif;
 }
+
 .text-btn-login {
     padding: 0 20px;
-    color: #111111;
-    font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif
+    color: var(--color-system-secundary);
+    font: bold 14px/20px Roboto, "Helvetica Neue", sans-serif
 }
+
 .navbar-dark .navbar-nav .nav-link {
     color: #FFFFFF;
 }

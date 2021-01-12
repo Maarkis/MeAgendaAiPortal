@@ -1,7 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
-
 /* Font Family - Roboto */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+/* Root  color system */
+:root {
+    --color-system-primary: #fcc617;
+    --color-system-secundary: #111111;
+}
+/* End color system */
+
+/* You can add global styles to this file, and also import other style files */
+
 
 
 @font-face {

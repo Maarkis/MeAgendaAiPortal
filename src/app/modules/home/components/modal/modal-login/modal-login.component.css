@@ -1,7 +1,7 @@
 .btn-login {
     font: bold 24px 'Roboto Bold', sans-serif;
-    color: #111111;
-    background-color: #FCC617;
+    color: var(--color-system-secundary);
+    background-color: var(--color-system-primary);
     border: 1px solid #707070;
     border-radius: 10px;
     height: 70px;
