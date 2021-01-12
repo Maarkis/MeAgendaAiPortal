@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
     formLogin: FormGroup;
     public eyeHide = true;
 
-    private userLogged: boolean;
+    public userLogged: boolean;
 
     private userAuthenticated: UserAuthenticated;
 

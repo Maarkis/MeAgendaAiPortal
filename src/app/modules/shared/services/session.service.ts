@@ -29,7 +29,7 @@ export class SessionService {
     }
     get isAuthenticated(): boolean { return this.authenticatedInSystem; }
 
-    public logoff() {
+    public logoff(): void {
         sessionStorage.removeItem('user-authenticated');
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('authenticated');
