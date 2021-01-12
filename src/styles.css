@@ -42,7 +42,9 @@ body {
     /*height: 100%;*/
     height: 100vh !important
 }
-
+.clickable {
+    cursor: pointer;
+}
 .custom-modal .mat-dialog-container {
     border-radius: 10px;
     padding: 10px;

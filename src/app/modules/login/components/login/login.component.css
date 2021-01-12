@@ -38,7 +38,8 @@
     line-height: 1.125;
     font-family: Roboto, "Helvetica Neue", sans-serif;
     letter-spacing: normal;
-    color: #ffffff;
+    color: #6B6B6B; /* Color XD */
+    width: 100%;
 }
 
 /* input color class */
@@ -48,17 +49,27 @@
 
 /* Change label color on focused */
 ::ng-deep .mat-form-custom.mat-form-field.mat-focused .mat-form-field-label {
-    color: currentColor !important;
+    color: #0086F9;
 }
 
 /* underline border color on focused */
 ::ng-deep .mat-form-custom.mat-focused .mat-form-field-underline .mat-form-field-ripple {
-    background-color: currentColor !important;
+    background-color: currentColor;
 }
+
+::ng-deep .mat-form-custom.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #0086F9 !important;
+}
+
 ::ng-deep .mat-form-custom.mat-form-field-appearance-outline .mat-form-field-outline {
     color: currentColor;
 }
+
 ::ng-deep .mat-form-custom.mat-form-field-infix.mat-form-field-label {
+    color: currentColor;
+}
+
+::ng-deep .mat-form-field-placeholder {
     color: currentColor;
 }
 
@@ -67,6 +78,31 @@
     color: currentColor;
 }
 
-::ng-deep .mat-form-field-label {
+/* Placeholder opacity */
+::ng-deep .mat-input-element::placeholder {
     color: currentColor;
+    opacity: 0.4;
+}
+
+/* Label */
+::ng-deep.mat-form-field-label {
+    color: currentColor;
+}
+
+/* Button login */
+.btn-login {
+    width: 100%;
+    color: #111111;
+    border-radius: 10px;
+    background-color: #FCC617;
+    border: 1px solid #FCC617;
+}
+
+.text-register {
+    color: #8B8B8B;
+    font: normal 16px/22px 'Roboto Bold', sans-serif;
+}
+
+.span-register {
+    color: #FCC617;
 }

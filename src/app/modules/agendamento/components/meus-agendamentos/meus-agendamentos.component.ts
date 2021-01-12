@@ -24,7 +24,8 @@ export class MeusAgendamentosComponent implements OnInit {
     }
 
     private getScheduling() {
-        this.schedulingService.getClientSchedulingsByUserId(this.userId = this.sessionService.getUserId())
+        const userAuthenticated = this.sessionService.userAuthenticated;
+        this.schedulingService.getClientSchedulingsByUserId(userAuthenticated.id)
             .subscribe((response: ResponseBase<Scheduling[]>) => {
                 if (response.success) {
                     this.scheduling = response.result;

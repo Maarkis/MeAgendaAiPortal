@@ -1,36 +1,39 @@
 import {Injectable} from '@angular/core';
+import {UserAuthenticated} from '../models/authentication/authentication';
 
 @Injectable({
     providedIn: 'root'
 })
 export class SessionService {
 
-    private isAuthenticate = false;
+    private authenticatedInSystem = false;
+
     constructor() {
     }
 
-    saveUserIdLocalStorage(userId: string) { localStorage.setItem('userId', userId); }
-    saveNameLocalStorage(name: string) { localStorage.setItem('name', name); }
-    saveEmailLocalStorage(email: string) { localStorage.setItem('email', email); }
-    isLogged(logged: boolean) {
-        this.isAuthenticate = true;
-        localStorage.setItem('logged', String(logged));
+    public setUser(user: UserAuthenticated): void {
+        sessionStorage.setItem('user-authenticated', JSON.stringify(user));
+    }
+    get userAuthenticated(): UserAuthenticated {
+        return JSON.parse(sessionStorage.getItem('user-authenticated'));
     }
 
-
-    public isAuthenticated(): boolean {
-        return this.isAuthenticate;
+    public setToken(token: string ): void {
+        sessionStorage.setItem('token', token);
     }
+    get token(): string { return sessionStorage.getItem('token'); }
+
+    public authenticated(logged: boolean): void {
+        this.authenticatedInSystem = true;
+        sessionStorage.setItem('authenticated', String(logged));
+    }
+    get isAuthenticated(): boolean { return this.authenticatedInSystem; }
 
     public logoff() {
-        localStorage.removeItem('logged');
-        localStorage.removeItem('userId');
-        localStorage.removeItem('name');
-        localStorage.removeItem('email');
-        this.isAuthenticate = false;
+        sessionStorage.removeItem('user-authenticated');
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('authenticated');
+        this.authenticatedInSystem = false;
     }
 
-    public getUserId(): string {
-        return localStorage.getItem('userId');
-    }
 }

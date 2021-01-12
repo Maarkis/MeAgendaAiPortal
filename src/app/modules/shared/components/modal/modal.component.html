@@ -1,1 +1,16 @@
-<p>modal works!</p>
+<button (click)="close()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+</button>
+<div class="container modal-body">
+    <div class="row">
+        <div class="col-12" *ngIf="title">
+            <p class="modal-title">{{title}}</p>
+        </div>
+        <div class="col-12" *ngIf="text">
+            <p class="modal-text" [innerHTML]="text"></p>
+        </div>
+        <div class="col-12">
+            <button (click)="close()" class="modal-button">{{button}}</button>
+        </div>
+    </div>
+</div>

@@ -9,9 +9,10 @@ import {SessionService} from '../services/session.service';
 export class AuthGuardGuard implements CanActivate {
     constructor(private sessionService: SessionService, private router: Router) {
     }
-    canActivate(): boolean  {
-        if (this.sessionService.isAuthenticated()) {
-            return this.sessionService.isAuthenticated();
+
+    canActivate(): boolean {
+        if (this.sessionService.isAuthenticated) {
+            return this.sessionService.isAuthenticated;
         }
         this.router.navigate(['/']);
         return false;

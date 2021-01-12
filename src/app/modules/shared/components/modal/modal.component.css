@@ -1,0 +1,47 @@
+.modal-body {
+    justify-content: center;
+    padding: 10px 30px;
+    text-align: center;
+    position: relative;
+}
+
+.modal-title {
+    /*font-family: poppins;*/
+    font: bold 34px/42px 'Roboto Bold', sans-serif;
+    color: #111111;
+}
+
+.modal-text {
+    font: normal 24px/32px 'Roboto Bold', sans-serif;
+    word-wrap: break-word;
+    color: #111111;
+    line-height: 25px;
+}
+
+.modal-button {
+    background-color: #FCC617;
+
+    width: 100%;
+    color: #111111;
+    height: 35px;
+    border: 1px solid #FCC617;
+    border-radius: 10px;
+    outline: none;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+/*.close {*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    right: 0;*/
+/*    color: #044894;*/
+/*    background-color: transparent;*/
+/*    border: none;*/
+/*    cursor: pointer;*/
+/*    margin: 0;*/
+/*}*/
+
+
+
+

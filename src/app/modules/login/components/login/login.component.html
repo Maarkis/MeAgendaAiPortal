@@ -4,29 +4,61 @@
 
         </div>
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 p-0 bg-dark h-100 p-5">
-            <div class="row d-flex justify-content-center">
-                <div class="col-12">
-                    <p class="text-title">Faça agendamentos!</p>
-                </div>
-                <div class="col-12">
-                    <p class="text-subtitle">Entre na sua conta para mais agendamentos.</p>
-                </div>
+            <div class="row d-flex justify-content-center h-100 p-5 mx-4 my-4 align-content-center">
 
-                <div class="col-12">
-                    <form class="form-login" [formGroup]="formLogin">
-                        <mat-form-field class="mat-form-custom" appearance="outline">
-                            <mat-label>Email</mat-label>
-                            <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
 
-                            <!--                            <mat-error *ngIf="form.email.hasError('email') && !form.email.hasError('required')">-->
-                            <!--                                Please enter a valid email address-->
-                            <!--                            </mat-error>-->
-                            <!--                            <mat-error *ngIf="form.email.hasError('required')">-->
-                            <!--                                Email is <strong>required</strong>-->
-                            <!--                            </mat-error>-->
-                        </mat-form-field>
-                    </form>
-                </div>
+                <form class="form-login" [formGroup]="formLogin" (ngSubmit)="onSubmit(formLogin.value)">
+                    <div class="row">
+                        <div class="col-12 mt-3 mb-1">
+                            <p class="text-title">Faça agendamentos!</p>
+                        </div>
+                        <div class="col-12 mt-1 mb-3">
+                            <p class="text-subtitle">Entre na sua conta para mais agendamentos.</p>
+                        </div>
+
+                        <div class="col-12 mt-3 mb-3">
+                            <mat-form-field class="mat-form-custom" appearance="outline">
+                                <mat-label>Email</mat-label>
+                                <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
+
+                                <!--                            <mat-error *ngIf="form.email.hasError('email') && !form.email.hasError('required')">-->
+                                <!--                                Please enter a valid email address-->
+                                <!--                            </mat-error>-->
+                                <!--                            <mat-error *ngIf="form.email.hasError('required')">-->
+                                <!--                                Email is <strong>required</strong>-->
+                                <!--                            </mat-error>-->
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-12 mt-3 mb-3">
+                            <mat-form-field class="mat-form-custom" appearance="outline">
+                                <mat-label>Senha</mat-label>
+                                <label>
+                                    <input matInput formControlName="senha" [type]="eyeHide ? 'password' : 'text'">
+                                </label>
+                                <button type="button" mat-icon-button matSuffix (click)="eyeHide = !eyeHide"
+                                        [attr.aria-label]="'Hide password'"
+                                        [attr.aria-pressed]="eyeHide">
+                                    <mat-icon>{{eyeHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                </button>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12 mt-3 mb-3">
+                            <button type="submit" class="btn btn-lg btn-login">Entrar</button>
+                        </div>
+
+                        <div class="col-12">
+                            <p class="text-register">Esqueceu-se do email?
+                                <span class="span-register clickable">Clique aqui.</span>
+                            </p>
+                        </div>
+                        <div class="col-12 mb-4">
+                            <p class="text-register">Não tem conta?
+                                <span class="span-register clickable">Cadastre-se.</span>
+                            </p>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

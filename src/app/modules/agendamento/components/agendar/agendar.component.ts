@@ -11,6 +11,7 @@ import {SchedulingService} from '../../../shared/services/scheduling.service';
 import {Scheduling} from '../../../shared/models/scheduling';
 import {MatDialog} from '@angular/material/dialog';
 import {ModalComponent} from '../../../shared/components/modal/modal.component';
+import {UserAuthenticated} from '../../../shared/models/authentication/authentication';
 
 @Component({
     selector: 'app-agendar',
@@ -99,7 +100,7 @@ export class AgendarComponent implements OnInit {
     public selectHoras: string = null;
 
     public newScheduling: NewScheduling;
-    private userId: string;
+    private userAuthenticated: UserAuthenticated;
     public scheduling: Scheduling;
 
 
@@ -111,8 +112,6 @@ export class AgendarComponent implements OnInit {
 
     ngOnInit(): void {
         console.log('Componente inicializado com sucesso!');
-        this.userId = this.sessionService.getUserId();
-        console.log(this.userId);
         this.companyService.getCompanyComplete('1507E04E-8E52-4044-847D-BFDE38F64BDE')
             .subscribe((response: ResponseBase<Company>) => {
                 if (response.success) {
@@ -182,7 +181,7 @@ export class AgendarComponent implements OnInit {
         this.newScheduling = new NewScheduling();
         this.newScheduling.employeeId = this.selectEmployee;
         this.newScheduling.serviceId = this.selectService;
-        this.newScheduling.userId = this.userId;
+        this.newScheduling.userId = this.userAuthenticated.id;
         this.newScheduling.startTime = this.dateSelect.format();
         this.newScheduling.endTime = this.endTime.format();
         console.log(this.newScheduling);
