@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
                     this.sessionService.setUser(this.userAuthenticated);
                     this.sessionService.setToken(this.userAuthenticated.token);
 
-                    this.router.navigate(['components']);
+                    this.router.navigate(['perfil']);
                 } else {
                     this.dialog.open(ModalComponent, {
                         panelClass: 'custom-modal', backdropClass: '', height: 'auto', width: 'auto',

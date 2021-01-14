@@ -14,10 +14,14 @@ const routes: Routes = [
     {path: 'home', component: HomeComponent},
     {path: 'login', component: LoginComponent},
     {
-        path: 'components', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
-            {path: '', redirectTo: 'agendar', pathMatch: 'prefix'},
-            {path: 'agendar', component: AgendarComponent},
+        path: 'perfil', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
+            {path: '', component: AgendarComponent},
             {path: 'meus-agendamento', component: MeusAgendamentosComponent}
+        ]
+    },
+    {
+        path: 'meus-agendamentos', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
+            {path: '', component: AgendarComponent}
         ]
     },
     {path: '**', component: PageNotFoundComponent}

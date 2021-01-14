@@ -4,76 +4,52 @@
         <div class="sidebar-heading">
             <app-user-profile [menuOpened]="opened"></app-user-profile>
         </div>
-        <!-- menu opened -->
-        <div class="list-group  list-group-flush" >
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu" [ngClass]="opened? '' : 'text-center'">
+        <div class="list-group  list-group-flush">
+            <a routerLink="/perfil"
+               [class.active]="menuItem === '/perfil'"
+               (click)="setMenuCurrent('/perfil')"
+               class="list-group-item list-group-item-action bg-dark-menu"
+               [ngClass]="opened? '' : 'text-center'">
                 <span *ngIf="opened">Perfil</span>
                 <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/user-regular-grey.svg"
                      alt="Profile">
             </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu" [ngClass]="opened? '' : 'text-center'">
+            <a routerLink="/meus-agendamentos"
+               [class.active]="menuItem === '/meus-agendamentos'"
+               (click)="setMenuCurrent('/meus-agendamentos')"
+               class="list-group-item list-group-item-action bg-dark-menu"
+               [ngClass]="opened? '' : 'text-center'">
                 <span *ngIf="opened">Meus agendamentos</span>
                 <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/calendar-day-grey.svg"
                      alt="Schedules">
             </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu" [ngClass]="opened? '' : 'text-center'">
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu"
+               [ngClass]="opened? '' : 'text-center'">
                 <span *ngIf="opened">Histórico</span>
                 <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/history-grey.svg" alt="History">
             </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu" [ngClass]="opened? '' : 'text-center'">
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu"
+               [ngClass]="opened? '' : 'text-center'">
                 <span *ngIf="opened">Empresas favoritas</span>
                 <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/company-regular-grey.svg"
                      alt="Favorite Companies">
             </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu" [ngClass]="opened? '' : 'text-center'">
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu"
+               [ngClass]="opened? '' : 'text-center'">
                 <span *ngIf="opened">Ajuda</span>
                 <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/help-grey.svg" alt="Help">
             </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu" [ngClass]="opened? '' : 'text-center'">
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu"
+               [ngClass]="opened? '' : 'text-center'">
                 <span *ngIf="opened">Sobre</span>
                 <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/info-grey.svg" alt="Information">
             </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu mt-5" (click)="logoff()" [ngClass]="opened? '' : 'text-center'">
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu mt-5" (click)="logoff()"
+               [ngClass]="opened? '' : 'text-center'">
                 <span *ngIf="opened">Sair</span>
                 <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/sign-out-grey.svg" alt="loggout">
             </a>
         </div>
-        <!-- end menu opened -->
-
-<!--        &lt;!&ndash; menu closed &ndash;&gt;-->
-<!--        <div class="list-group  list-group-flush" *ngIf="!opened">-->
-<!--            <a href="#" class="list-group-item list-group-item-action bg-dark-menu">-->
-<!--                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/user-regular-grey.svg"-->
-<!--                     alt="Profile">-->
-<!--            </a>-->
-<!--            <a href="#" class="list-group-item list-group-item-action bg-dark-menu ">-->
-
-<!--                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/calendar-day-grey.svg"-->
-<!--                     alt="Schedules">-->
-<!--            </a>-->
-<!--            <a href="#" class="list-group-item list-group-item-action bg-dark-menu">-->
-
-<!--                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/history-grey.svg" alt="History">-->
-<!--            </a>-->
-<!--            <a href="#" class="list-group-item list-group-item-action bg-dark-menu ">-->
-
-<!--                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/company-regular-grey.svg"-->
-<!--                     alt="Favorite Companies">-->
-<!--            </a>-->
-<!--            <a href="#" class="list-group-item list-group-item-action bg-dark-menu">-->
-
-<!--                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/help-grey.svg" alt="Help">-->
-<!--            </a>-->
-<!--            <a href="#" class="list-group-item list-group-item-action bg-dark-menu">-->
-
-<!--                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/info-grey.svg" alt="Information">-->
-<!--            </a>-->
-<!--            <a href="#" class="list-group-item list-group-item-action bg-dark-menu mt-5" (click)="logoff()">-->
-
-<!--                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/sign-out-grey.svg" alt="loggout">-->
-<!--            </a>-->
-<!--        </div>-->
-<!--        &lt;!&ndash; end menu closed &ndash;&gt;-->
     </div>
     <!-- /#sidebar-wrapper -->
 
@@ -81,7 +57,9 @@
     <div id="page-content-wrapper">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-            <button class="btn btn-primary" id="menu-toggle" (click)="toggleMenu($event)">Toggle Menu</button>
+            <button class="btn btn-sm btn-transparent" id="menu-toggle" (click)="toggleMenu($event)">
+                <img src="assets/icon-system/menu-bars.svg" alt="menu bar">
+            </button>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
