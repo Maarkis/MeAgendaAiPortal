@@ -4,7 +4,8 @@
 
 #sidebar-wrapper {
     min-height: 100vh;
-    margin-left: -15rem;
+    width: 15vw;
+    /*margin-left: 15rem;*/
     -webkit-transition: margin .25s ease-out;
     -moz-transition: margin .25s ease-out;
     -o-transition: margin .25s ease-out;
@@ -24,7 +25,7 @@
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    width: 5rem;
+    width: 8rem;
     /*margin-left: 5rem;*/
 }
 
