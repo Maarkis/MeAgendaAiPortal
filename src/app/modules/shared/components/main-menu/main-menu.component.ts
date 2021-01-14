@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
     styleUrls: ['./main-menu.component.css']
 })
 export class MainMenuComponent implements OnInit {
-    public opened = true;
+    public opened = false;
     public menuItem: string;
 
     constructor(private sessionService: SessionService, private router: Router) {
