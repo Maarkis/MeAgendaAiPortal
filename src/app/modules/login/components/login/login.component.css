@@ -108,3 +108,8 @@
 .span-register {
     color: var(--color-system-primary);
 }
+@media (max-width: 425px) {
+    .bg-calendar {
+        display: none;
+    }
+}
