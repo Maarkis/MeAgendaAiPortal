@@ -1,14 +1,40 @@
 <div class="d-flex" id="wrapper">
     <!-- Sidebar -->
-    <div class="bg-light border-right " id="sidebar-wrapper">
-        <div class="sidebar-heading">Start Bootstrap</div>
-        <div class="list-group list-group-flush">
-            <a href="#" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Shortcuts</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Overview</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-            <a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+    <div class="bg-dark-menu border-right " id="sidebar-wrapper">
+        <div class="sidebar-heading">
+            <app-user-profile></app-user-profile>
+        </div>
+        <div class="list-group  list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu">
+                Perfil
+                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/user-regular-grey.svg" alt="Profile">
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu ">
+                Meus agendamentos
+                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/calendar-day-grey.svg" alt="Schedules">
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu">
+                Histórico
+                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/history-grey.svg" alt="History">
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu ">
+                Empresas favoritas
+                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/company-regular-grey.svg"
+                     alt="Favorite Companies">
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu">
+                Ajuda
+                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/help-grey.svg" alt="Help">
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu">
+                Sobre
+                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/info-grey.svg" alt="Information">
+            </a>
+
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu mt-5">
+                Sair
+                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/sign-out-grey.svg" alt="loggout">
+            </a>
         </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -49,7 +75,8 @@
         </nav>
 
         <div class="container-fluid">
-           <router-outlet></router-outlet>
+            <!-- Conteúdo da página -->
+            <!-- <router-outlet></router-outlet> -->
         </div>
     </div>
     <!-- /#page-content-wrapper -->

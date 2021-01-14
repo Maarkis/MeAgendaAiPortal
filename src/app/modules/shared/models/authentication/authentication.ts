@@ -12,4 +12,5 @@ export class UserAuthenticated {
     public userName: string;
     public userEmail: string;
     public message: string;
+    public userImage: string;
 }
