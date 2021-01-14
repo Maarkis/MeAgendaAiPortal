@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {SessionService} from '../../../services/session.service';
 import {UserAuthenticated} from '../../../models/authentication/authentication';
 
@@ -8,6 +8,8 @@ import {UserAuthenticated} from '../../../models/authentication/authentication';
     styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+
+    @Input() menuOpened: boolean;
     public userLogged: UserAuthenticated;
 
     constructor(private sessionService: SessionService) {
@@ -17,6 +19,7 @@ export class UserProfileComponent implements OnInit {
         this.userLogged = this.sessionService.userAuthenticated;
     }
 
+    // Retorna o nome e sobrenome ignorando as preposições
     public getNAmeAndSurname(userName: string): string {
         const names = userName.split(' ');
         const prep = ['de', 'da', 'do', 'das', 'dos'];
@@ -28,6 +31,5 @@ export class UserProfileComponent implements OnInit {
             });
         });
         return names.slice(0, 2).join(' ');
-
     }
 }

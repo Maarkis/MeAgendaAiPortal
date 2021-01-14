@@ -1,41 +1,79 @@
 <div class="d-flex" id="wrapper">
-    <!-- Sidebar -->
-    <div class="bg-dark-menu border-right " id="sidebar-wrapper">
+    <!-- Sidebar  -->
+    <div class="bg-dark-menu" id="sidebar-wrapper">
         <div class="sidebar-heading">
-            <app-user-profile></app-user-profile>
+            <app-user-profile [menuOpened]="opened"></app-user-profile>
         </div>
-        <div class="list-group  list-group-flush">
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu">
-                Perfil
-                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/user-regular-grey.svg" alt="Profile">
+        <!-- menu opened -->
+        <div class="list-group  list-group-flush" >
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu" [ngClass]="opened? '' : 'text-center'">
+                <span *ngIf="opened">Perfil</span>
+                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/user-regular-grey.svg"
+                     alt="Profile">
             </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu ">
-                Meus agendamentos
-                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/calendar-day-grey.svg" alt="Schedules">
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu" [ngClass]="opened? '' : 'text-center'">
+                <span *ngIf="opened">Meus agendamentos</span>
+                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/calendar-day-grey.svg"
+                     alt="Schedules">
             </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu">
-                Histórico
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu" [ngClass]="opened? '' : 'text-center'">
+                <span *ngIf="opened">Histórico</span>
                 <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/history-grey.svg" alt="History">
             </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu ">
-                Empresas favoritas
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu" [ngClass]="opened? '' : 'text-center'">
+                <span *ngIf="opened">Empresas favoritas</span>
                 <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/company-regular-grey.svg"
                      alt="Favorite Companies">
             </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu">
-                Ajuda
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu" [ngClass]="opened? '' : 'text-center'">
+                <span *ngIf="opened">Ajuda</span>
                 <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/help-grey.svg" alt="Help">
             </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu">
-                Sobre
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu" [ngClass]="opened? '' : 'text-center'">
+                <span *ngIf="opened">Sobre</span>
                 <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/info-grey.svg" alt="Information">
             </a>
-
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu mt-5">
-                Sair
+            <a href="#" class="list-group-item list-group-item-action bg-dark-menu mt-5" (click)="logoff()" [ngClass]="opened? '' : 'text-center'">
+                <span *ngIf="opened">Sair</span>
                 <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/sign-out-grey.svg" alt="loggout">
             </a>
         </div>
+        <!-- end menu opened -->
+
+<!--        &lt;!&ndash; menu closed &ndash;&gt;-->
+<!--        <div class="list-group  list-group-flush" *ngIf="!opened">-->
+<!--            <a href="#" class="list-group-item list-group-item-action bg-dark-menu">-->
+<!--                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/user-regular-grey.svg"-->
+<!--                     alt="Profile">-->
+<!--            </a>-->
+<!--            <a href="#" class="list-group-item list-group-item-action bg-dark-menu ">-->
+
+<!--                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/calendar-day-grey.svg"-->
+<!--                     alt="Schedules">-->
+<!--            </a>-->
+<!--            <a href="#" class="list-group-item list-group-item-action bg-dark-menu">-->
+
+<!--                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/history-grey.svg" alt="History">-->
+<!--            </a>-->
+<!--            <a href="#" class="list-group-item list-group-item-action bg-dark-menu ">-->
+
+<!--                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/company-regular-grey.svg"-->
+<!--                     alt="Favorite Companies">-->
+<!--            </a>-->
+<!--            <a href="#" class="list-group-item list-group-item-action bg-dark-menu">-->
+
+<!--                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/help-grey.svg" alt="Help">-->
+<!--            </a>-->
+<!--            <a href="#" class="list-group-item list-group-item-action bg-dark-menu">-->
+
+<!--                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/info-grey.svg" alt="Information">-->
+<!--            </a>-->
+<!--            <a href="#" class="list-group-item list-group-item-action bg-dark-menu mt-5" (click)="logoff()">-->
+
+<!--                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/sign-out-grey.svg" alt="loggout">-->
+<!--            </a>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; end menu closed &ndash;&gt;-->
     </div>
     <!-- /#sidebar-wrapper -->
 

@@ -1,3 +1,15 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: none;
+    border-radius: 0;
+}
+
 .user-card-full {
     overflow: hidden
 }
@@ -16,9 +28,13 @@
     border: 1px solid #dee2e6;
     border-radius: 50%;
     max-width: 75px;
-    height: 75px;
+    max-height: 75px;
 }
-
+/* image size with closed menu */
+.img-thumbnail.closed {
+    max-width: 30px;
+    max-height: 30px;
+}
 .bg-c-lite-green {
     background: var(--color-system-secundary);
 }

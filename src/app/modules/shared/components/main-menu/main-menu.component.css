@@ -16,7 +16,7 @@
 }
 
 #sidebar-wrapper .list-group {
-    width: 15rem;
+    width: 100%;
 }
 
 #page-content-wrapper {
@@ -24,7 +24,8 @@
 }
 
 #wrapper.toggled #sidebar-wrapper {
-    margin-left: 0;
+    width: 5rem;
+    /*margin-left: 5rem;*/
 }
 
 /* ajuste icon menu */
@@ -32,15 +33,19 @@
     width: 12px;
     height: 12px;
 }
+
 .icon-menu-margin {
     margin: 0 12px;
 }
+
 .bg-dark-menu {
     background: var(--color-system-secundary);
 }
+
 .list-group-item-action {
     text-align: right;
 }
+
 @media (min-width: 768px) {
     #sidebar-wrapper {
         margin-left: 0;
@@ -52,6 +57,7 @@
     }
 
     #wrapper.toggled #sidebar-wrapper {
-        margin-left: -15rem;
+        width: 5rem;
+        /*margin-left: -5rem;*/
     }
 }

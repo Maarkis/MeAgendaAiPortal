@@ -8,6 +8,7 @@ import {$} from 'protractor';
     styleUrls: ['./main-menu.component.css']
 })
 export class MainMenuComponent implements OnInit {
+    public opened = true;
 
     constructor(private sessionService: SessionService) {
     }
@@ -24,7 +25,9 @@ export class MainMenuComponent implements OnInit {
         const element = document.getElementById('wrapper');
         if (element.classList.contains('toggled')) {
             element.classList.remove('toggled');
+            this.opened = true;
         } else {
+            this.opened = false;
             element.classList.add('toggled');
         }
     }

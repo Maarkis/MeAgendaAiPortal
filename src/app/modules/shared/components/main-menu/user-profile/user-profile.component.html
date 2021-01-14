@@ -1,11 +1,15 @@
-<div class="card user-card-full">
+<div class="card user-card-full" >
     <div class="bg-c-lite-green user-profile">
         <div class="card-block h-100 text-center text-white">
             <div class="m-b-25">
-                <img [attr.src]="userLogged.userImage ? userLogged.userImage : 'assets/image/default-user.png'"  class="img-thumbnail" alt="User Profile Image"></div>
-            <p class="text-user-name padding-text">{{getNAmeAndSurname(userLogged.userName)}}</p>
+                <img [attr.src]="userLogged.userImage ? userLogged.userImage : 'assets/image/default-user.png'"
+                     class="img-thumbnail"
+                     [ngClass]="menuOpened? '' : 'closed'"
+                     alt="User Profile Image"></div>
+            <p *ngIf="menuOpened" class="text-user-name text-center mt-2">{{getNAmeAndSurname(userLogged.userName)}}</p>
             <!-- <p class="text-user-desc padding-text">Cliente</p>-->
         </div>
         <div class="divider"></div>
     </div>
 </div>
+
