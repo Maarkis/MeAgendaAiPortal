@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {EsqueceuSenhaComponent} from './components/esqueceu-senha/esqueceu-senha.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
     declarations: [LoginComponent, EsqueceuSenhaComponent],
@@ -19,6 +20,7 @@ import {EsqueceuSenhaComponent} from './components/esqueceu-senha/esqueceu-senha
         ReactiveFormsModule,
         MatButtonModule,
         MatIconModule,
+        MatCardModule,
 
     ]
 })

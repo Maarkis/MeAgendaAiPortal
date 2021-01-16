@@ -23,7 +23,6 @@ export class LoginComponent implements OnInit {
     public eyeHide = true;
 
     public userLogged: boolean;
-
     private userAuthenticated: UserAuthenticated;
 
     constructor(private authenticationService: AuthenticationService,
@@ -54,6 +53,10 @@ export class LoginComponent implements OnInit {
             email: new FormControl(authentication.email, [Validators.required, Validators.email]),
             senha: new FormControl(authentication.password, [Validators.required])
         });
+    }
+
+    public esqueceuSenha(): void {
+        this.router.navigate(['esqueceu-senha']);
     }
 
     public onSubmit(authentication: Authentication): void {

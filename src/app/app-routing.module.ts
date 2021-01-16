@@ -7,12 +7,13 @@ import {LoginComponent} from './modules/login/components/login/login.component';
 import {AuthGuardGuard} from './modules/shared/guards/auth-guard.guard';
 import {HomeComponent} from './modules/home/components/home/home.component';
 import {MeusAgendamentosComponent} from './modules/meus-agendamentos/components/meus-agendamentos/meus-agendamentos.component';
+import {EsqueceuSenhaComponent} from './modules/login/components/esqueceu-senha/esqueceu-senha.component';
 
 
 const routes: Routes = [
-    {path: '', redirectTo: 'home', pathMatch: 'full'},
-    {path: 'home', component: HomeComponent},
+    {path: '', component: HomeComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'esqueceu-senha', component: EsqueceuSenhaComponent},
     {
         path: 'perfil', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
             {path: '', component: AgendarComponent}
