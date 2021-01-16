@@ -5,7 +5,32 @@
 
 
 .form-box-agendamentos {
+    height: 100%;
     background-color: #FFFFFF;
     border: 1px solid #FFFFFF;
     border-radius: 30px;
+}
+
+.default-height-width-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.table-agendamento.table th, .table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: none;
+    border-bottom: 1px solid #707070;
+}
+.table-height {
+    min-height: 230px;
+    height: auto;
+    max-height: 460px;
+}
+
+
+@media (max-width: 376px) {
+    .text-title-agendamento {
+        font: bold 30px/42px 'Roboto Bold', sans-serif;
+    }
 }

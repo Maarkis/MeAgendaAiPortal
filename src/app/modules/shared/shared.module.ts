@@ -9,6 +9,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatListModule} from '@angular/material/list';
 
 const routes: Routes = [];
 
@@ -25,7 +27,9 @@ const routes: Routes = [];
         MatDividerModule,
         MatToolbarModule,
         MatIconModule,
-        MatButtonModule
+        MatButtonModule,
+        MatTooltipModule,
+        MatListModule
     ]
 })
 export class SharedModule {
