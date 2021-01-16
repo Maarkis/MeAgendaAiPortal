@@ -1,7 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {SessionService} from '../../services/session.service';
 import {$} from 'protractor';
 import {Router} from '@angular/router';
+import {MatSidenav} from '@angular/material/sidenav';
+import {menuContentClient, menuContentEmpresa} from '../../constants/menu/menus.constants';
+import {MenuContent} from '../../models/menu/menu-content';
 
 @Component({
     selector: 'app-main-menu',
@@ -9,8 +12,14 @@ import {Router} from '@angular/router';
     styleUrls: ['./main-menu.component.css']
 })
 export class MainMenuComponent implements OnInit {
+    @ViewChild('sidenav') public sidenav: MatSidenav;
     public opened = false;
     public menuItem: string;
+    public menuConfig = {
+        mode: 'push', // over, push, side
+        hasBackdrop: false
+    };
+    public menuContent: MenuContent[];
 
     constructor(private sessionService: SessionService, private router: Router) {
     }
@@ -25,6 +34,11 @@ export class MainMenuComponent implements OnInit {
             });
         }
         this.menuItem = '/' + fragments[0];
+
+
+        //    Get type menus
+        const empresa =  true;
+        this.menuContent = empresa ? menuContentEmpresa : menuContentClient;
     }
 
     public logoff(): void {
@@ -45,5 +59,9 @@ export class MainMenuComponent implements OnInit {
 
     public setMenuCurrent(menu: string): void {
         this.menuItem = menu;
+    }
+
+    public openMenu(): void {
+        this.opened ? this.sidenav.close() : this.sidenav.open();
     }
 }

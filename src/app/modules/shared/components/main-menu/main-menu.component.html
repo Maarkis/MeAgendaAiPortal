@@ -1,92 +1,36 @@
-<div class="d-flex" id="wrapper" [ngClass]="opened ? '' : 'toggled'">
-    <!-- Sidebar  -->
-    <div class="bg-dark-menu" id="sidebar-wrapper">
-        <div class="sidebar-heading">
-            <app-user-profile [menuOpened]="opened"></app-user-profile>
-        </div>
-        <div class="list-group  list-group-flush">
-            <a routerLink="/perfil"
-               [class.active]="menuItem === '/perfil'"
-               (click)="setMenuCurrent('/perfil')"
-               class="list-group-item list-group-item-action bg-dark-menu"
-               [ngClass]="opened? '' : 'text-center'">
-                <span *ngIf="opened">Perfil</span>
-                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/user-regular-grey.svg"
-                     alt="Profile">
-            </a>
-            <a routerLink="/meus-agendamentos"
-               [class.active]="menuItem === '/meus-agendamentos'"
-               (click)="setMenuCurrent('/meus-agendamentos')"
-               class="list-group-item list-group-item-action bg-dark-menu"
-               [ngClass]="opened? '' : 'text-center'">
-                <span *ngIf="opened">Meus agendamentos</span>
-                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/calendar-day-grey.svg"
-                     alt="Schedules">
-            </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu"
-               [ngClass]="opened? '' : 'text-center'">
-                <span *ngIf="opened">Histórico</span>
-                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/history-grey.svg" alt="History">
-            </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu"
-               [ngClass]="opened? '' : 'text-center'">
-                <span *ngIf="opened">Empresas favoritas</span>
-                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/company-regular-grey.svg"
-                     alt="Favorite Companies">
-            </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu"
-               [ngClass]="opened? '' : 'text-center'">
-                <span *ngIf="opened">Ajuda</span>
-                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/help-grey.svg" alt="Help">
-            </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu"
-               [ngClass]="opened? '' : 'text-center'">
-                <span *ngIf="opened">Sobre</span>
-                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/info-grey.svg" alt="Information">
-            </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark-menu mt-5" (click)="logoff()"
-               [ngClass]="opened? '' : 'text-center'">
-                <span *ngIf="opened">Sair</span>
-                <img class="icon-menu-margin icon-menu-size" src="assets/icon-system/sign-out-grey.svg" alt="loggout">
-            </a>
-        </div>
-    </div>
-
-    <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent border-bottom">
-            <button class="btn btn-sm btn-transparent" id="menu-toggle" (click)="toggleMenu($event)">
-                <img src="assets/icon-system/menu-bars.svg" alt="menu bar">
-            </button>
-            <!---->
-            <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <!---->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </li>
-                </ul>
+<mat-drawer-container class="wrapper" [hasBackdrop]="menuConfig.hasBackdrop">
+    <mat-drawer #sidenav [(opened)]="opened" [mode]="menuConfig.mode">
+        <div class="bg-dark-menu sidebar-wrapper">
+            <div class="sidebar-heading">
+                <app-user-profile></app-user-profile>
             </div>
-        </nav>
-        <router-outlet></router-outlet>
-    </div>
-</div>
+            <div class="list-group  list-group-flush">
+                <a *ngFor="let menu of menuContent" [routerLink]="menu.routerLink"
+                   [class.active]="menuItem === menu.menuItem"
+                   (click)="setMenuCurrent(menu.menuItem)"
+                   class="list-group-item list-group-item-action bg-dark-menu">
+                    <span>{{menu.name}}</span>
+                    <img class="icon-menu-margin default-height-width-icon"
+                         [src]="menu.img.src"
+                         [attr.alt]="menu.img.alt">
+                </a>
+                <a href="#" class="list-group-item list-group-item-action bg-dark-menu mt-5" (click)="logoff()">
+                    <span>Sair</span>
+                    <img class="icon-menu-margin default-height-width-icon" src="assets/icon-system/sign-out-grey.svg"
+                         alt="loggout">
+                </a>
+            </div>
+        </div>
+    </mat-drawer>
+    <mat-drawer-content>
+        <mat-toolbar class="toolbar">
+            <button type="button" (click)="openMenu()" mat-icon-button class="menu icon"
+                    aria-label="menu icon">
+                <img src="assets/icon-system/menu-bars.svg" class="default-height-width-icon" alt="menu bar">
+            </button>
+        </mat-toolbar>
+        <div class="content-page">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container>

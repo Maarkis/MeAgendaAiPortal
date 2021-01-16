@@ -9,7 +9,7 @@ import {UserAuthenticated} from '../../../models/authentication/authentication';
 })
 export class UserProfileComponent implements OnInit {
 
-    @Input() menuOpened: boolean;
+    @Input() menuOpened: boolean = true;
     public userLogged: UserAuthenticated;
 
     constructor(private sessionService: SessionService) {
