@@ -4,7 +4,7 @@ import {ResponseBase} from '../../../shared/models/response-base';
 import {User} from '../../../shared/models/User';
 import {SessionService} from '../../../shared/services/session.service';
 import {Router} from '@angular/router';
-import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import {FormGroup, FormControl, Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {Authentication, UserAuthenticated} from '../../../shared/models/authentication/authentication';
 import {GenericValidator} from '../../../shared/validators/validator-form/generic-validator.validator';
 import {MatDialog} from '@angular/material/dialog';
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
     }
 
     // retorna todos os controls do form
-    get form() {
+    get form(): { [control: string]: AbstractControl } {
         return this.formLogin.controls;
     }
 

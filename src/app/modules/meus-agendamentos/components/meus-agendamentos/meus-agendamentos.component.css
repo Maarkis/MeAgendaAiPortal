@@ -1,0 +1,11 @@
+.text-title-agendamento {
+    font: bold 36px/42px 'Roboto Bold', sans-serif;
+    color: var(--color-system-primary);
+}
+
+
+.form-box-agendamentos {
+    background-color: #FFFFFF;
+    border: 1px solid #FFFFFF;
+    border-radius: 30px;
+}

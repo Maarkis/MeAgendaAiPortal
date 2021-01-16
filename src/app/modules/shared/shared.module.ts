@@ -6,6 +6,9 @@ import {RouterModule, Routes} from '@angular/router';
 import {ModalComponent} from './components/modal/modal.component';
 import {UserProfileComponent} from './components/main-menu/user-profile/user-profile.component';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 const routes: Routes = [];
 
@@ -19,7 +22,10 @@ const routes: Routes = [];
     imports: [
         CommonModule,
         RouterModule,
-        MatDividerModule
+        MatDividerModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatButtonModule
     ]
 })
 export class SharedModule {

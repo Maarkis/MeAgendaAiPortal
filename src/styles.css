@@ -1,16 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
 /* Font Family - Roboto */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
-/* Root  color system */
+/* Root color system */
 :root {
     --color-system-primary: #fcc617;
     --color-system-secundary: #111111;
 }
+
 /* End color system */
-
-/* You can add global styles to this file, and also import other style files */
-
-
 
 @font-face {
     font-family: 'Roboto Regular';
@@ -35,24 +33,24 @@
 
 
 html, body {
+    height: 100%;
     padding: 0;
     width: 100%;
     margin: 0;
     /*background-color: #E6E6E6 !important;*/
-    background-color: #F8F8F8 ;
-    height: 100% !important;
+    background-color: #F8F8F8;
     overflow-x: hidden;
     max-width: 100%;
 }
-
 body {
+    margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    /*height: 100%;*/
-    height: 100vh !important
 }
+
 .clickable {
     cursor: pointer;
 }
+
 .custom-modal .mat-dialog-container {
     border-radius: 10px;
     padding: 10px;
@@ -67,7 +65,6 @@ button {
 }
 
 
-
 /**/
 @media only screen and (max-width: 600px) {
     .custom-modal, .photo-modal {
@@ -80,6 +77,8 @@ button {
         width: 30%;
     }
 }
+
 /**/
+
 
 
