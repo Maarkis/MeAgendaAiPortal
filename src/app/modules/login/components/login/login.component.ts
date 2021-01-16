@@ -35,9 +35,10 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        debugger
         this.userLogged = this.sessionService.isAuthenticated;
         if (this.userLogged) {
-            this.router.navigate(['components']);
+            this.router.navigate(['perfil']);
         } else {
             this.title.setTitle('Login | Me Agenda Aí');
             this.formLogin = this.createForm(new Authentication());

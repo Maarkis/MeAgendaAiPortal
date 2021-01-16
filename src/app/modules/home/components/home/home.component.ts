@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {
         this.userLogged = this.sessionService.isAuthenticated;
         if (this.userLogged) {
-            this.router.navigate(['components']);
+            this.router.navigate(['perfil']);
         } else {
             this.title.setTitle('Página Inicial | Me Agenda Aí');
         }
