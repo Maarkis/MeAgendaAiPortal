@@ -35,7 +35,6 @@ export class LoginComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        debugger
         this.userLogged = this.sessionService.isAuthenticated;
         if (this.userLogged) {
             this.router.navigate(['perfil']);
