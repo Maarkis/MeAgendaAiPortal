@@ -8,9 +8,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {EsqueceuSenhaComponent} from './components/esqueceu-senha/esqueceu-senha.component';
 import {MatCardModule} from '@angular/material/card';
+import {CadastroComponent} from './components/cadastro/cadastro.component';
 
 @NgModule({
-    declarations: [LoginComponent, EsqueceuSenhaComponent],
+    declarations: [LoginComponent, EsqueceuSenhaComponent, CadastroComponent],
     imports: [
         CommonModule,
         MatFormFieldModule,
@@ -20,7 +21,7 @@ import {MatCardModule} from '@angular/material/card';
         ReactiveFormsModule,
         MatButtonModule,
         MatIconModule,
-        MatCardModule,
+        MatCardModule
 
     ]
 })

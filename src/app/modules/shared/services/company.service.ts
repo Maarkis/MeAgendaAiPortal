@@ -9,7 +9,7 @@ import {Company} from '../models/Company';
     providedIn: 'root'
 })
 export class CompanyService {
-    URL: string = environment.API + '/Company';
+    private readonly URL: string = environment.API + '/Company';
 
     constructor(private http: HttpClient) {
     }

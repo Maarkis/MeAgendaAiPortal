@@ -22,7 +22,7 @@ export class EsqueceuSenhaComponent implements OnInit {
 
     ngOnInit(): void {
 
-        this.title.setTitle('Esqueceu a senha| Me Agenda Aí');
+        this.title.setTitle('Esqueceu a senha | Me Agenda Aí');
         this.formForgotPassword = this.createForm();
     }
 

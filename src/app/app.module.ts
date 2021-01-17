@@ -7,15 +7,19 @@ import {AppRoutingModule} from './app-routing.module';
 import {CommonModule} from '@angular/common';
 import {SharedModule} from './modules/shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {AgendamentoModule} from './modules/agendamento/agendamento.module';
 import {LoginModule} from './modules/login/login.module';
 import {HttpClientModule} from '@angular/common/http';
 import {HomeModule} from './modules/home/home.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MeusAgendamentosComponent} from './modules/meus-agendamentos/components/meus-agendamentos/meus-agendamentos.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {AgendamentoModule} from './modules/agendamento/agendamento.module';
+
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        MeusAgendamentosComponent
     ],
     imports: [
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
@@ -29,7 +33,9 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
         HttpClientModule,
         HomeModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatDialogModule
+
     ],
     providers: [],
     bootstrap: [AppComponent],

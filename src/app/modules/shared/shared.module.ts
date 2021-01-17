@@ -23,15 +23,12 @@ const routes: Routes = [];
         UserProfileComponent
     ],
     imports: [
-        CommonModule,
-        RouterModule,
-        MatDividerModule,
+        MatSidenavModule,
         MatToolbarModule,
-        MatIconModule,
-        MatButtonModule,
-        MatTooltipModule,
-        MatListModule,
-        MatSidenavModule
+        RouterModule,
+        CommonModule,
+        MatButtonModule
+
     ]
 })
 export class SharedModule {

@@ -12,8 +12,14 @@ import {Authentication, UserAuthenticated} from '../../shared/models/authenticat
 export class AuthenticationService {
     URL: string = environment.API + '/Authentication';
 
-    constructor(private http: HttpClient) {    }
+    constructor(private http: HttpClient) {
 
+    }
+
+    /**
+     * Faz o login no sistema  Me agenda aí
+     * @param authentication
+     */
     public login(authentication: Authentication): Observable<ResponseBase<UserAuthenticated>> {
         return this.http.post<ResponseBase<UserAuthenticated>>(`${this.URL}`, authentication);
     }

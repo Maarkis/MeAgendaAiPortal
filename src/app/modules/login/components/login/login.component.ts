@@ -11,6 +11,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {ModalComponent} from '../../../shared/components/modal/modal.component';
 import {Title} from '@angular/platform-browser';
 
+
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -24,7 +25,6 @@ export class LoginComponent implements OnInit {
 
     public userLogged: boolean;
     private userAuthenticated: UserAuthenticated;
-
     constructor(private authenticationService: AuthenticationService,
                 private fb: FormBuilder,
                 private sessionService: SessionService,
@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
                 private title: Title,
                 private router: Router) {
     }
+
 
     ngOnInit(): void {
         this.userLogged = this.sessionService.isAuthenticated;

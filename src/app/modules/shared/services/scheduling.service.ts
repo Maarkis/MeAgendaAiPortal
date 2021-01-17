@@ -10,7 +10,7 @@ import {Scheduling, SchedulingStatus} from '../models/scheduling';
     providedIn: 'root'
 })
 export class SchedulingService {
-    URL: string = environment.API + '/Scheduling';
+    private readonly URL: string = environment.API + '/Scheduling';
 
     private getParams = (id: string): HttpParams => {
         let params = new HttpParams();
