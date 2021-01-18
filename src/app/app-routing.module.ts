@@ -8,12 +8,16 @@ import {AuthGuardGuard} from './modules/shared/guards/auth-guard.guard';
 import {HomeComponent} from './modules/home/components/home/home.component';
 import {MeusAgendamentosComponent} from './modules/meus-agendamentos/components/meus-agendamentos/meus-agendamentos.component';
 import {EsqueceuSenhaComponent} from './modules/login/components/esqueceu-senha/esqueceu-senha.component';
+import {ResetSenhaComponent} from './modules/login/components/reset-senha/reset-senha.component';
 
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'login', component: LoginComponent},
     {path: 'esqueceu-senha', component: EsqueceuSenhaComponent},
+    {
+        path: 'redefinir-senha/:id', component: ResetSenhaComponent
+    },
     {
         path: 'perfil', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
             {path: '', component: AgendarComponent}
@@ -24,7 +28,7 @@ const routes: Routes = [
             {path: '', component: MeusAgendamentosComponent}
         ]
     },
-    {path: '**', component: PageNotFoundComponent}
+    {path: '**', component: PageNotFoundComponent} // Wildcard route for a 404 page
 ];
 
 

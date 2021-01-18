@@ -1,12 +1,12 @@
 export class MenuContent {
-    id: number;
-    routerLink: string;
-    menuItem: string;
-    name: string;
-    img: ImgMenuContent;
+    public id: number;
+    public routerLink: string;
+    public menuItem: string;
+    public name: string;
+    public img: ImgMenuContent;
 }
 
 class ImgMenuContent {
-    src: string;
-    alt: string;
+    public src: string;
+    public alt: string;
 }

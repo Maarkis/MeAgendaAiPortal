@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {SessionService} from '../../services/session.service';
-import {$} from 'protractor';
 import {Router} from '@angular/router';
 import {MatSidenav} from '@angular/material/sidenav';
 import {menuContentClient, menuContentEmpresa} from '../../constants/menu/menus.constants';
@@ -35,15 +34,16 @@ export class MainMenuComponent implements OnInit {
         }
         this.menuItem = '/' + fragments[0];
 
+        // Get type menus
+        const typeUser = 'empresa'; // mock menu empresa
+        this.menuContent = typeUser !== 'empresa' ? menuContentClient : menuContentEmpresa;
 
-        //    Get type menus
-        const empresa =  true;
-        this.menuContent = empresa ? menuContentEmpresa : menuContentClient;
     }
 
     public logoff(): void {
         this.sessionService.logoff();
     }
+
 
     public toggleMenu(e: MouseEvent): void {
         e.preventDefault();

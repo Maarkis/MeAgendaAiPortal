@@ -20,7 +20,7 @@ import {Title} from '@angular/platform-browser';
 export class LoginComponent implements OnInit {
 
     public user: User;
-    formLogin: FormGroup;
+    public formLogin: FormGroup;
     public eyeHide = true;
 
     public userLogged: boolean;

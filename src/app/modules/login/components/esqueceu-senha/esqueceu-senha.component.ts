@@ -12,7 +12,7 @@ import {GenericValidator} from '../../../shared/validators/validator-form/generi
     styleUrls: ['./esqueceu-senha.component.css']
 })
 export class EsqueceuSenhaComponent implements OnInit {
-    formForgotPassword: FormGroup;
+    public formForgotPassword: FormGroup;
 
     constructor(private title: Title,
                 private authenticationService: AuthenticationService,

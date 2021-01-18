@@ -9,9 +9,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {EsqueceuSenhaComponent} from './components/esqueceu-senha/esqueceu-senha.component';
 import {MatCardModule} from '@angular/material/card';
 import {CadastroComponent} from './components/cadastro/cadastro.component';
+import { ResetSenhaComponent } from './components/reset-senha/reset-senha.component';
 
 @NgModule({
-    declarations: [LoginComponent, EsqueceuSenhaComponent, CadastroComponent],
+    declarations: [LoginComponent, EsqueceuSenhaComponent, CadastroComponent, ResetSenhaComponent],
     imports: [
         CommonModule,
         MatFormFieldModule,
