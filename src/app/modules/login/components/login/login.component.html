@@ -1,12 +1,9 @@
 <div class="container-fluid" *ngIf="!userLogged">
     <div class="row vh-100">
         <div class="col-xl-9 col-lg-8 col-md-6 col-sm-12 col-12 bg-calendar p-0">
-
         </div>
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 p-0 bg-dark h-100 p-5">
             <div class="row d-flex justify-content-center h-100 p-5 mx-4 my-4 align-content-center">
-
-
                 <form class="form-login" [formGroup]="formLogin" (ngSubmit)="onSubmit(formLogin.value)">
                     <div class="row">
                         <div class="col-12 mt-3 mb-1">
@@ -20,13 +17,12 @@
                             <mat-form-field class="mat-form-custom" appearance="outline">
                                 <mat-label>Email</mat-label>
                                 <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com">
-
-                                <!--                            <mat-error *ngIf="form.email.hasError('email') && !form.email.hasError('required')">-->
-                                <!--                                Please enter a valid email address-->
-                                <!--                            </mat-error>-->
-                                <!--                            <mat-error *ngIf="form.email.hasError('required')">-->
-                                <!--                                Email is <strong>required</strong>-->
-                                <!--                            </mat-error>-->
+                                <!--<mat-error *ngIf="form.email.hasError('email') && !form.email.hasError('required')">-->
+                                <!--Please enter a valid email address-->
+                                <!--</mat-error>-->
+                                <!--<mat-error *ngIf="form.email.hasError('required')">-->
+                                <!--Email is <strong>required</strong>-->
+                                <!--</mat-error>-->
                             </mat-form-field>
                         </div>
 

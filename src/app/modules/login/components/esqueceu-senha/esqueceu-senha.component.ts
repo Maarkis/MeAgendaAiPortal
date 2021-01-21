@@ -5,6 +5,9 @@ import {Title} from '@angular/platform-browser';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../services/authentication.service';
 import {GenericValidator} from '../../../shared/validators/validator-form/generic-validator.validator';
+import {ResponseBase} from '../../../shared/models/response-base';
+import {ModalComponent} from '../../../shared/components/modal/modal.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
     selector: 'app-esqueceu-senha',
@@ -17,11 +20,11 @@ export class EsqueceuSenhaComponent implements OnInit {
     constructor(private title: Title,
                 private authenticationService: AuthenticationService,
                 private fb: FormBuilder,
+                private dialog: MatDialog,
                 private router: Router) {
     }
 
     ngOnInit(): void {
-
         this.title.setTitle('Esqueceu a senha | Me Agenda Aí');
         this.formForgotPassword = this.createForm();
     }
@@ -32,13 +35,33 @@ export class EsqueceuSenhaComponent implements OnInit {
 
     private createForm(): FormGroup {
         return this.fb.group({
-            email: new FormControl('', [Validators.required, Validators.email]),
+            email: new FormControl('', [Validators.required]),
         });
     }
 
-    public onSubmit(value): void {
+    public onSubmit(email: string): void {
         if (this.formForgotPassword.valid) {
-            console.log(value);
+            this.authenticationService.recoverPassword(email).subscribe((response: ResponseBase<string>) => {
+                if (response.success) {
+                    console.log(response.result);
+                    this.dialog.open(ModalComponent, {
+                        panelClass: 'custom-modal', backdropClass: '', height: 'auto', width: 'auto',
+                        data: {
+                            title: '', text: response.result,
+                            button: 'OK', route: ''
+                        }
+                    });
+                }
+            }, responseError => {
+                console.log(responseError.error.result);
+                this.dialog.open(ModalComponent, {
+                    panelClass: 'custom-modal', backdropClass: '', height: 'auto', width: 'auto',
+                    data: {
+                        title: '', text: responseError.error.result,
+                        button: 'OK', route: ''
+                    }
+                });
+            });
         } else {
             GenericValidator.verifierValidatorsForm(this.formForgotPassword);
         }

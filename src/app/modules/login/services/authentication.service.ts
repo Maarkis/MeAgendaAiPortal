@@ -23,5 +23,8 @@ export class AuthenticationService {
     public login(authentication: Authentication): Observable<ResponseBase<UserAuthenticated>> {
         return this.http.post<ResponseBase<UserAuthenticated>>(`${this.URL}`, authentication);
     }
+    public recoverPassword(email: string): Observable<ResponseBase<string>> {
+        return this.http.post<ResponseBase<any>>(`${this.URL}/RecoverPassword`, email);
+    }
 
 }
