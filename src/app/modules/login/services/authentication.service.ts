@@ -4,6 +4,8 @@ import {environment} from '../../../../environments/environment';
 import {Observable} from 'rxjs';
 import {ResponseBase} from '../../shared/models/response-base';
 import {Authentication, UserAuthenticated} from '../../shared/models/authentication/authentication';
+import {RequestResetPassword} from '../../shared/models/authentication/request-reset-password';
+import {strict} from 'assert';
 
 
 @Injectable({
@@ -24,7 +26,15 @@ export class AuthenticationService {
         return this.http.post<ResponseBase<UserAuthenticated>>(`${this.URL}`, authentication);
     }
     public recoverPassword(email: string): Observable<ResponseBase<string>> {
-        return this.http.post<ResponseBase<any>>(`${this.URL}/RecoverPassword`, email);
+        return this.http.post<ResponseBase<string>>(`${this.URL}/RecoverPassword`, email);
+    }
+    /**
+     * Faz o login no sistema  Me agenda aí
+     * @param resetPassword
+     * @type RequestResetPassword
+     */
+    public resetPassword(resetPassword: RequestResetPassword): Observable<ResponseBase<string>> {
+        return this.http.put<ResponseBase<string>>(`${this.URL}/ResetPassword`, resetPassword);
     }
 
 }

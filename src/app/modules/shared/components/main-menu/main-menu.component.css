@@ -26,11 +26,7 @@
     width: 100%;
 }
 
-/* ajuste icon menu */
-.default-height-width-icon {
-    width: 12px;
-    height: 12px;
-}
+
 
 .icon-menu-margin {
     margin: 0 12px;
@@ -52,7 +48,61 @@
     border: none;
     border-right: 5px solid var(--color-system-primary);
 }
+.filter-white {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(345deg) brightness(102%) contrast(101%);
+}
 
 .toolbar {
     background-color: transparent;
 }
+
+/*.mat-toolbar-row, .mat-toolbar-single-row {*/
+/*    display: flex;*/
+/*    box-sizing: border-box;*/
+/*    padding: 0 16px;*/
+/*    width: 100%;*/
+/*    flex-direction: row;*/
+/*    align-items: end;*/
+/*    white-space: nowrap;*/
+/*}*/
+.mat-toolbar-row,
+.mat-toolbar-single-row.toolbar-row-reverse {
+    flex-direction: row-reverse;
+}
+.toolbar-display {
+    display: none;
+}
+@media (max-width: 575.98px) {
+    .toolbar-display {
+        display: flex;
+    }
+    ::ng-deep.mat-drawer {
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 3;
+        outline: 0;
+        box-sizing: border-box;
+        overflow-y: auto;
+        width: 100%;
+        transform: translate3d(-100%, 0, 0);
+    }
+    .sidebar-wrapper {
+        max-height: 100vh;
+        height: 100%;
+        min-width: auto;
+        width: 100%;
+        transition: margin .25s ease-out;
+    }
+    .list-group-item-action {
+        border-right: 5px solid transparent;
+        text-align: center;
+    }
+}
+
+@media (min-width: 768px) { }
+
+@media (min-width: 992px) {  }
+
+@media (min-width: 1200px) {  }

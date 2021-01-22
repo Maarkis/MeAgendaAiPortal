@@ -1,23 +1,33 @@
 <mat-drawer-container class="wrapper" [hasBackdrop]="menuConfig.hasBackdrop">
     <mat-drawer #sidenav [(opened)]="opened" [mode]="menuConfig.mode">
         <div class="bg-dark-menu sidebar-wrapper">
+
             <div class="sidebar-heading">
+                <mat-toolbar class="toolbar-display toolbar toolbar-row-reverse">
+                    <button type="button" (click)="openMenu()" mat-icon-button
+                            class="btn bg-transparent align-content-end"
+                            aria-label="menu icon">
+                        <img src="assets/icon-system/menu-bars.svg" class="filter-white default-height-width-icon"
+                             alt="menu bar">
+                    </button>
+                </mat-toolbar>
                 <app-user-profile></app-user-profile>
             </div>
             <div class="list-group  list-group-flush">
                 <a *ngFor="let menu of menuContent" [routerLink]="menu.routerLink"
                    [class.active]="menuItem === menu.menuItem"
                    (click)="setMenuCurrent(menu.menuItem)"
-                   class="list-group-item list-group-item-action bg-dark-menu">
-                    <span>{{menu.name}}</span>
+                   class="mt-1 mb-1 list-group-item list-group-item-action bg-dark-menu">
                     <img class="icon-menu-margin default-height-width-icon"
                          [src]="menu.img.src"
                          [attr.alt]="menu.img.alt">
+                    <span>{{menu.name}}</span>
+
                 </a>
                 <a href="#" class="list-group-item list-group-item-action bg-dark-menu mt-5" (click)="logoff()">
-                    <span>Sair</span>
                     <img class="icon-menu-margin default-height-width-icon" src="assets/icon-system/sign-out-grey.svg"
                          alt="loggout">
+                    <span>Sair</span>
                 </a>
             </div>
         </div>

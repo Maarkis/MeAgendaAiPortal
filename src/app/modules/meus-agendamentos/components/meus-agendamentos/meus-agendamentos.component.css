@@ -3,10 +3,12 @@
     color: var(--color-system-primary);
 }
 
-
+.color-primary-system {
+    /*filter: invert(94%) sepia(13%) saturate(4683%) hue-rotate(339deg) brightness(96%) contrast(105%);*/
+}
 .form-box-agendamentos {
     height: 100%;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     border: 1px solid #FFFFFF;
     border-radius: 30px;
 }

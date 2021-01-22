@@ -16,7 +16,7 @@ const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'esqueceu-senha', component: EsqueceuSenhaComponent},
     {
-        path: 'redefinir-senha/:id', component: ResetSenhaComponent
+        path: 'redefinir-senha/:uid/:token', component: ResetSenhaComponent
     },
     {
         path: 'perfil', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
