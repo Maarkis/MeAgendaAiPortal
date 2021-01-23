@@ -108,8 +108,24 @@
 .span-register {
     color: var(--color-system-primary);
 }
-@media (max-width: 425px) {
+.div-img-display {
+    display: none;
+}
+@media (max-width: 575.98px) {
     .bg-calendar {
         display: none;
     }
+    .div-img-display {
+        display: block;
+    }
+
+    .div-img-display {
+        /*display: ;*/
+    }
 }
+
+@media (min-width: 768px) { }
+
+@media (min-width: 992px) {  }
+
+@media (min-width: 1200px) {  }
