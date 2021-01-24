@@ -16,7 +16,7 @@
                                 <mat-form-field class="mat-form-custom w-100" appearance="outline">
                                     <mat-label>Senha</mat-label>
                                     <label>
-                                        <input matInput formControlName="senha" [type]="eyeHide ? 'password' : 'text'">
+                                        <input matInput formControlName="password" [type]="eyeHide ? 'password' : 'text'">
                                     </label>
                                 </mat-form-field>
                             </div>
@@ -24,7 +24,7 @@
                                 <mat-form-field class="mat-form-custom w-100" appearance="outline">
                                     <mat-label>Confirmar senha</mat-label>
                                     <label>
-                                        <input matInput formControlName="confirmarSenha"
+                                        <input matInput formControlName="confirmPassword"
                                                [type]="eyeHide ? 'password' : 'text'">
                                     </label>
                                     <button type="button" mat-icon-button matSuffix (click)="eyeHide = !eyeHide"

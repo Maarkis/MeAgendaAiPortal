@@ -42,4 +42,10 @@ export class SessionService {
         this.authenticatedInSystem = false;
     }
 
+    public setTokenResetPassword(resetPToken: { used: boolean; token: string }): void {
+        sessionStorage.setItem('resetPToken', JSON.stringify(resetPToken));
+    }
+    get tokenReset(): {used: boolean; token: string} {
+        return JSON.parse(sessionStorage.getItem('resetPToken'));
+    }
 }

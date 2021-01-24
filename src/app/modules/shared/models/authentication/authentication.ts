@@ -14,4 +14,5 @@ export class UserAuthenticated {
     public userEmail: string;
     public message: string;
     public userImage: string;
+    public verified: boolean;
 }

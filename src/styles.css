@@ -70,6 +70,12 @@ body {
     backdrop-filter: blur(20px);
 }
 
+.divider {
+    margin: 0 15px 0 15px !important;
+    height: 1px;
+    background-color: #707070;
+}
+
 button {
     outline: none !important;
 }

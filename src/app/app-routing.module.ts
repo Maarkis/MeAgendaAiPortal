@@ -9,6 +9,8 @@ import {HomeComponent} from './modules/home/components/home/home.component';
 import {MeusAgendamentosComponent} from './modules/meus-agendamentos/components/meus-agendamentos/meus-agendamentos.component';
 import {EsqueceuSenhaComponent} from './modules/login/components/esqueceu-senha/esqueceu-senha.component';
 import {ResetSenhaComponent} from './modules/login/components/reset-senha/reset-senha.component';
+import {PerfilComponent} from './modules/perfil/components/perfil/perfil.component';
+import {ConfirmarEmailComponent} from './modules/shared/components/confirmar-email/confirmar-email.component';
 
 
 const routes: Routes = [
@@ -16,11 +18,14 @@ const routes: Routes = [
     {path: 'login', component: LoginComponent},
     {path: 'esqueceu-senha', component: EsqueceuSenhaComponent},
     {
+        path: 'confirmar-email/:uid', component: ConfirmarEmailComponent
+    },
+    {
         path: 'redefinir-senha/:uid/:token', component: ResetSenhaComponent
     },
     {
         path: 'perfil', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
-            {path: '', component: AgendarComponent}
+            {path: '', component: PerfilComponent}
         ]
     },
     {
@@ -28,6 +33,8 @@ const routes: Routes = [
             {path: '', component: MeusAgendamentosComponent}
         ]
     },
+
+
     {path: '**', component: PageNotFoundComponent} // Wildcard route for a 404 page
 ];
 

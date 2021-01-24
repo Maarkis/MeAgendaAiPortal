@@ -1,11 +1,10 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
 import {Observable} from 'rxjs';
 import {ResponseBase} from '../../shared/models/response-base';
 import {Authentication, UserAuthenticated} from '../../shared/models/authentication/authentication';
 import {RequestResetPassword} from '../../shared/models/authentication/request-reset-password';
-import {strict} from 'assert';
 
 
 @Injectable({
@@ -13,7 +12,7 @@ import {strict} from 'assert';
 })
 export class AuthenticationService {
 
-    URL: string = environment.API + '/Authentication';
+    private readonly URL: string = environment.API + '/Authentication';
 
     constructor(private http: HttpClient) {
     }
@@ -47,5 +46,6 @@ export class AuthenticationService {
     public resetPassword(resetPassword: RequestResetPassword): Observable<ResponseBase<string>> {
         return this.http.put<ResponseBase<string>>(`${this.URL}/ResetPassword`, resetPassword);
     }
+
 
 }

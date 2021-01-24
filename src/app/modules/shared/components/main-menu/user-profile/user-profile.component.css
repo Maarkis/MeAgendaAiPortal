@@ -62,9 +62,3 @@
     text-align: right;
     font: normal 12px/18px 'Roboto Bold', sans-serif;
 }
-
-.divider {
-    margin: 0 15px 0 15px !important;
-    height: 1px;
-    background-color: #707070;
-}

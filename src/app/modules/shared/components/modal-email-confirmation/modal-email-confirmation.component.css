@@ -1,0 +1,11 @@
+.text-title {
+    color: var(--color-system-secundary);
+    font: bold 1.2rem "Segoe UI", Arial, sans-serif;
+}
+.sub-title {
+    font: normal 1rem "Segoe UI", Arial, sans-serif;
+}
+.text-link {
+    color: var(--color-system-primary);
+    font: normal 1rem "Segoe UI", Arial, sans-serif;
+}

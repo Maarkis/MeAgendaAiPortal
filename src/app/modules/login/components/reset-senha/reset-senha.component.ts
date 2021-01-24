@@ -7,6 +7,7 @@ import {RequestResetPassword} from '../../../shared/models/authentication/reques
 import {ResponseBase} from '../../../shared/models/response-base';
 import {ModalComponent} from '../../../shared/components/modal/modal.component';
 import {MatDialog} from '@angular/material/dialog';
+import {SessionService} from '../../../shared/services/session.service';
 
 @Component({
     selector: 'app-reset-senha',
@@ -24,6 +25,7 @@ export class ResetSenhaComponent implements OnInit {
     constructor(private route: ActivatedRoute,
                 private router: Router, private fb: FormBuilder,
                 private dialog: MatDialog,
+                private sessionService: SessionService,
                 private authenticationService: AuthenticationService) {
     }
 
@@ -37,9 +39,9 @@ export class ResetSenhaComponent implements OnInit {
         return this.fb.group({
             id: new FormControl(resetPassword.Id, [Validators.required]),
             token: new FormControl(resetPassword.token, [Validators.required]),
-            senha: new FormControl(resetPassword.password, [Validators.required]),
-            confirmarSenha: new FormControl(resetPassword.confirmPassword,
-                [Validators.required, GenericValidator.mustMatch('confirmar')])
+            password: new FormControl(resetPassword.password, [Validators.required]),
+            confirmPassword: new FormControl(resetPassword.confirmPassword,
+                [Validators.required, GenericValidator.mustMatch('confirmPassword')])
         });
     }
 
@@ -47,7 +49,8 @@ export class ResetSenhaComponent implements OnInit {
         this.authenticationService.resetPassword(resetPassword).subscribe((response: ResponseBase<string>) => {
             if (response.success) {
                 console.log(response.result);
-                this.router.navigate(['']);
+                this.sessionService.setTokenResetPassword({token: resetPassword.token, used: true});
+                this.router.navigate(['login']);
             } else {
                 this.dialog.open(ModalComponent, {
                     panelClass: 'custom-modal', backdropClass: '', height: 'auto', width: 'auto',

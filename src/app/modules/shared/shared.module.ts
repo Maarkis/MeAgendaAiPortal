@@ -9,13 +9,17 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ModalEmailConfirmationComponent } from './components/modal-email-confirmation/modal-email-confirmation.component';
+import { ConfirmarEmailComponent } from './components/confirmar-email/confirmar-email.component';
 
 @NgModule({
     declarations: [
         MainMenuComponent,
         PageNotFoundComponent,
         ModalComponent,
-        UserProfileComponent
+        UserProfileComponent,
+        ModalEmailConfirmationComponent,
+        ConfirmarEmailComponent
     ],
     imports: [
         MatSidenavModule,

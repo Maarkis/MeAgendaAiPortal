@@ -1,0 +1,22 @@
+<div class="container p-3">
+    <div class="row">
+        <div class="col-12 mt-3">
+            <p class="text-title text-center">Veja sua caixa de entrada para concluir o registro.</p>
+        </div>
+        <div class="col-12 mt-3s text-center">
+            <img class="img-fluid" src="assets/icon-system/email-verification.svg" alt="email confirmation">
+        </div>
+        <div class="col-12 mt-3 mb-1">
+            <p class="mb-0 sub-title text-center">A gente mandou o link de registro para você em</p>
+        </div>
+        <div class="col-12 mb-3">
+            <p class="sub-title font-weight-bolder text-center">{{email}}</p>
+        </div>
+        <div class="w-100 divider"></div>
+        <div class="col-12 mt-3">
+            <p class="text-link">
+                <button class="btn bg-transparent btn-sm" (click)="resendEmail(email)">Reenviar e-mail de confirmação</button>
+            </p>
+        </div>
+    </div>
+</div>
