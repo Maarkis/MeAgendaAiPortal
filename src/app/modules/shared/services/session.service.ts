@@ -18,10 +18,16 @@ export class SessionService {
         return JSON.parse(sessionStorage.getItem('user-authenticated'));
     }
 
+    public setRefreshToken(refreshToken: string): void {
+        sessionStorage.setItem('refreshToken', refreshToken);
+    }
+    get refreshToken(): string { return sessionStorage.getItem('refreshToken'); }
+
     public setToken(token: string ): void {
         sessionStorage.setItem('token', token);
     }
     get token(): string { return sessionStorage.getItem('token'); }
+
 
     public authenticated(logged: boolean): void {
         this.authenticatedInSystem = logged;

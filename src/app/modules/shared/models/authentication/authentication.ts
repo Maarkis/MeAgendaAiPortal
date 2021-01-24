@@ -9,6 +9,7 @@ export class UserAuthenticated {
     public create: string;
     public expiration: string;
     public token: string;
+    public refreshToken: string;
     public userName: string;
     public userEmail: string;
     public message: string;

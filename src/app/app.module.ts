@@ -8,12 +8,14 @@ import {CommonModule} from '@angular/common';
 import {SharedModule} from './modules/shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginModule} from './modules/login/login.module';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HomeModule} from './modules/home/home.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MeusAgendamentosComponent} from './modules/meus-agendamentos/components/meus-agendamentos/meus-agendamentos.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {AgendamentoModule} from './modules/agendamento/agendamento.module';
+import {DeviceDetectorService} from 'ngx-device-detector';
+import {AuthInterceptor} from './modules/shared/interceptor/auth-interceptor';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import {AgendamentoModule} from './modules/agendamento/agendamento.module';
         MatDialogModule
 
     ],
-    providers: [],
+    providers: [{
+        provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+    }],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

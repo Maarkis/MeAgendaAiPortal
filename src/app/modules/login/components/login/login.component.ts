@@ -10,6 +10,8 @@ import {GenericValidator} from '../../../shared/validators/validator-form/generi
 import {MatDialog} from '@angular/material/dialog';
 import {ModalComponent} from '../../../shared/components/modal/modal.component';
 import {Title} from '@angular/platform-browser';
+import {NotificationService} from '../../../shared/services/notification/notification-service.service';
+import {DeviceService} from '../../../shared/services/device/device.service';
 
 
 @Component({
@@ -25,12 +27,15 @@ export class LoginComponent implements OnInit {
 
     public userLogged: boolean;
     private userAuthenticated: UserAuthenticated;
+
     constructor(private authenticationService: AuthenticationService,
                 private fb: FormBuilder,
                 private sessionService: SessionService,
                 private dialog: MatDialog,
                 private title: Title,
-                private router: Router) {
+                private router: Router,
+                private notificationService: NotificationService,
+                private deviceService: DeviceService) {
     }
 
 
@@ -69,20 +74,18 @@ export class LoginComponent implements OnInit {
 
                     this.sessionService.authenticated(this.userAuthenticated.authenticated);
                     this.sessionService.setUser(this.userAuthenticated);
+                    this.sessionService.setRefreshToken(this.userAuthenticated.refreshToken);
                     this.sessionService.setToken(this.userAuthenticated.token);
 
                     this.router.navigate(['perfil']);
-                } else {
-                    this.dialog.open(ModalComponent, {
-                        panelClass: 'custom-modal', backdropClass: '', height: 'auto', width: 'auto',
-                        data: {
-                            title: '', text: response.result,
-                            button: 'OK', route: ''
-                        }
-                    });
                 }
-            }, error => {
-                console.log(error);
+            }, e => {
+                console.log(e.error.result);
+                console.log(this.deviceService.deviceInfo);
+                console.log(this.deviceService.type);
+                this.deviceService.desktop ?
+                    this.notificationService.showMessageMatDialog('', e.error.result) :
+                    this.notificationService.showMessageSnackBar(e.error.result, true);
             });
         } else {
             GenericValidator.verifierValidatorsForm(this.formLogin);

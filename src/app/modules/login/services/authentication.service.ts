@@ -12,26 +12,37 @@ import {strict} from 'assert';
     providedIn: 'root'
 })
 export class AuthenticationService {
+
     URL: string = environment.API + '/Authentication';
 
     constructor(private http: HttpClient) {
-
     }
 
     /**
-     * Faz o login no sistema  Me agenda aí
+     * Faz a chamada para o login no sistema  Me agenda aí
      * @param authentication
+     * @type Authentication
+     * @return ResponseBase<UserAuthenticated>
      */
     public login(authentication: Authentication): Observable<ResponseBase<UserAuthenticated>> {
         return this.http.post<ResponseBase<UserAuthenticated>>(`${this.URL}`, authentication);
     }
+
+    /**
+     * Faz a chamada para envio de um e-mail para recuperação da conta
+     * @param email
+     * @type string
+     * @return ResponseBase<string>
+     */
     public recoverPassword(email: string): Observable<ResponseBase<string>> {
         return this.http.post<ResponseBase<string>>(`${this.URL}/RecoverPassword`, email);
     }
+
     /**
-     * Faz o login no sistema  Me agenda aí
+     * Faz a chamada para api para o reset de senha do usuário
      * @param resetPassword
      * @type RequestResetPassword
+     * @return ResponseBase<string>
      */
     public resetPassword(resetPassword: RequestResetPassword): Observable<ResponseBase<string>> {
         return this.http.put<ResponseBase<string>>(`${this.URL}/ResetPassword`, resetPassword);

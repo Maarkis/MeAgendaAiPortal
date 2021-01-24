@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {MatSidenav} from '@angular/material/sidenav';
 import {menuContentClient, menuContentEmpresa} from '../../constants/menu/menus.constants';
 import {MenuContent} from '../../models/menu/menu-content';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-main-menu',
