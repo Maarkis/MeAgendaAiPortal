@@ -8,13 +8,15 @@ import {CommonModule} from '@angular/common';
 import {SharedModule} from './modules/shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginModule} from './modules/login/login.module';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {HomeModule} from './modules/home/home.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MeusAgendamentosComponent} from './modules/meus-agendamentos/components/meus-agendamentos/meus-agendamentos.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {AgendamentoModule} from './modules/agendamento/agendamento.module';
-import {DeviceDetectorService} from 'ngx-device-detector';
+
+
+// Intercerceptor
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './modules/shared/interceptor/auth-interceptor';
 
 
@@ -37,11 +39,10 @@ import {AuthInterceptor} from './modules/shared/interceptor/auth-interceptor';
         FormsModule,
         ReactiveFormsModule,
         MatDialogModule
-
     ],
-    providers: [{
-        provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
-    }],
+    providers: [
+        {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
