@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {ClientService} from '../../services/client/client.service';
 import {ResponseBase} from '../../models/response-base';
 import {NotificationService} from '../../services/notification/notification-service.service';
+import {UserService} from '../../services/user/user.service';
 
 @Component({
     selector: 'app-modal-email-confirmation',
@@ -18,7 +19,7 @@ export class ModalEmailConfirmationComponent implements OnInit {
     constructor(public dialogRef: MatDialogRef<ModalEmailConfirmationComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: any,
                 private router: Router,
-                private clientService: ClientService,
+                private userService: UserService,
                 private notificationService: NotificationService) {
         if (data.id) {
             this.id = data.id;
@@ -37,12 +38,12 @@ export class ModalEmailConfirmationComponent implements OnInit {
     }
 
     public resendEmail(email: string): void {
-        this.clientService.resendEmail(email).subscribe((response: ResponseBase<string>) => {
+        this.userService.resendEmail(email).subscribe((response: ResponseBase<string>) => {
             if (response.success) {
                 this.notificationService.showMessageSnackBar(response.result);
             }
         }, error => {
-            console.log(error.error.result);
+            console.log(error);
         });
     }
 }

@@ -43,6 +43,16 @@ const menuContentClient: MenuContent[] = [
     },
     {
         id: 5,
+        routerLink: '/conta',
+        menuItem: '/conta',
+        name: 'Conta',
+        img: {
+            src: 'assets/icon-system/settings.svg',
+            alt: 'conta'
+        }
+    },
+    {
+        id: 6,
         routerLink: '/ajuda',
         menuItem: '/ajuda',
         name: 'Ajuda',
@@ -52,7 +62,7 @@ const menuContentClient: MenuContent[] = [
         }
     },
     {
-        id: 6,
+        id: 7,
         routerLink: '/sobre',
         menuItem: '/sobre',
         name: 'Sobre',
@@ -105,6 +115,16 @@ const menuContentEmpresa: MenuContent[] = [
     },
     {
         id: 5,
+        routerLink: '/conta',
+        menuItem: '/conta',
+        name: 'Conta',
+        img: {
+            src: 'assets/icon-system/settings.svg',
+            alt: 'conta'
+        }
+    },
+    {
+        id: 6,
         routerLink: '/ajuda',
         menuItem: '/ajuda',
         name: 'Ajuda',
@@ -114,7 +134,7 @@ const menuContentEmpresa: MenuContent[] = [
         }
     },
     {
-        id: 6,
+        id: 7,
         routerLink: '/sobre',
         menuItem: '/sobre',
         name: 'Sobre',

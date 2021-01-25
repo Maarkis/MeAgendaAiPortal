@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ClientService} from '../../services/client/client.service';
 import {ResponseBase} from '../../models/response-base';
+import {UserService} from '../../services/user/user.service';
 
 @Component({
     selector: 'app-confirmar-email',
@@ -11,12 +12,12 @@ import {ResponseBase} from '../../models/response-base';
 export class ConfirmarEmailComponent implements OnInit {
     private uui: string;
 
-    constructor(private route: ActivatedRoute, private clientService: ClientService, private router: Router) {
+    constructor(private route: ActivatedRoute, private userService: UserService, private router: Router) {
     }
 
     ngOnInit(): void {
         this.uui = this.route.snapshot.paramMap.get('uid');
-        this.clientService.confirmationEmail(this.uui).subscribe((response: ResponseBase<string>) => {
+        this.userService.confirmationEmail(this.uui).subscribe((response: ResponseBase<string>) => {
             if (response.success) {
                 console.log(response.result);
                 this.router.navigate(['perfil']);

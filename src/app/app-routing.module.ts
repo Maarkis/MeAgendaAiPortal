@@ -11,6 +11,7 @@ import {EsqueceuSenhaComponent} from './modules/login/components/esqueceu-senha/
 import {ResetSenhaComponent} from './modules/login/components/reset-senha/reset-senha.component';
 import {PerfilComponent} from './modules/perfil/components/perfil/perfil.component';
 import {ConfirmarEmailComponent} from './modules/shared/components/confirmar-email/confirmar-email.component';
+import {ContaComponent} from './modules/conta/components/conta/conta.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,11 @@ const routes: Routes = [
     {
         path: 'perfil', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
             {path: '', component: PerfilComponent}
+        ]
+    },
+    {
+        path: 'conta', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
+            {path: '', component: ContaComponent}
         ]
     },
     {

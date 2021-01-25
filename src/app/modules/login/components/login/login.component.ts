@@ -78,6 +78,10 @@ export class LoginComponent implements OnInit {
                     this.sessionService.setToken(this.userAuthenticated.token);
 
                     this.router.navigate(['perfil']);
+                } else {
+                    this.deviceService.desktop ?
+                        this.notificationService.showMessageMatDialog('', response.result.toString()) :
+                        this.notificationService.showMessageSnackBar(response.result.toString());
                 }
             }, e => {
                 console.log(e.error.result);

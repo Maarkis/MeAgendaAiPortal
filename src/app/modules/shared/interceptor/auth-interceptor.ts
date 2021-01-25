@@ -20,7 +20,6 @@ export class AuthInterceptor implements HttpInterceptor {
     }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
         if (!req.headers.has('Content-Type')) {
             req = req.clone({
                 headers: req.headers.set('Content-Type', 'application/json')

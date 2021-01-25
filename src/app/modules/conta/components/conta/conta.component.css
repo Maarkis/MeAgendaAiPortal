@@ -1,0 +1,143 @@
+.text-title-profile {
+    font: bold 36px/42px 'Roboto Bold', sans-serif;
+    color: var(--color-system-primary);
+}
+.default-height-width-icon {
+    width: 24px;
+    height: 24px;
+}
+.sub-title-profile {
+    font: bold 24px/28px 'Roboto Bold', sans-serif;
+    color: var(--color-system-secundary);
+}
+.form-box-profile {
+    height: 100%;
+    background-color: #ffffff;
+    border: 1px solid #FFFFFF;
+    border-radius: 30px;
+}
+
+.description-text {
+    font: normal 16px/20px 'Roboto Bold', sans-serif;
+    color: var(--color-system-secundary);
+}
+.structure-row {
+    flex-direction: column;
+}
+.structure-wrapper {
+    margin: 0.5rem 0;
+}
+.structure-contents {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-width: 1px;
+}
+
+.structure-label {
+    box-sizing: border-box;
+    display: inline-flex;
+    flex: 0 0 auto;
+}
+
+.img-profile {
+    height: 75px;
+    margin-right: 16px;
+    position: relative;
+    width: 75px;
+    border-radius: 50%;
+}
+
+.photo-upload-container {
+    align-items: center;
+    display: flex;
+}
+
+.photo-description {
+    display: block;
+}
+
+.photo-display {
+    height: 75px;
+    margin-right: 16px;
+    position: relative;
+    width: 75px;
+}
+
+.photo-profile {
+    align-items: center;
+    background: center/cover #cbd4db;
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .07);
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    position: relative;
+    vertical-align: top;
+}
+
+.photo-profile-xl {
+    font-size: 16px;
+    height: 73px;
+    line-height: 73px;
+    min-width: 73px;
+    width: 73px;
+}
+
+.photo-upload-button-separator {
+    cursor: default;
+    color: var(--color-system-secundary);
+    fill: var(--color-system-secundary);
+}
+
+.photo-upload-button {
+    cursor: pointer;
+    color: var(--color-system-primary);
+    fill: var(--color-system-primary);
+}
+
+.label {
+    /*color: var(--color-system-secundary);*/
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    color: #6f7782;
+    display: inline-block;
+    font-weight: 500;
+    margin-right: 8px;
+}
+
+.placement-top {
+    margin-bottom: 0.50rem;
+}
+
+.profile-container {
+    margin: 0 0 0.2rem 0;
+}
+.profile-description {
+    /*color: var(--color-system-secundary);*/
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    line-height: 16px;
+    color: #6f7782;
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+}
+.profile-tem {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-weight: bold;
+    color: #6f7782;
+    font-size: 12px;
+    line-height: 16px;
+    margin-bottom: 0.2rem;
+}
+.form-box {
+    padding: 1rem;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .07);
+    border-radius: 0.5rem;
+}
+.btn-edit-info-profile {
+    color: var(--color-system-secundary);
+    border: 1px solid var(--color-system-secundary);
+    border-radius: 0.5rem;
+}
