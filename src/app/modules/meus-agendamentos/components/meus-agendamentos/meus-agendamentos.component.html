@@ -18,140 +18,22 @@
                     <tr>
                         <th scope="col">Empresa</th>
                         <th scope="col">Serviço</th>
+                        <th scope="col">Funcionário</th>
                         <th scope="col">Dia</th>
                         <th scope="col">Hora</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
+                    <tr *ngFor="let scheduling of schedules">
+                        <th scope="row">{{scheduling.companyName}}</th>
+                        <td>{{scheduling.service}}</td>
+                        <td>{{scheduling.employeeName}}</td>
+                        <td>{{scheduling.startTime  | date: "dd/MM/yyyy"}}</td>
+                        <td>{{scheduling.startTime | date: "HH:mm"}}</td>
                         <td></td>
                     </tr>
-                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>                    <tr>
-                        <th scope="row">Beauty hair</th>
-                        <td>Manicure</td>
-                        <td>26/01/2021</td>
-                        <td>10:30</td>
-                        <td></td>
-                    </tr>
+                    </tbody>
                 </table>
             </div>
         </div>

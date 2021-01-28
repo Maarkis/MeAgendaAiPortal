@@ -36,7 +36,7 @@ export class MeusAgendamentosComponent implements OnInit {
             });
     }
 
-    cancelSchedule(schedule: Scheduling) {
+    public cancelSchedule(schedule: Scheduling): void {
 
         const updateScheduling = {
             schedulingId: schedule.schedulingId,
@@ -63,7 +63,5 @@ export class MeusAgendamentosComponent implements OnInit {
         }, error => {
             console.log(error);
         });
-
-
     }
 }
