@@ -15,11 +15,15 @@ import {AgendamentoModule} from './modules/agendamento/agendamento.module';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './modules/shared/interceptor/auth-interceptor';
 import {AppointmentsModule} from './modules/appointments/appointments.module';
+import { RegisterUserComponent } from './modules/components/register-user/register-user.component';
+import { RegisterCompanyComponent } from './modules/components/register-company/register-company.component';
 
 
 @NgModule({
     declarations: [
         AppComponent,
+        RegisterUserComponent,
+        RegisterCompanyComponent,
     ],
     imports: [
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),

@@ -12,6 +12,7 @@ import {ModalComponent} from '../../../shared/components/modal/modal.component';
 import {Title} from '@angular/platform-browser';
 import {NotificationService} from '../../../shared/services/notification/notification-service.service';
 import {DeviceService} from '../../../shared/services/device/device.service';
+import {Roles} from '../../../shared/enums/roles.enum';
 
 
 @Component({
@@ -20,7 +21,7 @@ import {DeviceService} from '../../../shared/services/device/device.service';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+    public roles = Roles;
     public user: User;
     public formLogin: FormGroup;
     public eyeHide = true;
@@ -93,6 +94,19 @@ export class LoginComponent implements OnInit {
             });
         } else {
             GenericValidator.verifierValidatorsForm(this.formLogin);
+        }
+    }
+
+    public goToRegister(role: Roles): void {
+        switch (role) {
+            case Roles.Cliente:
+                this.router.navigate(['register-user']);
+                break;
+            case Roles.UsuarioEmpresa:
+                this.router.navigate(['register-company']);
+                break;
+            default:
+                break;
         }
     }
 }

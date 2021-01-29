@@ -11,23 +11,24 @@ import {ConfirmarEmailComponent} from './modules/shared/components/confirmar-ema
 import {ProfileComponent} from './modules/profile/components/profile/profile.component';
 import {AppointmentsComponent} from './modules/appointments/components/appointments/appointments.component';
 import {AccountComponent} from './modules/account/components/account/account.component';
+import {RegisterUserComponent} from './modules/components/register-user/register-user.component';
+import {RegisterCompanyComponent} from './modules/components/register-company/register-company.component';
 
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'register-user', component: RegisterUserComponent},
+    {path: 'register-company', component: RegisterCompanyComponent},
     {path: 'esqueceu-senha', component: EsqueceuSenhaComponent},
-    {
-        path: 'confirmar-email/:uid', component: ConfirmarEmailComponent
-    },
-    {
-        path: 'redefinir-senha/:uid/:token', component: ResetSenhaComponent
-    },
+    {path: 'confirmar-email/:uid', component: ConfirmarEmailComponent},
+    {path: 'redefinir-senha/:uid/:token', component: ResetSenhaComponent},
     {
         path: 'perfil', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
             {path: '', component: ProfileComponent}
         ]
     },
+
     {
         path: 'conta', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
             {path: '', component: AccountComponent}

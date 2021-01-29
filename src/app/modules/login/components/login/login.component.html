@@ -52,9 +52,25 @@
                             </p>
                         </div>
                         <div class="col-12 mb-4">
-                            <p class="text-register">Não tem conta?
-                                <span class="span-register clickable">Cadastre-se.</span>
-                            </p>
+
+                            <div class="dropdown">
+
+                                <span class="text-register">Não tem conta?</span>
+                                <button class="btn-dot-menu" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                    <span class="span-register clickable">Cadastre-se.</span>
+                                </button>
+                                <div class=" dropdown-menu " role="menu"
+                                     aria-labelledby="register">
+                                    <button (click)="goToRegister(roles.Cliente)" class="dropdown-item" type="button">
+                                        Cliente
+                                    </button>
+                                    <button (click)="goToRegister(roles.UsuarioEmpresa)" class="dropdown-item" type="button">
+                                        Empresa
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </form>

@@ -111,6 +111,33 @@
 .div-img-display {
     display: none;
 }
+.btn-dot-menu {
+    border: none;
+    height: auto;
+    width: auto;
+    background-color: transparent;
+}
+
+.custom-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0.125rem 0 0;
+    font-size: 1rem;
+    color: #ff0000;
+    text-align: left;
+    list-style: none;
+
+    background-color: #0086F9;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+}
 @media (max-width: 575.98px) {
     .bg-calendar {
         display: none;
