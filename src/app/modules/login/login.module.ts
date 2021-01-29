@@ -9,10 +9,19 @@ import {MatIconModule} from '@angular/material/icon';
 import {EsqueceuSenhaComponent} from './components/esqueceu-senha/esqueceu-senha.component';
 import {MatCardModule} from '@angular/material/card';
 import {CadastroComponent} from './components/cadastro/cadastro.component';
-import { ResetSenhaComponent } from './components/reset-senha/reset-senha.component';
+import {ResetSenhaComponent} from './components/reset-senha/reset-senha.component';
+import {RegisterUserComponent} from './components/register-user/register-user.component';
+import {RegisterCompanyComponent} from './components/register-company/register-company.component';
 
 @NgModule({
-    declarations: [LoginComponent, EsqueceuSenhaComponent, CadastroComponent, ResetSenhaComponent],
+    declarations: [
+        LoginComponent,
+        EsqueceuSenhaComponent,
+        CadastroComponent,
+        ResetSenhaComponent,
+        RegisterUserComponent,
+        RegisterCompanyComponent
+    ],
     imports: [
         CommonModule,
         MatFormFieldModule,
@@ -23,7 +32,6 @@ import { ResetSenhaComponent } from './components/reset-senha/reset-senha.compon
         MatButtonModule,
         MatIconModule,
         MatCardModule
-
     ]
 })
 export class LoginModule {

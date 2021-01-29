@@ -11,8 +11,9 @@ import {ConfirmarEmailComponent} from './modules/shared/components/confirmar-ema
 import {ProfileComponent} from './modules/profile/components/profile/profile.component';
 import {AppointmentsComponent} from './modules/appointments/components/appointments/appointments.component';
 import {AccountComponent} from './modules/account/components/account/account.component';
-import {RegisterUserComponent} from './modules/components/register-user/register-user.component';
-import {RegisterCompanyComponent} from './modules/components/register-company/register-company.component';
+import {RegisterCompanyComponent} from './modules/login/components/register-company/register-company.component';
+import {RegisterUserComponent} from './modules/login/components/register-user/register-user.component';
+
 
 
 const routes: Routes = [

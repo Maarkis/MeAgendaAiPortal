@@ -9,6 +9,7 @@ import {Roles} from '../../../../shared/enums/roles.enum';
     styleUrls: ['./modal-register.component.css']
 })
 export class ModalRegisterComponent implements OnInit {
+
     public roles = Roles;
 
     constructor(private matDialogRef: MatDialogRef<ModalRegisterComponent>, @Inject(MAT_DIALOG_DATA) public data: any,
@@ -35,5 +36,4 @@ export class ModalRegisterComponent implements OnInit {
         }
         this.close();
     }
-
 }
