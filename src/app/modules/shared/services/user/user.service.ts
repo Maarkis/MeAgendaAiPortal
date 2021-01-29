@@ -3,12 +3,14 @@ import {Observable} from 'rxjs';
 import {ResponseBase} from '../../models/response-base';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../../../../environments/environment';
+import {User} from '../../models/user';
 
 @Injectable({
     providedIn: 'root'
 })
 export class UserService {
     private readonly URL: string = environment.API + '/User';
+
     constructor(private http: HttpClient) {
     }
 
@@ -19,8 +21,6 @@ export class UserService {
     }
 
     public resendEmail(email: string): Observable<ResponseBase<string>> {
-        // let params = new HttpParams();
-        // params = params.append('email', email);
         return this.http.post<ResponseBase<string>>(`${this.URL}/SendEmailConfirmation`, {email});
     }
 
@@ -28,5 +28,9 @@ export class UserService {
         let params = new HttpParams();
         params = params.append('id', id);
         return this.http.put<ResponseBase<string>>(`${this.URL}/ConfirmationEmail`, '', {params});
+    }
+
+    public getById(id: string): Observable<ResponseBase<User>> {
+        return this.http.get<ResponseBase<User>>(`${this.URL}/GetById/${id}`);
     }
 }

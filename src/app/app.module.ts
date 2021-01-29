@@ -4,7 +4,6 @@ import {AppComponent} from './app.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {AppRoutingModule} from './app-routing.module';
-import {CommonModule} from '@angular/common';
 import {SharedModule} from './modules/shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginModule} from './modules/login/login.module';

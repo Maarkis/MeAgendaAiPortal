@@ -8,9 +8,9 @@ import {HomeComponent} from './modules/home/components/home/home.component';
 import {EsqueceuSenhaComponent} from './modules/login/components/esqueceu-senha/esqueceu-senha.component';
 import {ResetSenhaComponent} from './modules/login/components/reset-senha/reset-senha.component';
 import {ConfirmarEmailComponent} from './modules/shared/components/confirmar-email/confirmar-email.component';
-import {ContaComponent} from './modules/conta/components/conta/conta.component';
 import {ProfileComponent} from './modules/profile/components/profile/profile.component';
 import {AppointmentsComponent} from './modules/appointments/components/appointments/appointments.component';
+import {AccountComponent} from './modules/account/components/account/account.component';
 
 
 const routes: Routes = [
@@ -30,7 +30,7 @@ const routes: Routes = [
     },
     {
         path: 'conta', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
-            {path: '', component: ContaComponent}
+            {path: '', component: AccountComponent}
         ]
     },
     {
