@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ModalLoginComponent} from '../../modal/modal-login/modal-login.component';
 import {MatDialog} from '@angular/material/dialog';
+import {ModalRegisterComponent} from '../../modal/modal-register/modal-register.component';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-nav-bar-home',
@@ -9,16 +10,21 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class NavBarHomeComponent implements OnInit {
 
-    constructor(private dialog: MatDialog) {
+    constructor(private dialog: MatDialog, private router: Router) {
     }
 
     ngOnInit(): void {
     }
 
-    public login(): void {
-        this.dialog.open(ModalLoginComponent, {
-            panelClass: 'custom-modal', backdropClass: '', height: 'auto', width: '479px',
-            data: {}
+    public goToLogin(): void {
+        this.router.navigate(['login']);
+    }
+
+    public register(): void {
+        this.dialog.open(ModalRegisterComponent, {
+            panelClass: 'custom-modal', backdropClass: '', height: 'auto', width: '479px'
         });
     }
+
+
 }

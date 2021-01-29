@@ -7,14 +7,13 @@ import {SessionService} from '../../../shared/services/session.service';
 import {ModalComponent} from '../../../shared/components/modal/modal.component';
 
 @Component({
-    selector: 'app-meus-agendamentos',
-    templateUrl: './meus-agendamentos.component.html',
-    styleUrls: ['./meus-agendamentos.component.css']
+    selector: 'app-appointments',
+    templateUrl: './appointments.component.html',
+    styleUrls: ['./appointments.component.css']
 })
-export class MeusAgendamentosComponent implements OnInit {
+export class AppointmentsComponent implements OnInit {
 
     public schedules: Scheduling[];
-
 
     constructor(private schedulingService: SchedulingService,
                 private dialog: MatDialog, private sessionService: SessionService) {

@@ -10,24 +10,20 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginModule} from './modules/login/login.module';
 import {HomeModule} from './modules/home/home.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MeusAgendamentosComponent} from './modules/meus-agendamentos/components/meus-agendamentos/meus-agendamentos.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import {AgendamentoModule} from './modules/agendamento/agendamento.module';
-
-
 // Intercerceptor
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './modules/shared/interceptor/auth-interceptor';
+import {AppointmentsModule} from './modules/appointments/appointments.module';
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        MeusAgendamentosComponent
     ],
     imports: [
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
-        CommonModule,
         BrowserModule,
         AppRoutingModule,
         SharedModule,

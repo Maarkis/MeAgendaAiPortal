@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PerfilComponent } from './components/perfil/perfil.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
 @NgModule({
-  declarations: [PerfilComponent],
+  declarations: [ProfileComponent],
   imports: [
     CommonModule
   ]
 })
-export class PerfilModule { }
+export class ProfileModule { }

@@ -5,12 +5,12 @@ import {PageNotFoundComponent} from './modules/shared/components/page-not-found/
 import {LoginComponent} from './modules/login/components/login/login.component';
 import {AuthGuardGuard} from './modules/shared/guards/auth-guard.guard';
 import {HomeComponent} from './modules/home/components/home/home.component';
-import {MeusAgendamentosComponent} from './modules/meus-agendamentos/components/meus-agendamentos/meus-agendamentos.component';
 import {EsqueceuSenhaComponent} from './modules/login/components/esqueceu-senha/esqueceu-senha.component';
 import {ResetSenhaComponent} from './modules/login/components/reset-senha/reset-senha.component';
-import {PerfilComponent} from './modules/perfil/components/perfil/perfil.component';
 import {ConfirmarEmailComponent} from './modules/shared/components/confirmar-email/confirmar-email.component';
 import {ContaComponent} from './modules/conta/components/conta/conta.component';
+import {ProfileComponent} from './modules/profile/components/profile/profile.component';
+import {AppointmentsComponent} from './modules/appointments/components/appointments/appointments.component';
 
 
 const routes: Routes = [
@@ -25,7 +25,7 @@ const routes: Routes = [
     },
     {
         path: 'perfil', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
-            {path: '', component: PerfilComponent}
+            {path: '', component: ProfileComponent}
         ]
     },
     {
@@ -35,7 +35,7 @@ const routes: Routes = [
     },
     {
         path: 'meus-agendamentos', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
-            {path: '', component: MeusAgendamentosComponent}
+            {path: '', component: AppointmentsComponent}
         ]
     },
 

@@ -26,7 +26,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr [id]="scheduling.schedulingId + i" *ngFor="let scheduling of schedules; let i = index">
+                    <tbody *ngFor="let scheduling of schedules; let i = index" [id]="scheduling.schedulingId + i" >
+                    <tr>
                         <th scope="row">{{scheduling.companyName ? scheduling.companyName : '-'}}</th>
                         <td>{{scheduling.service}}</td>
                         <td>{{scheduling.employeeName}}</td>
@@ -38,7 +39,8 @@
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <img src="../../../../../assets/icon-system/three-dot-menu.svg" alt="dotMenu">
                                 </button>
-                                <div class="dropdown-menu" role="menu" [attr.aria-labelledby]="scheduling.schedulingId + i">
+                                <div class="dropdown-menu" role="menu"
+                                     [attr.aria-labelledby]="scheduling.schedulingId + i">
                                     <button (click)="cancelSchedule(scheduling)" class="dropdown-item" type="button">
                                         Cancelar
                                     </button>
@@ -47,6 +49,7 @@
                         </td>
                     </tr>
                     </tbody>
+
                 </table>
             </div>
         </div>

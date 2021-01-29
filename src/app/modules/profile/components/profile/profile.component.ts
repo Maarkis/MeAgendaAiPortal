@@ -1,19 +1,18 @@
 import {Component, OnInit} from '@angular/core';
+import {UserAuthenticated} from '../../../shared/models/authentication/authentication';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 import {MatDialog} from '@angular/material/dialog';
 import {SessionService} from '../../../shared/services/session.service';
-import {UserAuthenticated} from '../../../shared/models/authentication/authentication';
-import {ModalEmailConfirmationComponent} from '../../../shared/components/modal-email-confirmation/modal-email-confirmation.component';
-import {ClientService} from '../../../shared/services/client/client.service';
-import {ResponseBase} from '../../../shared/models/response-base';
 import {UserService} from '../../../shared/services/user/user.service';
-import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {ResponseBase} from '../../../shared/models/response-base';
+import {ModalEmailConfirmationComponent} from '../../../shared/components/modal-email-confirmation/modal-email-confirmation.component';
 
 @Component({
-    selector: 'app-perfil',
-    templateUrl: './perfil.component.html',
-    styleUrls: ['./perfil.component.css']
+    selector: 'app-profile',
+    templateUrl: './profile.component.html',
+    styleUrls: ['./profile.component.css']
 })
-export class PerfilComponent implements OnInit {
+export class ProfileComponent implements OnInit {
     private userAuthentication: UserAuthenticated;
 
     public safeResourceUrl: SafeResourceUrl;
@@ -43,5 +42,6 @@ export class PerfilComponent implements OnInit {
             }
         });
     }
+
 
 }
