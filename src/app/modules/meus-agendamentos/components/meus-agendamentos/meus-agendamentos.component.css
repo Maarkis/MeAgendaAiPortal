@@ -29,6 +29,18 @@
     height: auto;
     max-height: 460px;
 }
+.btn-dot-menu {
+    border: none;
+    height: auto;
+    width: auto;
+    background-color: transparent;
+}
+.color-agendado {
+    color: #044894;
+}
+.color-cancelado {
+    color: #c30c0c;
+}
 
 
 @media (max-width: 376px) {

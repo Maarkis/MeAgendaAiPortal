@@ -15,4 +15,5 @@ export class UserAuthenticated {
     public message: string;
     public userImage: string;
     public verified: boolean;
+    public role: number;
 }

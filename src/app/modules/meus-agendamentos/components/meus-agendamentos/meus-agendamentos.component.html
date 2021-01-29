@@ -2,7 +2,8 @@
     <div class="row p-lg-5 p-md-5 p-1 form-box-agendamentos">
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 align-content-lg-start">
             <span class="text-title-agendamento align-content-center">
-                <img class="default-height-width-icon mb-1" src="assets/icon-system/calendar-day-primary.svg" alt="Agendamento">
+                <img class="default-height-width-icon mb-1" src="assets/icon-system/calendar-day-primary.svg"
+                     alt="Agendamento">
                 Agendamentos
             </span>
         </div>
@@ -19,19 +20,31 @@
                         <th scope="col">Empresa</th>
                         <th scope="col">Serviço</th>
                         <th scope="col">Funcionário</th>
-                        <th scope="col">Dia</th>
-                        <th scope="col">Hora</th>
+                        <th scope="col">Início</th>
+                        <th scope="col">Fim</th>
                         <th scope="col"></th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr *ngFor="let scheduling of schedules">
-                        <th scope="row">{{scheduling.companyName}}</th>
+                    <tr [id]="scheduling.schedulingId + i" *ngFor="let scheduling of schedules; let i = index">
+                        <th scope="row">{{scheduling.companyName ? scheduling.companyName : '-'}}</th>
                         <td>{{scheduling.service}}</td>
                         <td>{{scheduling.employeeName}}</td>
-                        <td>{{scheduling.startTime  | date: "dd/MM/yyyy"}}</td>
-                        <td>{{scheduling.startTime | date: "HH:mm"}}</td>
-                        <td></td>
+                        <td>{{scheduling.startTime}}</td>
+                        <td>{{scheduling.endTime}}</td>
+                        <td class="text-right">
+                            <div class="dropdown">
+                                <button class="btn-dot-menu" type="button" [id]="scheduling.schedulingId + i"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="../../../../../assets/icon-system/three-dot-menu.svg" alt="dotMenu">
+                                </button>
+                                <div class="dropdown-menu" role="menu" [attr.aria-labelledby]="scheduling.schedulingId + i">
+                                    <button (click)="cancelSchedule(scheduling)" class="dropdown-item" type="button">
+                                        Cancelar
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
                     </tr>
                     </tbody>
                 </table>

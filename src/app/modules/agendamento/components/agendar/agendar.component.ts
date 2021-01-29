@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CompanyService} from '../../../shared/services/company.service';
 import {ResponseBase} from '../../../shared/models/response-base';
-import {Company, Employee, Services} from '../../../shared/models/Company';
+import {Company, Employee, Services} from '../../../shared/models/company';
 import {NewScheduling} from '../../../shared/models/new-scheduling';
 import * as moment from 'moment';
 import {Moment} from 'moment';

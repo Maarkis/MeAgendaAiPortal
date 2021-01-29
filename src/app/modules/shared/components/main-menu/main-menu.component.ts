@@ -4,7 +4,8 @@ import {Router} from '@angular/router';
 import {MatSidenav} from '@angular/material/sidenav';
 import {menuContentClient, menuContentEmpresa} from '../../constants/menu/menus.constants';
 import {MenuContent} from '../../models/menu/menu-content';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import {UserAuthenticated} from '../../models/authentication/authentication';
+import {Roles} from '../../enums/roles.enum';
 
 @Component({
     selector: 'app-main-menu',
@@ -21,6 +22,9 @@ export class MainMenuComponent implements OnInit {
     };
     public menuContent: MenuContent[];
 
+
+    private user: UserAuthenticated;
+
     constructor(private sessionService: SessionService, private router: Router) {
     }
 
@@ -34,11 +38,9 @@ export class MainMenuComponent implements OnInit {
             });
         }
         this.menuItem = '/' + fragments[0];
-
         // Get type menus
-        const typeUser = 'empresa'; // mock menu empresa
-        this.menuContent = typeUser !== 'empresa' ? menuContentClient : menuContentEmpresa;
-
+        this.user = this.sessionService.userAuthenticated;
+        this.menuContent = this.user.role === Roles.Cliente ? menuContentClient : menuContentEmpresa;
     }
 
     public logoff(): void {
