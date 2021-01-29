@@ -1,11 +1,10 @@
 .card {
     /*width: 522px;*/
-
     padding: 0 30px;
     border-radius: 30px;
 }
 
-.card-bg-light, .card-header, .card-body, .card-footer {
+.card-bg-black, .card-header, .card-body, .card-footer {
     background-color: var(--color-system-secundary);
 }
 
@@ -86,10 +85,12 @@
 ::ng-deep.mat-form-field-label {
     color: currentColor;
 }
+
 /* End Mat field login */
 .btn-back {
     color: #ffffff;
 }
+
 .btn-recuperar {
     font: 400 16px/20px Roboto, "Helvetica Neue", sans-serif;
     color: #ffffff;
