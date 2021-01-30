@@ -25,14 +25,18 @@
                         <th scope="col"></th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tbody *ngFor="let scheduling of schedules; let i = index" [id]="scheduling.schedulingId + i" >
+                    <tbody *ngIf="!schedules || schedules.length <= 0">
                     <tr>
+                        <td class="text-center" colspan="7">Não há agendamento</td>
+                    </tr>
+                    </tbody>
+                    <tbody *ngFor="let scheduling of schedules; let i = index" >
+                    <tr [id]="scheduling.schedulingId + i" >
                         <th scope="row">{{scheduling.companyName ? scheduling.companyName : '-'}}</th>
                         <td>{{scheduling.service}}</td>
                         <td>{{scheduling.employeeName}}</td>
-                        <td>{{scheduling.startTime}}</td>
-                        <td>{{scheduling.endTime}}</td>
+                        <td>{{scheduling.startTime  | date: 'dd/MM/yyyy HH:mm'}}</td>
+                        <td>{{scheduling.endTime | date: 'dd/MM/yyyy HH:mm'}}</td>
                         <td class="text-right">
                             <div class="dropdown">
                                 <button class="btn-dot-menu" type="button" [id]="scheduling.schedulingId + i"

@@ -5,6 +5,7 @@ import {SchedulingService} from '../../../shared/services/scheduling.service';
 import {MatDialog} from '@angular/material/dialog';
 import {SessionService} from '../../../shared/services/session.service';
 import {ModalComponent} from '../../../shared/components/modal/modal.component';
+import {UserAuthenticated} from '../../../shared/models/authentication/authentication';
 
 @Component({
     selector: 'app-appointments',
@@ -14,22 +15,23 @@ import {ModalComponent} from '../../../shared/components/modal/modal.component';
 export class AppointmentsComponent implements OnInit {
 
     public schedules: Scheduling[];
+    private user: UserAuthenticated;
 
     constructor(private schedulingService: SchedulingService,
                 private dialog: MatDialog, private sessionService: SessionService) {
     }
 
     ngOnInit(): void {
+        this.user = this.sessionService.userAuthenticated;
         this.getScheduling();
     }
 
-    private getScheduling() {
-        const userAuthenticated = this.sessionService.userAuthenticated;
-        this.schedulingService.getClientSchedulingsByUserId(userAuthenticated.id)
+    private getScheduling(): void {
+        this.schedulingService.getClientSchedulingsByUserId(this.user.id)
             .subscribe((response: ResponseBase<Scheduling[]>) => {
                 if (response.success) {
+                    console.log(response.message);
                     this.schedules = response.result;
-                    console.log(response.result);
                 }
             }, error => {
                 console.log(error);
