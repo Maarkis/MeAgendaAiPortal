@@ -33,7 +33,6 @@ export class RegisterUserComponent implements OnInit {
 
     ngOnInit(): void {
         this.formGroupUserRegister = this.createForm(new UserRegister());
-        console.log(this.formGroupUserRegister);
     }
 
     public goBack(): void {

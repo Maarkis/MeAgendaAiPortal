@@ -35,7 +35,6 @@ export class RegisterCompanyComponent implements OnInit {
 
     ngOnInit(): void {
         this.formGroupCompanyRegister = this.createForm(new CompanyRegister());
-        console.log(this.formGroupCompanyRegister);
     }
 
     public goBack(): void {
