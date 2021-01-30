@@ -18,7 +18,7 @@
     background-color: var(--color-system-secundary);
 }
 
-.card-header, .card-body {
+.card-header {
     border-bottom: 1px solid #707070;
 }
 

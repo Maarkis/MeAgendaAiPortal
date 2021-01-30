@@ -1,6 +1,4 @@
-import {Endereco} from '@brunoc/ngx-viacep/brunoc-ngx-viacep';
-
-export class CEP implements Endereco {
+export class CEP {
     cep: string;
     logradouro: string;
     complemento: string;

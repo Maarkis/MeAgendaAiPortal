@@ -12,6 +12,8 @@ import {CadastroComponent} from './components/cadastro/cadastro.component';
 import {ResetSenhaComponent} from './components/reset-senha/reset-senha.component';
 import {RegisterUserComponent} from './components/register-user/register-user.component';
 import {RegisterCompanyComponent} from './components/register-company/register-company.component';
+import {Ng2TelInputModule} from 'ng2-tel-input';
+import {TextMaskModule} from 'angular2-text-mask';
 
 @NgModule({
     declarations: [
@@ -31,7 +33,9 @@ import {RegisterCompanyComponent} from './components/register-company/register-c
         ReactiveFormsModule,
         MatButtonModule,
         MatIconModule,
-        MatCardModule
+        MatCardModule,
+        Ng2TelInputModule,
+        TextMaskModule
     ]
 })
 export class LoginModule {

@@ -6,7 +6,7 @@ export const environment = {
     production: false,
     domain: 'https://localhost:44316/',
     API: 'https://localhost:44316/api',
-    VIACep: 'https://viacep.com.br/ws/',
+    VIACep: 'https://viacep.com.br/ws',
 };
 
 /*

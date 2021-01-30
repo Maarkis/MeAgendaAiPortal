@@ -1,3 +1,7 @@
+// Intercerceptor
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {AuthInterceptor} from './modules/shared/interceptor/auth-interceptor';
+
 import {BrowserModule} from '@angular/platform-browser';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
@@ -11,9 +15,9 @@ import {HomeModule} from './modules/home/home.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {AgendamentoModule} from './modules/agendamento/agendamento.module';
-// Intercerceptor
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {AuthInterceptor} from './modules/shared/interceptor/auth-interceptor';
+import {Ng2TelInputModule} from 'ng2-tel-input';
+import {NgBrazil} from 'ng-brazil';
+import {TextMaskModule} from 'angular2-text-mask';
 
 @NgModule({
     declarations: [
@@ -31,7 +35,10 @@ import {AuthInterceptor} from './modules/shared/interceptor/auth-interceptor';
         HomeModule,
         FormsModule,
         ReactiveFormsModule,
-        MatDialogModule
+        MatDialogModule,
+        Ng2TelInputModule,
+        NgBrazil,
+        TextMaskModule
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

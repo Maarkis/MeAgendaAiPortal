@@ -7,7 +7,10 @@ import {PhoneNumbers} from '../../../shared/models/phone-numbers.class';
 import {ClientService} from '../../../shared/services/client/client.service';
 import {ResponseBase} from '../../../shared/models/response-base';
 import {GenericValidator} from '../../../shared/validators/validator-form/generic-validator.validator';
-
+import {MASKS, NgBrazilValidators} from 'ng-brazil';
+import {Ng2TelInput} from 'ng2-tel-input';
+import {CepService} from '../../../shared/services/cep/cep.service';
+import {CEP} from '../../../shared/models/cep/CEP';
 
 @Component({
     selector: 'app-register-user',
@@ -15,15 +18,17 @@ import {GenericValidator} from '../../../shared/validators/validator-form/generi
     styleUrls: ['./register-user.component.css']
 })
 export class RegisterUserComponent implements OnInit {
-
+    public MASKS = MASKS;
     public formGroupUserRegister: FormGroup;
     public eyeHide = true;
-    public userPhoto: string = null;
 
     public step = 1;
 
+    public phone: string;
 
-    constructor(private router: Router, private fb: FormBuilder, private clientService: ClientService) {
+
+    constructor(private router: Router, private fb: FormBuilder, private clientService: ClientService,
+                private cepService: CepService) {
     }
 
     ngOnInit(): void {
@@ -41,6 +46,10 @@ export class RegisterUserComponent implements OnInit {
 
     get getPhoneNumbers(): FormArray {
         return this.form.phoneNumbers as FormArray;
+    }
+
+    get getLocation(): FormArray {
+        return this.form.locations as FormArray;
     }
 
     public onSubmit(user: UserRegister): void {
@@ -64,10 +73,14 @@ export class RegisterUserComponent implements OnInit {
             email: new FormControl(userRegister.email, [Validators.required]),
             password: new FormControl(userRegister.password, [Validators.required]),
             confirmPassword: new FormControl(userRegister.confirmPassword, [Validators.required]),
-            cpf: new FormControl(userRegister.cpf, [Validators.required]),
+            imagem: new FormControl(null, []),
+            cpf: new FormControl(userRegister.cpf, [
+                Validators.required,
+                NgBrazilValidators.cpf
+            ]),
             rg: new FormControl(userRegister.rg, [Validators.required]),
             // image: new FormControl(userRegister.image, []),
-            location: this.fb.array([this.createLocation(new Location())], []),
+            locations: this.fb.array([this.createLocation(new Location())], []),
             phoneNumbers: this.fb.array([this.createPhoneNumbers(new PhoneNumbers())], [])
         });
     }
@@ -83,14 +96,24 @@ export class RegisterUserComponent implements OnInit {
             street: new FormControl(location.street, [Validators.required]),
             numberComplement: new FormControl(location.numberComplement, [])
         });
+    }
 
+    public getCep(cep: string, itemLocation: AbstractControl): void {
+        cep = cep.replace('.', '');
+        this.cepService.getCep(cep).subscribe((response: CEP) => {
+            if (response) {
+                this.setValueLocation(response, itemLocation);
+            }
+        }, error => {
+            console.log(error);
+        });
     }
 
     private createPhoneNumbers(phoneNumbers: PhoneNumbers): FormGroup {
         return this.fb.group({
-            countryCode: new FormControl(phoneNumbers.countryCode, [Validators.required]),
+            countryCode: new FormControl(phoneNumbers.countryCode = 55, [Validators.required]),
             ddd: new FormControl(phoneNumbers.ddd, [Validators.required]),
-            nameContact: new FormControl(phoneNumbers.nameContact, [Validators.required]),
+            nameContact: new FormControl(phoneNumbers.nameContact = '', []),
             number: new FormControl(phoneNumbers.number, [Validators.required]),
         });
     }
@@ -111,6 +134,36 @@ export class RegisterUserComponent implements OnInit {
         console.log(item);
         console.log(phone.value);
 
+    }
+
+    public getNumber(item: AbstractControl, phone: string) {
+        const x = phone.split(')');
+        const ddd = x[0].replace('(', '').trim();
+        item.get('ddd').setValue(ddd);
+        console.log(item);
+        item.get('number').setValue(x[1]);
+    }
+
+    public telInputObject(obj: Ng2TelInput): void {
+        console.log(obj);
+    }
+
+    public onCountryChange(item: AbstractControl, $event: any): void {
+        console.log($event);
+        console.log($event.dialCode);
+        item.get('countryCode').setValue($event.dialCode);
+    }
+
+    private setValueLocation(location: CEP, itemLocation: AbstractControl): void {
+        console.log(location);
+        itemLocation.patchValue({
+            country: 'Brasil',
+            state: location.uf,
+            city: location.localidade,
+            neighbourhood: location.bairro,
+            street: location.logradouro,
+            cep: location.cep
+        });
     }
 }
 
