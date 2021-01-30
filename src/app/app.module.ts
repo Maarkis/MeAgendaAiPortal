@@ -20,6 +20,7 @@ import {NgBrazil} from 'ng-brazil';
 import {TextMaskModule} from 'angular2-text-mask';
 import {CommonModule} from '@angular/common';
 import {AppointmentsModule} from './modules/appointments/appointments.module';
+import {HistoricModule} from './modules/historic/historic.module';
 
 @NgModule({
     declarations: [
@@ -44,6 +45,7 @@ import {AppointmentsModule} from './modules/appointments/appointments.module';
         BrowserModule,
         CommonModule,
         AppointmentsModule,
+        HistoricModule
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}

@@ -6,6 +6,8 @@ import {MatDialog} from '@angular/material/dialog';
 import {SessionService} from '../../../shared/services/session.service';
 import {ModalComponent} from '../../../shared/components/modal/modal.component';
 import {UserAuthenticated} from '../../../shared/models/authentication/authentication';
+import {NotificationService} from '../../../shared/services/notification/notification-service.service';
+import {DeviceService} from '../../../shared/services/device/device.service';
 
 @Component({
     selector: 'app-appointments',
@@ -18,7 +20,8 @@ export class AppointmentsComponent implements OnInit {
     private user: UserAuthenticated;
 
     constructor(private schedulingService: SchedulingService,
-                private dialog: MatDialog, private sessionService: SessionService) {
+                private dialog: MatDialog, private sessionService: SessionService,
+                private notificationService: NotificationService, private deviceService: DeviceService) {
     }
 
     ngOnInit(): void {
@@ -32,9 +35,15 @@ export class AppointmentsComponent implements OnInit {
                 if (response.success) {
                     console.log(response.message);
                     this.schedules = response.result;
+                } else {
+                    this.deviceService.desktop ?
+                        this.notificationService.showMessageMatDialog('', response.message) :
+                        this.notificationService.showMessageSnackBar(response.message, true);
                 }
-            }, error => {
-                console.log(error);
+            }, e => {
+                this.deviceService.desktop ?
+                    this.notificationService.showMessageMatDialog('', e.error.error) :
+                    this.notificationService.showMessageSnackBar(e.error.error, true);
             });
     }
 

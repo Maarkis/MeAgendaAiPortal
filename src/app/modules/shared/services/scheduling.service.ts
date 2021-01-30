@@ -32,11 +32,31 @@ export class SchedulingService {
         return this.http.get<ResponseBase<Scheduling[]>>(`${this.URL}/GetClientSchedulingsByUserId`, httpOptions);
     }
 
+    public getHistoricClientSchedulingsByUserId(userId: string): Observable<ResponseBase<Scheduling[]>> {
+        const httpOptions = {
+            params: this.getParams(userId)
+        };
+        return this.http.get<ResponseBase<Scheduling[]>>(`${this.URL}/GetClientHistoricoSchedulingsByUserId`, httpOptions);
+    }
     public updateSchedulingStatus(updateScheduling:
                                       {
                                           schedulingId: string;
                                           newStatus: SchedulingStatus
                                       }): Observable<ResponseBase<Scheduling[]>> {
         return this.http.post<ResponseBase<Scheduling[]>>(`${this.URL}/UpdateSchedulingStatus`, updateScheduling);
+    }
+
+    public getEmplooyeeSchedulingsByUserId(userId: string): Observable<ResponseBase<Scheduling[]>> {
+        const httpOptions = {
+            params: this.getParams(userId)
+        };
+        return this.http.get<ResponseBase<Scheduling[]>>(`${this.URL}/GetEmployeeSchedulingsByUserId`, httpOptions);
+    }
+
+    public getHistoricEmplooyeeSchedulingsByUserId(userId: string): Observable<ResponseBase<Scheduling[]>> {
+        const httpOptions = {
+            params: this.getParams(userId)
+        };
+        return this.http.get<ResponseBase<Scheduling[]>>(`${this.URL}/GetHistoricoEmployeeSchedulingsByUserId`, httpOptions);
     }
 }

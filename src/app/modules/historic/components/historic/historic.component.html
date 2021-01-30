@@ -25,14 +25,18 @@
                         <th scope="col"></th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody *ngIf="!historicScheduling || historicScheduling.length <= 0">
+                    <tr>
+                        <td class="text-center" colspan="7">Não há histórico</td>
+                    </tr>
+                    </tbody>
                     <tbody *ngFor="let scheduling of historicScheduling; let i = index" [id]="scheduling.schedulingId + i" >
                     <tr>
                         <th scope="row">{{scheduling.companyName ? scheduling.companyName : '-'}}</th>
                         <td>{{scheduling.service}}</td>
                         <td>{{scheduling.employeeName}}</td>
-                        <td>{{scheduling.startTime}}</td>
-                        <td>{{scheduling.endTime}}</td>
+                        <td>{{scheduling.startTime | date: 'dd/MM/yyyy HH:mm'}}</td>
+                        <td>{{scheduling.endTime | date: 'dd/MM/yyyy HH:mm'}}</td>
                     </tr>
                     </tbody>
 
