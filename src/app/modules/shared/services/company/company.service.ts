@@ -1,14 +1,16 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
+import {environment} from '../../../../../environments/environment';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {environment} from '../../../../environments/environment';
 import {Observable} from 'rxjs';
-import {ResponseBase} from '../models/response-base';
-import {Company} from '../models/Company';
+import {ResponseBase} from '../../models/response-base';
+import {CompanyRegister} from '../../../login/model/company-register.class';
+import {Company} from '../../models/company';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class CompanyService {
+
     private readonly URL: string = environment.API + '/Company';
 
     constructor(private http: HttpClient) {
@@ -17,6 +19,10 @@ export class CompanyService {
         let params = new HttpParams();
         params = params.append('companyId', id.toString());
         return params;
+    }
+
+    public addCompany(company: CompanyRegister): Observable<ResponseBase<string>> {
+        return this.http.post<ResponseBase<string>>(`${this.URL}/AddCompany`, company);
     }
 
     public getCompanyComplete(companyId: string): Observable<ResponseBase<Company>> {

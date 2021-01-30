@@ -23,11 +23,8 @@ export class RegisterUserComponent implements OnInit {
     public MASKS = MASKS;
     public formGroupUserRegister: FormGroup;
     public eyeHide = true;
-
     public step = 1;
-
     public phone: string;
-
 
     constructor(private router: Router, private fb: FormBuilder, private clientService: ClientService,
                 private cepService: CepService, private notificationService: NotificationService,
@@ -88,21 +85,8 @@ export class RegisterUserComponent implements OnInit {
             ]),
             rg: new FormControl(userRegister.rg, [Validators.required]),
             // image: new FormControl(userRegister.image, []),
-            locations: this.fb.array([this.createLocation(new Location())], []),
-            phoneNumbers: this.fb.array([this.createPhoneNumbers(new PhoneNumbers())], [])
-        });
-    }
-
-    private createLocation(location: Location): FormGroup {
-        return this.fb.group({
-            cep: new FormControl(location.cep, [Validators.required]),
-            name: new FormControl(location.name, [Validators.required]),
-            country: new FormControl(location.country, [Validators.required]),
-            state: new FormControl(location.state, [Validators.required]),
-            city: new FormControl(location.city, [Validators.required]),
-            neighbourhood: new FormControl(location.neighbourhood, [Validators.required]),
-            street: new FormControl(location.street, [Validators.required]),
-            numberComplement: new FormControl(location.numberComplement, [])
+            locations: this.fb.array([Location.createFormBuilderLocation(this.fb, new Location())], []),
+            phoneNumbers: this.fb.array([PhoneNumbers.createFormBuilderPhoneNumbers(this.fb, new PhoneNumbers())], [])
         });
     }
 
@@ -117,15 +101,6 @@ export class RegisterUserComponent implements OnInit {
         });
     }
 
-    private createPhoneNumbers(phoneNumbers: PhoneNumbers): FormGroup {
-        return this.fb.group({
-            countryCode: new FormControl(phoneNumbers.countryCode = 55, [Validators.required]),
-            ddd: new FormControl(phoneNumbers.ddd, [Validators.required]),
-            nameContact: new FormControl(phoneNumbers.nameContact = '', []),
-            number: new FormControl(phoneNumbers.number, [Validators.required]),
-        });
-    }
-
     public goToLogin(): void {
         this.router.navigate(['login']);
     }
@@ -136,12 +111,6 @@ export class RegisterUserComponent implements OnInit {
 
     public backStep(step: number): void {
         this.step = step - 1;
-    }
-
-    public setValuePhone(item: AbstractControl, phone: HTMLInputElement): void {
-        console.log(item);
-        console.log(phone.value);
-
     }
 
     public getNumber(item: AbstractControl, phone: string) {
@@ -163,7 +132,6 @@ export class RegisterUserComponent implements OnInit {
     }
 
     private setValueLocation(location: CEP, itemLocation: AbstractControl): void {
-        console.log(location);
         itemLocation.patchValue({
             country: 'Brasil',
             state: location.uf,
