@@ -100,12 +100,9 @@ export class RegisterCompanyComponent implements OnInit {
     }
 
     public telInputObject(obj: Ng2TelInput): void {
-        console.log(obj);
     }
 
     public onCountryChange(item: AbstractControl, $event: any): void {
-        console.log($event);
-        console.log($event.dialCode);
         item.get('countryCode').setValue($event.dialCode);
     }
 
