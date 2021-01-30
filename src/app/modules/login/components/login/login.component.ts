@@ -84,8 +84,8 @@ export class LoginComponent implements OnInit {
                     this.router.navigate(['perfil']);
                 } else {
                     this.deviceService.desktop ?
-                        this.notificationService.showMessageMatDialog('', response.result.toString()) :
-                        this.notificationService.showMessageSnackBar(response.result.toString());
+                        this.notificationService.showMessageMatDialog('', response.message) :
+                        this.notificationService.showMessageSnackBar(response.message);
                 }
             }, e => {
                 console.log(e.error.result);
