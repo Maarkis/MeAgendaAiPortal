@@ -1,9 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {UserRegister} from '../../model/user-register.class';
 import {Location} from '../../../shared/models/location.class';
 import {PhoneNumbers} from '../../../shared/models/phone-numbers.class';
+import {ClientService} from '../../../shared/services/client/client.service';
+import {ResponseBase} from '../../../shared/models/response-base';
+import {GenericValidator} from '../../../shared/validators/validator-form/generic-validator.validator';
 
 
 @Component({
@@ -14,8 +17,13 @@ import {PhoneNumbers} from '../../../shared/models/phone-numbers.class';
 export class RegisterUserComponent implements OnInit {
 
     public formGroupUserRegister: FormGroup;
+    public eyeHide = true;
+    public userPhoto: string = null;
 
-    constructor(private router: Router, private fb: FormBuilder) {
+    public step = 1;
+
+
+    constructor(private router: Router, private fb: FormBuilder, private clientService: ClientService) {
     }
 
     ngOnInit(): void {
@@ -31,8 +39,23 @@ export class RegisterUserComponent implements OnInit {
         return this.formGroupUserRegister.controls;
     }
 
-    public onSubmit(user: UserRegister): void {
+    get getPhoneNumbers(): FormArray {
+        return this.form.phoneNumbers as FormArray;
+    }
 
+    public onSubmit(user: UserRegister): void {
+        console.log('Usuário: ', user);
+        if (this.formGroupUserRegister.valid) {
+            this.clientService.addClient(user).subscribe((response: ResponseBase<string>) => {
+                if (response.success) {
+                    console.log(response.message);
+                }
+            }, error => {
+                console.log(error);
+            });
+        } else {
+            GenericValidator.verifierValidatorsForm(this.formGroupUserRegister);
+        }
     }
 
     private createForm(userRegister: UserRegister) {
@@ -43,7 +66,7 @@ export class RegisterUserComponent implements OnInit {
             confirmPassword: new FormControl(userRegister.confirmPassword, [Validators.required]),
             cpf: new FormControl(userRegister.cpf, [Validators.required]),
             rg: new FormControl(userRegister.rg, [Validators.required]),
-            image: new FormControl(userRegister.image, []),
+            // image: new FormControl(userRegister.image, []),
             location: this.fb.array([this.createLocation(new Location())], []),
             phoneNumbers: this.fb.array([this.createPhoneNumbers(new PhoneNumbers())], [])
         });
@@ -70,6 +93,24 @@ export class RegisterUserComponent implements OnInit {
             nameContact: new FormControl(phoneNumbers.nameContact, [Validators.required]),
             number: new FormControl(phoneNumbers.number, [Validators.required]),
         });
+    }
+
+    public goToLogin(): void {
+        this.router.navigate(['login']);
+    }
+
+    public nextStep(step: number): void {
+        this.step = step + 1;
+    }
+
+    public backStep(step: number): void {
+        this.step = step - 1;
+    }
+
+    public setValuePhone(item: AbstractControl, phone: HTMLInputElement): void {
+        console.log(item);
+        console.log(phone.value);
+
     }
 }
 

@@ -1,12 +1,13 @@
-.form-box {
-    border: 1px solid var(--color-system-secundary);
-    border-radius: 15px;
-    padding: 48px 40px 36px;
-}
+/*.form-box {*/
+/*    border: 1px solid var(--color-system-secundary);*/
+/*    border-radius: 15px;*/
+/*    !*padding: 48px 40px 36px;*!*/
+/*}*/
 .text-new-account {
     font: normal 14px/18px Roboto, "Helvetica Neue", sans-serif;
     color: var(--color-system-secundary);
 }
+
 .card {
     /*width: 522px;*/
     padding: 0 30px;
@@ -32,6 +33,7 @@
     letter-spacing: normal;
     color: #ffffff;
 }
+
 .mat-form-field {
     font-size: inherit;
     font-weight: 400;
@@ -88,4 +90,8 @@
 /* Label */
 ::ng-deep.mat-form-field-label {
     color: currentColor;
+}
+
+.btn-registe-action {
+    color: #FFFFFF;
 }

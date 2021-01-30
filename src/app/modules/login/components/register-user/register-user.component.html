@@ -1,12 +1,12 @@
-<div class="container h-100">
+<div class="container h-100" *ngIf="step === 1">
     <div class="row h-100 align-items-center">
-        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 mx-auto form-box">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 mx-auto">
             <div class="card card-bg-black">
                 <div class="card-header">
                     <img class="img-fluid" src="assets/icons/logo/logo.svg" alt="Me Agenda aí">
                     <p class="card-title">Criar sua conta no Me Agenda Aí</p>
                 </div>
-                <div class="card-body">
+                <div class="card-body" >
                     <form [formGroup]="formGroupUserRegister" (ngSubmit)="onSubmit(formGroupUserRegister.value)">
                         <div class="row">
                             <div class="col-12">
@@ -32,17 +32,104 @@
                                     </mat-error>
                                 </mat-form-field>
                             </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>CPF</mat-label>
+                                    <label>
+                                        <input type="text" matInput formControlName="cpf"
+                                               placeholder="Ex. 000.000.000-00">
+                                    </label>
+                                    <mat-error *ngIf="form.cpf.hasError('required')">
+                                        CPF é <strong>obrigatório</strong>.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>RG</mat-label>
+                                    <label>
+                                        <input type="text" matInput formControlName="rg"
+                                               placeholder="Ex. 00.000.000-00">
+                                    </label>
+                                    <mat-error *ngIf="form.rg.hasError('required')">
+                                        RG é <strong>obrigatório</strong>.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>Senha</mat-label>
+                                    <label>
+                                        <input matInput formControlName="password"
+                                               [type]="eyeHide ? 'password' : 'text'">
+                                    </label>
+                                    <mat-error *ngIf="form.password.hasError('required')">
+                                        Digite uma senha
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>Confirmar senha</mat-label>
+                                    <label>
+                                        <input matInput formControlName="confirmPassword"
+                                               [type]="eyeHide ? 'password' : 'text'">
+                                    </label>
+                                    <button type="button" mat-icon-button matSuffix (click)="eyeHide = !eyeHide"
+                                            [attr.aria-label]="'Hide password'"
+                                            [attr.aria-pressed]="eyeHide">
+                                        <mat-icon>{{eyeHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </div>
                         </div>
-                        <button type="submit" class="mt-3 btn btn-recuperar">
-                            Enviar link de recuperação
+                        <button (click)="goToLogin()" type="button" class="mt-3 btn btn-registe-action">
+                            Ir para login
+                        </button>
+                        <button type="button" (click)="nextStep(step)" class="mt-3 btn btn-registe-action">
+                            Próximo
                         </button>
                     </form>
                 </div>
-                <div class="card-footer">
-                    <button type="button" class="btn bg-transparent btn-back" (click)="goBack()">Voltar</button>
-                </div>
             </div>
-
         </div>
     </div>
 </div>
+
+<!-- step two -->
+
+<div class="container h-100" *ngIf="step === 2">
+    <div class="row h-100 align-items-center">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 mx-auto">
+            <div class="card card-bg-black">
+                <div class="card-header">
+                    <img class="img-fluid" src="assets/icons/logo/logo.svg" alt="Me Agenda aí">
+                    <p class="card-title">Criar sua conta no Me Agenda Aí</p>
+                </div>
+                <div class="card-body" >
+                    <form [formGroup]="formGroupUserRegister" (ngSubmit)="onSubmit(formGroupUserRegister.value)">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12" formArrayName="phoneNumbers"
+                                 *ngFor="let item of getPhoneNumbers.controls; let i = index;">
+                                <mat-form-field  class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>Telefone</mat-label>
+                                    <label>
+                                        <input #phone (change)="setValuePhone(item, phone)" matInput [id]="'phoneNumbers' + i">
+                                    </label>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <button (click)="backStep(step)" type="button" class="mt-3 btn btn-registe-action">
+                            Voltar
+                        </button>
+                        <button type="button" (click)="nextStep(step)" class="mt-3 btn btn-registe-action">
+                            Próximo
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
