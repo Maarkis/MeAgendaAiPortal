@@ -112,4 +112,7 @@ export class LoginComponent implements OnInit {
                 break;
         }
     }
+    public goToHome(): void {
+        this.router.navigate(['']);
+    }
 }

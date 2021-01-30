@@ -1,13 +1,17 @@
 <div class="container-fluid" *ngIf="!userLogged">
     <div class="row vh-100">
         <div class="col-xl-9 col-lg-8 col-md-6 col-sm-12 col-12 bg-calendar p-0">
+            <div class="col">
+                <img (click)="goToHome()" class="img-fluid " src="assets/icons/logo/logo.svg" alt="Me Agenda Aí">
+            </div>
         </div>
         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 p-0 bg-dark h-100 p-5">
             <div class="row d-flex justify-content-center h-100 p-5 mx-4 my-4 align-content-center">
                 <form class="form-login" [formGroup]="formLogin" (ngSubmit)="onSubmit(formLogin.value)">
                     <div class="row">
                         <div class="col-12 mt-3 mb-1 div-img-display text-center">
-                            <img class="img-fluid " src="assets/icons/logo/logo.svg" alt="Me Agenda Aí">
+                            <img (click)="goToHome()" class="img-fluid " src="assets/icons/logo/logo.svg"
+                                 alt="Me Agenda Aí">
                         </div>
                         <div class="col-12 mt-3 mb-1">
                             <p class="text-title">Faça agendamentos!</p>
@@ -66,7 +70,8 @@
                                     <button (click)="goToRegister(roles.Cliente)" class="dropdown-item" type="button">
                                         Cliente
                                     </button>
-                                    <button (click)="goToRegister(roles.UsuarioEmpresa)" class="dropdown-item" type="button">
+                                    <button (click)="goToRegister(roles.UsuarioEmpresa)" class="dropdown-item"
+                                            type="button">
                                         Empresa
                                     </button>
                                 </div>
