@@ -1,5 +1,6 @@
-<div class="container h-100" *ngIf="step === 1">
-    <div class="row h-100 align-items-center">
+<div class="container h-100 bg-register">
+    <!-- step one -->
+    <div class="row h-100 align-items-center" *ngIf="step === 1">
         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 mx-auto">
             <div class="card card-bg-black">
                 <div class="card-header">
@@ -102,12 +103,8 @@
             </div>
         </div>
     </div>
-</div>
-
-<!-- step two -->
-
-<div class="container h-100" *ngIf="step === 2">
-    <div class="row h-100 align-items-center">
+    <!-- step two -->
+    <div class="row h-100 align-items-center" *ngIf="step === 2">
         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 mx-auto">
             <div class="card card-bg-black">
                 <div class="card-header">
@@ -150,10 +147,8 @@
             </div>
         </div>
     </div>
-</div>
-<!-- step three -->
-<div class="container h-100" *ngIf="step === 3">
-    <div class="row h-100 align-items-center">
+    <!-- step three -->
+    <div class="row h-100 align-items-center" *ngIf="step === 3">
         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 mx-auto">
             <div class="card card-bg-black">
                 <div class="card-header">
@@ -205,7 +200,8 @@
                                 <mat-form-field class="mat-form-custom w-100" appearance="outline">
                                     <mat-label>CEP</mat-label>
                                     <label>
-                                        <input (change)="getCep(itemLocation.get('cep').value, itemLocation)" type="text" matInput formControlName="cep"
+                                        <input (change)="getCep(itemLocation.get('cep').value, itemLocation)"
+                                               type="text" matInput formControlName="cep"
                                                [textMask]="{mask: MASKS.cep.textMask}"
                                                [placeholder]="'Ex.' + MASKS.cep.text">
                                     </label>

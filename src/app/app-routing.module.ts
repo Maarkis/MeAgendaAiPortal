@@ -13,7 +13,7 @@ import {AppointmentsComponent} from './modules/appointments/components/appointme
 import {AccountComponent} from './modules/account/components/account/account.component';
 import {RegisterCompanyComponent} from './modules/login/components/register-company/register-company.component';
 import {RegisterUserComponent} from './modules/login/components/register-user/register-user.component';
-
+import {HistoricComponent} from './modules/historic/components/historic/historic.component';
 
 
 const routes: Routes = [
@@ -38,6 +38,11 @@ const routes: Routes = [
     {
         path: 'meus-agendamentos', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
             {path: '', component: AppointmentsComponent}
+        ]
+    },
+    {
+        path: 'historico', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
+            {path: '', component: HistoricComponent}
         ]
     },
 

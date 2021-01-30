@@ -106,6 +106,7 @@
 }
 
 .span-register {
+    font-size: 16px;
     color: var(--color-system-primary);
 }
 .div-img-display {

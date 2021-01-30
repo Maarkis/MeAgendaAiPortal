@@ -1,0 +1,43 @@
+<div class="container p-lg-5 p-md-5 p-0 h-100">
+    <div class="row p-lg-5 p-md-5 p-1 form-box-agendamentos">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 align-content-lg-start">
+            <span class="text-title-agendamento align-content-center">
+                <img class="default-height-width-icon mb-1" src="assets/icon-system/calendar-day-primary.svg"
+                     alt="Agendamento">
+                Histórico
+            </span>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-right align-content-lg-start">
+            <button type="button" class="btn btn-transparent">
+                <img class="default-height-width-icon" src="assets/icon-system/search-black-solid.svg" alt="search">
+            </button>
+        </div>
+        <div class="col-12 mt-5 mb-5 align-content-center">
+            <div class="table-responsive table-height">
+                <table class="table-agendamento table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Empresa</th>
+                        <th scope="col">Serviço</th>
+                        <th scope="col">Funcionário</th>
+                        <th scope="col">Início</th>
+                        <th scope="col">Fim</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tbody *ngFor="let scheduling of historicScheduling; let i = index" [id]="scheduling.schedulingId + i" >
+                    <tr>
+                        <th scope="row">{{scheduling.companyName ? scheduling.companyName : '-'}}</th>
+                        <td>{{scheduling.service}}</td>
+                        <td>{{scheduling.employeeName}}</td>
+                        <td>{{scheduling.startTime}}</td>
+                        <td>{{scheduling.endTime}}</td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

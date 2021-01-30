@@ -58,7 +58,10 @@ export class RegisterCompanyComponent implements OnInit {
     private createForm(company: CompanyRegister) {
         return this.fb.group({
             Name: new FormControl(company.name, [Validators.required]),
-            email: new FormControl(company.email, [Validators.required]),
+            email: new FormControl(company.email, [
+                Validators.required,
+                Validators.email
+            ]),
             password: new FormControl(company.password, [
                 Validators.required
             ]),
