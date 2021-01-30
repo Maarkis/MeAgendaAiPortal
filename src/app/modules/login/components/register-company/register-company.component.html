@@ -85,6 +85,9 @@
                                             [attr.aria-pressed]="eyeHide">
                                         <mat-icon>{{eyeHide ? 'visibility_off' : 'visibility'}}</mat-icon>
                                     </button>
+                                    <mat-error *ngIf="form.confirmPassword.hasError('equalValue')">
+                                        Senha não correspondem
+                                    </mat-error>
                                 </mat-form-field>
                             </div>
                         </div>

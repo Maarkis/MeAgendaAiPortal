@@ -27,7 +27,7 @@ export class GenericValidator {
 
             const target = group.controls[ targetKey ];
             const toMatch = group.controls[ toMatchKey ];
-            if ((target.touched || target.dirty) && (toMatch.touched || toMatch.dirty)) {
+            if ((target && (target.touched || target.dirty)) && (toMatch && (toMatch.touched || toMatch.dirty))) {
 
                 const isMatch = target.value === toMatch.value;
 

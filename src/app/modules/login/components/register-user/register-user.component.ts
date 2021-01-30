@@ -87,6 +87,10 @@ export class RegisterUserComponent implements OnInit {
             // image: new FormControl(userRegister.image, []),
             locations: this.fb.array([Location.createFormBuilderLocation(this.fb, new Location())], []),
             phoneNumbers: this.fb.array([PhoneNumbers.createFormBuilderPhoneNumbers(this.fb, new PhoneNumbers())], [])
+        }, {
+            validators: [
+                GenericValidator.equalControlValue('password', 'confirmPassword')
+            ]
         });
     }
 

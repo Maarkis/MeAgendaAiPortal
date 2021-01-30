@@ -42,6 +42,10 @@ export class ResetSenhaComponent implements OnInit {
             password: new FormControl(resetPassword.password, [Validators.required]),
             confirmPassword: new FormControl(resetPassword.confirmPassword,
                 [Validators.required, GenericValidator.mustMatch('confirmPassword')])
+        }, {
+            validators: [
+                GenericValidator.equalControlValue('password', 'confirmPassword')
+            ]
         });
     }
 

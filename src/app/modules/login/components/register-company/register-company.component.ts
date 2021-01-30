@@ -60,8 +60,12 @@ export class RegisterCompanyComponent implements OnInit {
         return this.fb.group({
             Name: new FormControl(company.name, [Validators.required]),
             email: new FormControl(company.email, [Validators.required]),
-            password: new FormControl(company.password, [Validators.required]),
-            confirmPassword: new FormControl(company.confirmPassword, [Validators.required]),
+            password: new FormControl(company.password, [
+                Validators.required
+            ]),
+            confirmPassword: new FormControl(company.confirmPassword, [
+                Validators.required
+            ]),
             imagem: new FormControl(company.imagem = null, []),
             limitCancelHours: new FormControl(company.limitCancelHours = 24, []),
             cnpj: new FormControl(company.cnpj, [
@@ -71,11 +75,16 @@ export class RegisterCompanyComponent implements OnInit {
             descricao: new FormControl(company.descricao, [Validators.required]),
             locations: this.fb.array([Location.createFormBuilderLocation(this.fb, new Location())], []),
             phoneNumbers: this.fb.array([PhoneNumbers.createFormBuilderPhoneNumbers(this.fb, new PhoneNumbers())], [])
+        }, {
+            validators: [
+                GenericValidator.equalControlValue('password', 'confirmPassword')
+            ]
         });
     }
 
 
     public nextStep(step: number): void {
+        console.log(this.formGroupCompanyRegister);
         this.step = step + 1;
     }
 
