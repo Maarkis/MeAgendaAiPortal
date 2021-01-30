@@ -8,7 +8,7 @@ export class UserRegister {
     public name: string;
     public cpf: string;
     public rg: string;
-    public image: string;
-    public location: Location[];
+    public imagem: File;
+    public locations: Location[];
     public phoneNumbers: PhoneNumbers[];
 }

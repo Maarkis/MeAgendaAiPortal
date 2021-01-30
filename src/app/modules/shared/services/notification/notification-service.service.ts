@@ -27,7 +27,7 @@ export class NotificationService {
                                 height: string = 'auto',
                                 width: string = 'auto',
                                 disableClose: boolean = false): void {
-        this.dialog.open(ModalComponent, {
+        const dialodRef = this.dialog.open(ModalComponent, {
             panelClass: 'custom-modal', backdropClass: '', height, width, disableClose,
             data: {
                 title, text,

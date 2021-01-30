@@ -11,6 +11,8 @@ import {MASKS, NgBrazilValidators} from 'ng-brazil';
 import {Ng2TelInput} from 'ng2-tel-input';
 import {CepService} from '../../../shared/services/cep/cep.service';
 import {CEP} from '../../../shared/models/cep/CEP';
+import {NotificationService} from '../../../shared/services/notification/notification-service.service';
+import {DeviceService} from '../../../shared/services/device/device.service';
 
 @Component({
     selector: 'app-register-user',
@@ -28,7 +30,8 @@ export class RegisterUserComponent implements OnInit {
 
 
     constructor(private router: Router, private fb: FormBuilder, private clientService: ClientService,
-                private cepService: CepService) {
+                private cepService: CepService, private notificationService: NotificationService,
+                private deviceService: DeviceService) {
     }
 
     ngOnInit(): void {
@@ -53,11 +56,16 @@ export class RegisterUserComponent implements OnInit {
     }
 
     public onSubmit(user: UserRegister): void {
-        console.log('Usuário: ', user);
         if (this.formGroupUserRegister.valid) {
             this.clientService.addClient(user).subscribe((response: ResponseBase<string>) => {
                 if (response.success) {
                     console.log(response.message);
+                    this.router.navigate(['login'], {queryParams: {email: user.email}});
+                } else {
+                    console.log(response.message);
+                    this.deviceService.desktop ?
+                        this.notificationService.showMessageMatDialog('', response.message) :
+                        this.notificationService.showMessageSnackBar(response.message);
                 }
             }, error => {
                 console.log(error);
@@ -69,11 +77,11 @@ export class RegisterUserComponent implements OnInit {
 
     private createForm(userRegister: UserRegister) {
         return this.fb.group({
-            name: new FormControl(userRegister.name, [Validators.required]),
+            Name: new FormControl(userRegister.name, [Validators.required]),
             email: new FormControl(userRegister.email, [Validators.required]),
             password: new FormControl(userRegister.password, [Validators.required]),
             confirmPassword: new FormControl(userRegister.confirmPassword, [Validators.required]),
-            imagem: new FormControl(null, []),
+            imagem: new FormControl(userRegister.imagem = null, []),
             cpf: new FormControl(userRegister.cpf, [
                 Validators.required,
                 NgBrazilValidators.cpf

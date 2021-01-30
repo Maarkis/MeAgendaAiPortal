@@ -3,7 +3,7 @@ import {AuthenticationService} from '../../services/authentication.service';
 import {ResponseBase} from '../../../shared/models/response-base';
 import {User} from '../../../shared/models/User';
 import {SessionService} from '../../../shared/services/session.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {FormGroup, FormControl, Validators, FormBuilder, AbstractControl} from '@angular/forms';
 import {Authentication, UserAuthenticated} from '../../../shared/models/authentication/authentication';
 import {GenericValidator} from '../../../shared/validators/validator-form/generic-validator.validator';
@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
 
     public userLogged: boolean;
     private userAuthenticated: UserAuthenticated;
+    private userEmail: string = null;
 
     constructor(private authenticationService: AuthenticationService,
                 private fb: FormBuilder,
@@ -35,6 +36,7 @@ export class LoginComponent implements OnInit {
                 private dialog: MatDialog,
                 private title: Title,
                 private router: Router,
+                private route: ActivatedRoute,
                 private notificationService: NotificationService,
                 private deviceService: DeviceService) {
     }
@@ -46,6 +48,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['perfil']);
         } else {
             this.title.setTitle('Login | Me Agenda Aí');
+            this.userEmail = this.route.snapshot.queryParamMap.get('email');
             this.formLogin = this.createForm(new Authentication());
         }
     }
@@ -57,7 +60,7 @@ export class LoginComponent implements OnInit {
 
     private createForm(authentication: Authentication): FormGroup {
         return this.fb.group({
-            email: new FormControl(authentication.email, [Validators.required, Validators.email]),
+            email: new FormControl(authentication.email = this.userEmail ? this.userEmail : '', [Validators.required, Validators.email]),
             senha: new FormControl(authentication.password, [Validators.required])
         });
     }

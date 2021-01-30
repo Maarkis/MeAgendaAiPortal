@@ -47,7 +47,7 @@ export class EsqueceuSenhaComponent implements OnInit {
                     this.dialog.open(ModalComponent, {
                         panelClass: 'custom-modal', backdropClass: '', height: 'auto', width: 'auto',
                         data: {
-                            title: '', text: response.result,
+                            title: '', text: response.message,
                             button: 'OK', route: ''
                         }
                     });
