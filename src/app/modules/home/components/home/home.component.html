@@ -11,9 +11,21 @@
                     <p class="text-body mt-5 mb-5">Busque, encontre e agende seu serviço nos melhores estabelecimentos do Brasil.</p>
 
 
-                    <button class="btn btn-get-started-now mt-5 mb-5">
-                        Comece agora
+                    <button class="btn-get-started-now mt-5 mb-5" type="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                        <span class="span-register clickable">Comece agora</span>
                     </button>
+                    <div class=" dropdown-menu " role="menu"
+                         aria-labelledby="register">
+                        <button (click)="goToRegister(roles.Cliente)" class="dropdown-item" type="button">
+                            como Cliente
+                        </button>
+                        <button (click)="goToRegister(roles.UsuarioEmpresa)" class="dropdown-item"
+                                type="button">
+                            como Empresa
+                        </button>
+                    </div>
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mt-3 mb-3">
                    <img src="assets/image/cellphone-calendar-home.svg" class="img-cellphone-calendar" alt="Cellphone calendar">

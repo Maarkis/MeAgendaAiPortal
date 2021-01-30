@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {SessionService} from '../../../shared/services/session.service';
 import {Router} from '@angular/router';
+import {Roles} from '../../../shared/enums/roles.enum';
 
 @Component({
     selector: 'app-home',
@@ -11,6 +12,7 @@ import {Router} from '@angular/router';
 export class HomeComponent implements OnInit {
 
     public userLogged: boolean;
+    public roles = Roles;
 
     constructor(private title: Title, private sessionService: SessionService, private router: Router) {
     }
@@ -24,4 +26,16 @@ export class HomeComponent implements OnInit {
         }
     }
 
+    public goToRegister(role: Roles): void {
+        switch (role) {
+            case Roles.Cliente:
+                this.router.navigate(['register-user']);
+                break;
+            case Roles.UsuarioEmpresa:
+                this.router.navigate(['register-company']);
+                break;
+            default:
+                break;
+        }
+    }
 }
