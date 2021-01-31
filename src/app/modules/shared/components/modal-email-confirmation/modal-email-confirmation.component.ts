@@ -2,7 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Router} from '@angular/router';
 import {ClientService} from '../../services/client/client.service';
-import {ResponseBase} from '../../models/response-base';
+import {ResponseBase} from '../../models/response-base.class';
 import {NotificationService} from '../../services/notification/notification-service.service';
 import {UserService} from '../../services/user/user.service';
 

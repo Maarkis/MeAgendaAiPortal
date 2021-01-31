@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../../shared/services/user/user.service';
 import {SessionService} from '../../../shared/services/session.service';
-import {UserAuthenticated} from '../../../shared/models/authentication/authentication';
-import {ResponseBase} from '../../../shared/models/response-base';
-import {User} from '../../../shared/models/user';
+import {UserAuthenticated} from '../../../shared/models/authentication/authentication.class';
+import {ResponseBase} from '../../../shared/models/response-base.class';
+import {User} from '../../../shared/models/user.class';
 
 @Component({
     selector: 'app-account',

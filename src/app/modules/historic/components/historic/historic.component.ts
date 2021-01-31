@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ResponseBase} from '../../../shared/models/response-base';
-import {Scheduling} from '../../../shared/models/scheduling';
+import {ResponseBase} from '../../../shared/models/response-base.class';
+import {Scheduling} from '../../../shared/models/scheduling.class';
 import {SessionService} from '../../../shared/services/session.service';
-import {UserAuthenticated} from '../../../shared/models/authentication/authentication';
+import {UserAuthenticated} from '../../../shared/models/authentication/authentication.class';
 import {Roles} from '../../../shared/enums/roles.enum';
 import {SchedulingService} from '../../../shared/services/scheduling.service';
 import {NotificationService} from '../../../shared/services/notification/notification-service.service';

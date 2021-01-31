@@ -1,14 +1,14 @@
 import {Component, OnInit} from '@angular/core';
-import {ResponseBase} from '../../../shared/models/response-base';
-import {Company, Employee, Services} from '../../../shared/models/company';
-import {NewScheduling} from '../../../shared/models/new-scheduling';
+import {ResponseBase} from '../../../shared/models/response-base.class';
+import {Company, Employee, Services} from '../../../shared/models/company.class';
+import {NewScheduling} from '../../../shared/models/new-scheduling.class';
 import * as moment from 'moment';
 import {SessionService} from '../../../shared/services/session.service';
 import {SchedulingService} from '../../../shared/services/scheduling.service';
-import {Scheduling} from '../../../shared/models/scheduling';
+import {Scheduling} from '../../../shared/models/scheduling.class';
 import {MatDialog} from '@angular/material/dialog';
 import {ModalComponent} from '../../../shared/components/modal/modal.component';
-import {UserAuthenticated} from '../../../shared/models/authentication/authentication';
+import {UserAuthenticated} from '../../../shared/models/authentication/authentication.class';
 import {CompanyService} from '../../../shared/services/company/company.service';
 
 @Component({

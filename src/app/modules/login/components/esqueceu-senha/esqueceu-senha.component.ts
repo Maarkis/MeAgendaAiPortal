@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {Authentication} from '../../../shared/models/authentication/authentication';
+import {Authentication} from '../../../shared/models/authentication/authentication.class';
 import {Title} from '@angular/platform-browser';
 import {Router} from '@angular/router';
 import {AuthenticationService} from '../../services/authentication.service';
 import {GenericValidator} from '../../../shared/validators/validator-form/generic-validator.validator';
-import {ResponseBase} from '../../../shared/models/response-base';
+import {ResponseBase} from '../../../shared/models/response-base.class';
 import {ModalComponent} from '../../../shared/components/modal/modal.component';
 import {MatDialog} from '@angular/material/dialog';
 

@@ -8,12 +8,12 @@ import {DeviceService} from '../../../shared/services/device/device.service';
 import {MASKS, NgBrazilValidators} from 'ng-brazil';
 import {CompanyRegister} from '../../model/company-register.class';
 import {UserRegister} from '../../model/user-register.class';
-import {ResponseBase} from '../../../shared/models/response-base';
+import {ResponseBase} from '../../../shared/models/response-base.class';
 import {GenericValidator} from '../../../shared/validators/validator-form/generic-validator.validator';
 import {Location} from '../../../shared/models/location.class';
 import {PhoneNumbers} from '../../../shared/models/phone-numbers.class';
 import {Ng2TelInput} from 'ng2-tel-input';
-import {CEP} from '../../../shared/models/cep/CEP';
+import {CEP} from '../../../shared/models/cep/CEP.class';
 import {CompanyService} from '../../../shared/services/company/company.service';
 
 @Component({

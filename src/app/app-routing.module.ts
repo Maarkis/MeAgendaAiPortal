@@ -14,6 +14,7 @@ import {AccountComponent} from './modules/account/components/account/account.com
 import {RegisterCompanyComponent} from './modules/login/components/register-company/register-company.component';
 import {RegisterUserComponent} from './modules/login/components/register-user/register-user.component';
 import {HistoricComponent} from './modules/historic/components/historic/historic.component';
+import {EmployeeComponent} from './modules/employee/components/employee/employee.component';
 
 
 const routes: Routes = [
@@ -47,8 +48,11 @@ const routes: Routes = [
             {path: '', component: HistoricComponent}
         ]
     },
-
-
+    {
+        path: 'funcionarios', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
+            {path: '', component: EmployeeComponent}
+        ]
+    },
     {path: '**', component: PageNotFoundComponent} // Wildcard route for a 404 page
 ];
 

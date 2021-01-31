@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {SessionService} from '../../../services/session.service';
-import {UserAuthenticated} from '../../../models/authentication/authentication';
+import {UserAuthenticated} from '../../../models/authentication/authentication.class';
 
 @Component({
     selector: 'app-user-profile',

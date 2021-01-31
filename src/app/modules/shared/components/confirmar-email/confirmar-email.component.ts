@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ClientService} from '../../services/client/client.service';
-import {ResponseBase} from '../../models/response-base';
+import {ResponseBase} from '../../models/response-base.class';
 import {UserService} from '../../services/user/user.service';
 
 @Component({

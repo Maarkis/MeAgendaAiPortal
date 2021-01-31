@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import {environment} from '../../../../../environments/environment';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {ResponseBase} from '../../models/response-base';
+import {ResponseBase} from '../../models/response-base.class';
 import {CompanyRegister} from '../../../login/model/company-register.class';
-import {Company} from '../../models/company';
+import {Company} from '../../models/company.class';
 
 @Injectable({
   providedIn: 'root'

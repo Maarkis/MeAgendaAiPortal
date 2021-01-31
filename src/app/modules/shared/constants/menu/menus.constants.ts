@@ -1,4 +1,4 @@
-import {MenuContent} from '../../models/menu/menu-content';
+import {MenuContent} from '../../models/menu/menu-content.class';
 
 const menuContentClient: MenuContent[] = [
     {
@@ -47,7 +47,7 @@ const menuContentClient: MenuContent[] = [
         menuItem: '/conta',
         name: 'Conta',
         img: {
-            src: 'assets/icon-system/settings.svg',
+            src: 'assets/icon-system/settings-grey.svg',
             alt: 'conta'
         }
     },
@@ -85,16 +85,6 @@ const menuContentEmpresa: MenuContent[] = [
     },
     {
         id: 2,
-        routerLink: '/meus-agendamentos',
-        menuItem: '/meus-agendamentos',
-        name: 'Meus agendamentos',
-        img: {
-            src: 'assets/icon-system/calendar-day-grey.svg',
-            alt: 'Schedules'
-        }
-    },
-    {
-        id: 3,
         routerLink: '/historico',
         menuItem: '/historico',
         name: 'Histórico',
@@ -104,27 +94,27 @@ const menuContentEmpresa: MenuContent[] = [
         }
     },
     {
-        id: 4,
+        id: 3,
         routerLink: '/funcionarios',
         menuItem: '/funcionarios',
         name: 'Funcionários',
         img: {
-            src: 'assets/icon-system/company-regular-grey.svg',
-            alt: 'Favorite Companies'
+            src: 'assets/icon-system/employee-grey.svg',
+            alt: 'Employee'
         }
     },
     {
-        id: 5,
+        id: 4,
         routerLink: '/conta',
         menuItem: '/conta',
         name: 'Conta',
         img: {
-            src: 'assets/icon-system/settings.svg',
+            src: 'assets/icon-system/settings-grey.svg',
             alt: 'conta'
         }
     },
     {
-        id: 6,
+        id: 5,
         routerLink: '/ajuda',
         menuItem: '/ajuda',
         name: 'Ajuda',
@@ -134,7 +124,7 @@ const menuContentEmpresa: MenuContent[] = [
         }
     },
     {
-        id: 7,
+        id: 6,
         routerLink: '/sobre',
         menuItem: '/sobre',
         name: 'Sobre',

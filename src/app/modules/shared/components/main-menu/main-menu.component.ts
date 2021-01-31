@@ -3,8 +3,8 @@ import {SessionService} from '../../services/session.service';
 import {Router} from '@angular/router';
 import {MatSidenav} from '@angular/material/sidenav';
 import {menuContentClient, menuContentEmpresa} from '../../constants/menu/menus.constants';
-import {MenuContent} from '../../models/menu/menu-content';
-import {UserAuthenticated} from '../../models/authentication/authentication';
+import {MenuContent} from '../../models/menu/menu-content.class';
+import {UserAuthenticated} from '../../models/authentication/authentication.class';
 import {Roles} from '../../enums/roles.enum';
 
 @Component({

@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {UserAuthenticated} from '../models/authentication/authentication';
+import {UserAuthenticated} from '../models/authentication/authentication.class';
 
 @Injectable({
     providedIn: 'root'

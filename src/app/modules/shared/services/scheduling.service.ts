@@ -1,10 +1,10 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
-import {NewScheduling} from '../models/new-scheduling';
+import {NewScheduling} from '../models/new-scheduling.class';
 import {Observable} from 'rxjs';
-import {ResponseBase} from '../models/response-base';
-import {Scheduling, SchedulingStatus} from '../models/scheduling';
+import {ResponseBase} from '../models/response-base.class';
+import {Scheduling, SchedulingStatus} from '../models/scheduling.class';
 
 @Injectable({
     providedIn: 'root'

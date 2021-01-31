@@ -5,12 +5,12 @@ import {UserRegister} from '../../model/user-register.class';
 import {Location} from '../../../shared/models/location.class';
 import {PhoneNumbers} from '../../../shared/models/phone-numbers.class';
 import {ClientService} from '../../../shared/services/client/client.service';
-import {ResponseBase} from '../../../shared/models/response-base';
+import {ResponseBase} from '../../../shared/models/response-base.class';
 import {GenericValidator} from '../../../shared/validators/validator-form/generic-validator.validator';
 import {MASKS, NgBrazilValidators} from 'ng-brazil';
 import {Ng2TelInput} from 'ng2-tel-input';
 import {CepService} from '../../../shared/services/cep/cep.service';
-import {CEP} from '../../../shared/models/cep/CEP';
+import {CEP} from '../../../shared/models/cep/CEP.class';
 import {NotificationService} from '../../../shared/services/notification/notification-service.service';
 import {DeviceService} from '../../../shared/services/device/device.service';
 

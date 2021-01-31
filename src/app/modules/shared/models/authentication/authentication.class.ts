@@ -5,6 +5,7 @@ export class Authentication {
 
 export class UserAuthenticated {
     public id: string;
+    public secondaryId: string;
     public authenticated: boolean;
     public create: string;
     public expiration: string;

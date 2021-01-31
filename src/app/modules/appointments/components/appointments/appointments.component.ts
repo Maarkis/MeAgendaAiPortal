@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {ResponseBase} from '../../../shared/models/response-base';
-import {Scheduling, SchedulingStatus} from '../../../shared/models/scheduling';
+import {ResponseBase} from '../../../shared/models/response-base.class';
+import {Scheduling, SchedulingStatus} from '../../../shared/models/scheduling.class';
 import {SchedulingService} from '../../../shared/services/scheduling.service';
 import {MatDialog} from '@angular/material/dialog';
 import {SessionService} from '../../../shared/services/session.service';
 import {ModalComponent} from '../../../shared/components/modal/modal.component';
-import {UserAuthenticated} from '../../../shared/models/authentication/authentication';
+import {UserAuthenticated} from '../../../shared/models/authentication/authentication.class';
 import {NotificationService} from '../../../shared/services/notification/notification-service.service';
 import {DeviceService} from '../../../shared/services/device/device.service';
 import {Roles} from '../../../shared/enums/roles.enum';

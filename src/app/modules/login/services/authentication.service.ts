@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../../environments/environment';
 import {Observable} from 'rxjs';
-import {ResponseBase} from '../../shared/models/response-base';
-import {Authentication, UserAuthenticated} from '../../shared/models/authentication/authentication';
-import {RequestResetPassword} from '../../shared/models/authentication/request-reset-password';
+import {ResponseBase} from '../../shared/models/response-base.class';
+import {Authentication, UserAuthenticated} from '../../shared/models/authentication/authentication.class';
+import {RequestResetPassword} from '../../shared/models/authentication/request-reset-password.class';
 
 
 @Injectable({
