@@ -6,6 +6,7 @@ import {SessionService} from '../../../shared/services/session.service';
 import {UserService} from '../../../shared/services/user/user.service';
 import {ResponseBase} from '../../../shared/models/response-base';
 import {ModalEmailConfirmationComponent} from '../../../shared/components/modal-email-confirmation/modal-email-confirmation.component';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: 'app-profile',
@@ -15,32 +16,34 @@ import {ModalEmailConfirmationComponent} from '../../../shared/components/modal-
 export class ProfileComponent implements OnInit {
     private userAuthentication: UserAuthenticated;
 
-    public safeResourceUrl: SafeResourceUrl;
-    public src = 'https://media.istockphoto.com/photos/beautiful-young-woman-picture-id1207097533';
+    private uid: string;
 
     constructor(private dialog: MatDialog, private sessionService: SessionService,
-                private userService: UserService, private sanitizer: DomSanitizer) {
+                private userService: UserService, private sanitizer: DomSanitizer, private router: Router,
+                private route: ActivatedRoute) {
     }
 
     ngOnInit(): void {
+        this.uid = this.route.snapshot.paramMap.get('uid');
         this.userAuthentication = this.sessionService.userAuthenticated;
-
-        this.userService.clientVerified(this.userAuthentication.id).subscribe((response: ResponseBase<{ userVerified: boolean }>) => {
-
-            this.safeResourceUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.src);
-            if (response.success) {
-                if (!response.result.userVerified) {
-                    this.dialog.open(ModalEmailConfirmationComponent, {
-                        id: 'email-confirmation-modal', panelClass: 'custom-modal',
-                        width: '500px', height: 'auto', disableClose: true, data: {
-                            id: this.userAuthentication.id,
-                            email: this.userAuthentication.userEmail,
-                            nextRoute: ''
-                        }
-                    });
-                }
-            }
-        });
+        if (this.userAuthentication) {
+            this.router.navigate(['perfil-privado'], {queryParams: {uid: this.uid}});
+        } else {
+            // this.userService.clientVerified(this.userAuthentication.id).subscribe((response: ResponseBase<{ userVerified: boolean }>) => {
+            //     if (response.success) {
+            //         if (!response.result.userVerified) {
+            //             this.dialog.open(ModalEmailConfirmationComponent, {
+            //                 id: 'email-confirmation-modal', panelClass: 'custom-modal',
+            //                 width: '500px', height: 'auto', disableClose: true, data: {
+            //                     id: this.userAuthentication.id,
+            //                     email: this.userAuthentication.userEmail,
+            //                     nextRoute: ''
+            //                 }
+            //             });
+            //         }
+            //     }
+            // });
+        }
     }
 
 

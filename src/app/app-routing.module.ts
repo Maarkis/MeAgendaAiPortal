@@ -25,11 +25,13 @@ const routes: Routes = [
     {path: 'confirmar-email/:uid', component: ConfirmarEmailComponent},
     {path: 'redefinir-senha/:uid/:token', component: ResetSenhaComponent},
     {
-        path: 'perfil', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
+        path: 'perfil-publico/:uid', component: ProfileComponent, canActivate: [], children: []
+    },
+    {
+        path: 'perfil-privado/:uid', component: MainMenuComponent, canActivate: [], children: [
             {path: '', component: ProfileComponent}
         ]
     },
-
     {
         path: 'conta', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
             {path: '', component: AccountComponent}

@@ -8,6 +8,7 @@ import {ModalComponent} from '../../../shared/components/modal/modal.component';
 import {UserAuthenticated} from '../../../shared/models/authentication/authentication';
 import {NotificationService} from '../../../shared/services/notification/notification-service.service';
 import {DeviceService} from '../../../shared/services/device/device.service';
+import {Roles} from '../../../shared/enums/roles.enum';
 
 @Component({
     selector: 'app-appointments',
@@ -26,25 +27,22 @@ export class AppointmentsComponent implements OnInit {
 
     ngOnInit(): void {
         this.user = this.sessionService.userAuthenticated;
-        this.getScheduling();
+        this.getScheduling(this.user.role);
     }
 
-    private getScheduling(): void {
-        this.schedulingService.getClientSchedulingsByUserId(this.user.id)
-            .subscribe((response: ResponseBase<Scheduling[]>) => {
-                if (response.success) {
-                    console.log(response.message);
-                    this.schedules = response.result;
-                } else {
-                    this.deviceService.desktop ?
-                        this.notificationService.showMessageMatDialog('', response.message) :
-                        this.notificationService.showMessageSnackBar(response.message, true);
-                }
-            }, e => {
-                this.deviceService.desktop ?
-                    this.notificationService.showMessageMatDialog('', e.error.error) :
-                    this.notificationService.showMessageSnackBar(e.error.error, true);
-            });
+    private getScheduling(role: number): void {
+        switch (role) {
+            case Roles.Cliente:
+                this.getSchedulingClient(this.user.id);
+                break;
+            case Roles.Funcionario:
+                this.getSchedulingEmployee(this.user.id);
+                break;
+            case Roles.UsuarioEmpresa:
+                break;
+            default:
+                break;
+        }
     }
 
     public cancelSchedule(scheduling: Scheduling): void {
@@ -52,7 +50,6 @@ export class AppointmentsComponent implements OnInit {
             schedulingId: scheduling.schedulingId,
             newStatus: SchedulingStatus.Canceled
         };
-        console.log(updateScheduling);
         this.schedulingService.updateSchedulingStatus(updateScheduling).subscribe((response: ResponseBase<any>) => {
             if (response.success) {
                 const dialogRef = this.dialog.open(ModalComponent, {
@@ -65,7 +62,7 @@ export class AppointmentsComponent implements OnInit {
                     }
                 });
                 dialogRef.afterClosed().subscribe(resp => {
-                    this.getScheduling();
+                    this.getScheduling(this.user.role);
                 }, error => {
                     console.log(error);
                 });
@@ -74,5 +71,44 @@ export class AppointmentsComponent implements OnInit {
             console.log(error);
         });
     }
+
+    private getSchedulingEmployee(id: string): void {
+        this.schedulingService.getEmplooyeeSchedulingsByUserId(id)
+            .subscribe((response: ResponseBase<Scheduling[]>) => {
+                if (response.success) {
+                    console.log(response.message);
+                    this.schedules = response.result;
+                } else {
+                    this.deviceService.desktop ?
+                        this.notificationService.showMessageMatDialog('', response.message) :
+                        this.notificationService.showMessageSnackBar(response.message, true);
+                }
+            }, e => {
+                console.log(e);
+                this.deviceService.desktop ?
+                    this.notificationService.showMessageMatDialog('', e.error.error) :
+                    this.notificationService.showMessageSnackBar(e.error.error, true);
+            });
+    }
+
+    private getSchedulingClient(id: string): void {
+        this.schedulingService.getClientSchedulingsByUserId(id)
+            .subscribe((response: ResponseBase<Scheduling[]>) => {
+                if (response.success) {
+                    console.log(response.message);
+                    this.schedules = response.result;
+                } else {
+                    this.deviceService.desktop ?
+                        this.notificationService.showMessageMatDialog('', response.message) :
+                        this.notificationService.showMessageSnackBar(response.message, true);
+                }
+            }, e => {
+                console.log(e);
+                this.deviceService.desktop ?
+                    this.notificationService.showMessageMatDialog('', e.error.error) :
+                    this.notificationService.showMessageSnackBar(e.error.error, true);
+            });
+    }
+
 
 }

@@ -21,6 +21,7 @@ import {TextMaskModule} from 'angular2-text-mask';
 import {CommonModule} from '@angular/common';
 import {AppointmentsModule} from './modules/appointments/appointments.module';
 import {HistoricModule} from './modules/historic/historic.module';
+import {VerifiedUserInterceptor} from './modules/shared/interceptor/verified-user.interceptor';
 
 @NgModule({
     declarations: [
@@ -48,7 +49,8 @@ import {HistoricModule} from './modules/historic/historic.module';
         HistoricModule
     ],
     providers: [
-        {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+        {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+        {provide: HTTP_INTERCEPTORS, useClass: VerifiedUserInterceptor, multi: true}
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

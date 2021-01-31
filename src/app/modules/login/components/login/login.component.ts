@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
                     this.sessionService.setRefreshToken(this.userAuthenticated.refreshToken);
                     this.sessionService.setToken(this.userAuthenticated.token);
 
-                    this.router.navigate(['perfil']);
+                    this.router.navigate(['meus-agendamentos']);
                 } else {
                     this.deviceService.desktop ?
                         this.notificationService.showMessageMatDialog('', response.message) :

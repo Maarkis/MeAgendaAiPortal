@@ -23,13 +23,23 @@ export class HistoricComponent implements OnInit {
 
     ngOnInit(): void {
         this.user = this.sessionService.userAuthenticated;
-        if (this.user.role === Roles.Cliente) {
-            this.getHistoricSchedulingByClient(this.user.id);
-        } else {
-            this.getHistoricSchedulingByEmployee(this.user.id);
-        }
+        this.getHistoricScheduling(this.user.role);
     }
 
+    private getHistoricScheduling(role: number): void {
+        switch (this.user.role) {
+            case Roles.Cliente:
+                this.getHistoricSchedulingByClient(this.user.id);
+                break;
+            case Roles.Funcionario:
+                this.getHistoricSchedulingByEmployee(this.user.id);
+                break;
+            case Roles.UsuarioEmpresa:
+                break;
+            default:
+                break;
+        }
+    }
 
     private getHistoricSchedulingByClient(id: string): void {
         this.schedulingService.getHistoricClientSchedulingsByUserId(id)

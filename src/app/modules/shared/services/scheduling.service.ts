@@ -26,18 +26,13 @@ export class SchedulingService {
     }
 
     public getClientSchedulingsByUserId(userId: string): Observable<ResponseBase<Scheduling[]>> {
-        const httpOptions = {
-            params: this.getParams(userId)
-        };
-        return this.http.get<ResponseBase<Scheduling[]>>(`${this.URL}/GetClientSchedulingsByUserId`, httpOptions);
+        return this.http.get<ResponseBase<Scheduling[]>>(`${this.URL}/GetClientSchedulingsByUserId/${userId}`);
     }
 
     public getHistoricClientSchedulingsByUserId(userId: string): Observable<ResponseBase<Scheduling[]>> {
-        const httpOptions = {
-            params: this.getParams(userId)
-        };
-        return this.http.get<ResponseBase<Scheduling[]>>(`${this.URL}/GetClientHistoricoSchedulingsByUserId`, httpOptions);
+        return this.http.get<ResponseBase<Scheduling[]>>(`${this.URL}/GetClientHistoricoSchedulingsByUserId/${userId}`);
     }
+
     public updateSchedulingStatus(updateScheduling:
                                       {
                                           schedulingId: string;
@@ -47,16 +42,10 @@ export class SchedulingService {
     }
 
     public getEmplooyeeSchedulingsByUserId(userId: string): Observable<ResponseBase<Scheduling[]>> {
-        const httpOptions = {
-            params: this.getParams(userId)
-        };
-        return this.http.get<ResponseBase<Scheduling[]>>(`${this.URL}/GetEmployeeSchedulingsByUserId`, httpOptions);
+        return this.http.get<ResponseBase<Scheduling[]>>(`${this.URL}/GetEmployeeSchedulingsByUserId/${userId}`);
     }
 
     public getHistoricEmplooyeeSchedulingsByUserId(userId: string): Observable<ResponseBase<Scheduling[]>> {
-        const httpOptions = {
-            params: this.getParams(userId)
-        };
-        return this.http.get<ResponseBase<Scheduling[]>>(`${this.URL}/GetHistoricoEmployeeSchedulingsByUserId`, httpOptions);
+        return this.http.get<ResponseBase<Scheduling[]>>(`${this.URL}/GetHistoricoEmployeeSchedulingsByUserId/${userId}`);
     }
 }
