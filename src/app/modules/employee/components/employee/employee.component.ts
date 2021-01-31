@@ -29,7 +29,7 @@ export class EmployeeComponent implements OnInit {
     }
 
     private getEmployeesByCompany(companyId: string) {
-        this.employeeService.getEmployeesByCompanyId(companyId).subscribe((response: ResponseBase<any>) => {
+        this.employeeService.getEmployeesByCompanyId(companyId).subscribe((response: ResponseBase<ListEmployee[]>) => {
             if (response.success) {
                 console.log(response.message);
                 this.employees = response.result;
