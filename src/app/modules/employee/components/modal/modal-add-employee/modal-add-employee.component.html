@@ -1,0 +1,315 @@
+<div class="container-fluid h-100 bg-register">
+    <!-- step one -->
+    <div class="row h-100 align-items-center" *ngIf="step === 1">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 mx-auto">
+            <div class="card card-bg-black">
+                <div class="card-header">
+                    <img class="img-fluid" src="assets/icons/logo/logo.svg" alt="Me Agenda aí">
+                    <p class="card-title">Criar sua conta no Me Agenda Aí</p>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="formGroupEmployeeRegister"
+                          (ngSubmit)="onSubmit(formGroupEmployeeRegister.value)">
+                        <div class="row">
+                            <div class="col-12">
+                                <p class="card-title">Informações básica</p>
+                            </div>
+                            <div class="col-12">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>Nome</mat-label>
+                                    <label>
+                                        <input type="text" matInput formControlName="name"
+                                               placeholder="Ex. João">
+                                    </label>
+                                    <mat-error *ngIf="form.name.hasError('required')">
+                                        Nome é <strong>obrigatório</strong>.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-12">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>E-mail</mat-label>
+                                    <input type="text" matInput formControlName="email"
+                                           placeholder="Ex. user@example.com">
+                                    <mat-error *ngIf="form.email.hasError('email') && !form.email.hasError('required')">
+                                        Por favor insira um endereço de e-mail válido.
+                                    </mat-error>
+                                    <mat-error *ngIf="form.email.hasError('required')">
+                                        E-mail é <strong>obrigatório</strong>.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>CPF</mat-label>
+                                    <label>
+                                        <input type="text" matInput formControlName="cpf"
+                                               [textMask]="{mask: MASKS.cpf.textMask}"
+                                               [placeholder]="'Ex.' + MASKS.cpf.text">
+                                    </label>
+                                    <mat-error *ngIf="form.cpf.hasError('required')">
+                                        CPF é <strong>obrigatório</strong>.
+                                    </mat-error>
+                                    <mat-error *ngIf="form.cpf.hasError('cpf')">
+                                        CPF inválido
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>RG</mat-label>
+                                    <label>
+                                        <input type="text" matInput formControlName="rg"
+                                               placeholder="Ex. 00.000.000-00">
+                                    </label>
+                                    <mat-error *ngIf="form.rg.hasError('required')">
+                                        RG é <strong>obrigatório</strong>.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-12">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>Descrição</mat-label>
+                                    <label>
+                                        <input type="text" matInput formControlName="descricao"
+                                               placeholder="Ex. conte-me mais sobre sua empresa">
+                                    </label>
+                                    <mat-error *ngIf="form.descricao.hasError('required')">
+                                        Descrição do funcionário é <strong>obrigatório</strong>.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>Senha</mat-label>
+                                    <label>
+                                        <input matInput formControlName="password"
+                                               [type]="eyeHide ? 'password' : 'text'">
+                                    </label>
+                                    <mat-error *ngIf="form.password.hasError('required')">
+                                        Digite uma senha
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>Confirmar senha</mat-label>
+                                    <label>
+                                        <input matInput formControlName="confirmPassword"
+                                               [type]="eyeHide ? 'password' : 'text'">
+                                    </label>
+                                    <button type="button" mat-icon-button matSuffix (click)="eyeHide = !eyeHide"
+                                            [attr.aria-label]="'Hide password'"
+                                            [attr.aria-pressed]="eyeHide">
+                                        <mat-icon>{{eyeHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                                    <mat-error *ngIf="form.confirmPassword.hasError('equalValue')">
+                                        Senha não correspondem
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <button type="button" (click)="close()" class="mt-3 btn btn-registe-action">
+                            Fechar
+                        </button>
+                        <button type="button" (click)="nextStep(step)" class="mt-3 btn btn-registe-action">
+                            Próximo
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- step two -->
+    <div class="row h-100 align-items-center" *ngIf="step === 2">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 mx-auto">
+            <div class="card card-bg-black">
+                <div class="card-header">
+                    <img class="img-fluid" src="assets/icons/logo/logo.svg" alt="Me Agenda aí">
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="formGroupEmployeeRegister"
+                          (ngSubmit)="onSubmit(formGroupEmployeeRegister.value)">
+                        <div class="row">
+                            <div class="col-12">
+                                <p class="card-title">Verifique seu número de telefone</p>
+
+                            </div>
+                            <div class="col-12" formArrayName="phoneNumbers"
+                                 *ngFor="let item of getPhoneNumbers.controls; let i = index;">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <label [formGroupName]="i">
+                                        <input type="text"
+                                               [placeholder]="MASKS.telefone.text"
+                                               [(ngModel)]="phone"
+                                               [textMask]="item.get('countryCode').value === 55 ? {mask: MASKS.telefone.textMask} : {mask: false} "
+                                               [ngModelOptions]="{standalone: true}"
+                                               matInput
+                                               ng2TelInput
+                                               (change)="getNumber(item, phone)"
+                                               [ng2TelInputOptions]="{initialCountry: 'br'}"
+                                               (intlTelInputObject)="telInputObject($event)"
+                                               (countryChange)="onCountryChange(item, $event)"/>
+                                    </label>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <button (click)="backStep(step)" type="button" class="mt-3 btn btn-registe-action">
+                            Voltar
+                        </button>
+                        <button (click)="nextStep(step)" type="button" class="mt-3 btn btn-registe-action">
+                            Próximo
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- step three -->
+    <div class="row h-100 align-items-center" *ngIf="step === 3">
+        <div class="col-xl-8 col-lg-8 col-md-8 col-sm-12 col-12 mx-auto">
+            <div class="card card-bg-black">
+                <div class="card-header">
+                    <img class="img-fluid" src="assets/icons/logo/logo.svg" alt="Me Agenda aí">
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="formGroupEmployeeRegister"
+                          (ngSubmit)="onSubmit(formGroupEmployeeRegister.value)">
+                        <div class="row" formArrayName="locations"
+
+                             *ngFor="let itemLocation of getLocation.controls; let i = index;">
+                            <div class="col-12">
+                                <p class="card-title">Endereço</p>
+                            </div>
+
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12" [formGroupName]="i">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>Descrição</mat-label>
+                                    <label>
+                                        <input type="text" matInput formControlName="name"
+                                               placeholder="Ex. Casa/Apartamento">
+                                    </label>
+                                    <mat-error *ngIf="itemLocation.get('name').hasError('required')">
+                                        Descrição é <strong>obrigatório</strong>.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-12" [formGroupName]="i">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>Rua</mat-label>
+                                    <label>
+                                        <input type="text" matInput formControlName="street"
+                                               placeholder="Ex. Av. Faria Lima">
+                                    </label>
+                                    <mat-error *ngIf="itemLocation.get('street').hasError('required')">
+                                        Nome da rua é <strong>obrigatório</strong>.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-12" [formGroupName]="i">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>Complemento</mat-label>
+                                    <label>
+                                        <input type="text" matInput formControlName="numberComplement"
+                                               placeholder="Ex. Fundo/Casa AB">
+                                    </label>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12" [formGroupName]="i">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>CEP</mat-label>
+                                    <label>
+                                        <input (change)="getCep(itemLocation.get('cep').value, itemLocation)"
+                                               type="text" matInput formControlName="cep"
+                                               [textMask]="{mask: MASKS.cep.textMask}"
+                                               [placeholder]="'Ex.' + MASKS.cep.text">
+                                    </label>
+                                    <mat-error *ngIf="itemLocation.get('cep').hasError('required')">
+                                        CEP é <strong>obrigatório</strong>.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12" [formGroupName]="i">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>Bairro</mat-label>
+                                    <label>
+                                        <input type="text" matInput formControlName="neighbourhood"
+                                               placeholder="Ex. Vila Madalena">
+                                    </label>
+                                    <mat-error *ngIf="itemLocation.get('neighbourhood').hasError('required')">
+                                        Bairro é <strong>obrigatório</strong>.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12" [formGroupName]="i">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>Estado</mat-label>
+                                    <label>
+                                        <input type="text" matInput formControlName="state"
+                                               placeholder="Ex. SP">
+                                    </label>
+                                    <mat-error *ngIf="itemLocation.get('state').hasError('required')">
+                                        Estado é <strong>obrigatório</strong>.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-12" [formGroupName]="i">
+                                <mat-form-field class="mat-form-custom w-100" appearance="outline">
+                                    <mat-label>Cidade</mat-label>
+                                    <label>
+                                        <input type="text" matInput formControlName="city"
+                                               placeholder="Ex. SP">
+                                    </label>
+                                    <mat-error *ngIf="itemLocation.get('city').hasError('required')">
+                                        Cidade é <strong>obrigatório</strong>.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <button (click)="backStep(step)" type="button" class="mt-3 btn btn-registe-action">
+                            Voltar
+                        </button>
+                        <button (click)="nextStep(step)" type="button" class="mt-3 btn btn-registe-action">
+                           Próximo
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- step four -->
+    <div class="row h-100 align-items-center" *ngIf="step === 4">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mx-auto">
+            <div class="card card-bg-black">
+                <div class="card-header">
+                    <img class="img-fluid" src="assets/icons/logo/logo.svg" alt="Me Agenda aí">
+                    <p class="card-title">Gerente</p>
+                </div>
+                <div class="card-body">
+                    <form [formGroup]="formGroupEmployeeRegister"
+                          (ngSubmit)="onSubmit(formGroupEmployeeRegister.value)">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                <label class="label-manager">Esse funcionário é gerente?</label>
+                                <mat-radio-group labelPosition="after" formControlName="isManager">
+                                    <mat-radio-button class="custom-radio-btn m-1" [value]="true">
+                                        Sim
+                                    </mat-radio-button>
+                                    <mat-radio-button class="custom-radio-btn m-1" [value]="false">Não</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                        <button (click)="backStep(step)" type="button" class="mt-3 btn btn-registe-action">
+                            Voltar
+                        </button>
+                        <button type="submit" class="mt-3 btn btn-registe-action">
+                            Registre-se
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

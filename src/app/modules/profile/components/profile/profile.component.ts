@@ -1,11 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {UserAuthenticated} from '../../../shared/models/authentication/authentication.class';
-import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {DomSanitizer} from '@angular/platform-browser';
 import {MatDialog} from '@angular/material/dialog';
 import {SessionService} from '../../../shared/services/session.service';
 import {UserService} from '../../../shared/services/user/user.service';
-import {ResponseBase} from '../../../shared/models/response-base.class';
-import {ModalEmailConfirmationComponent} from '../../../shared/components/modal-email-confirmation/modal-email-confirmation.component';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({

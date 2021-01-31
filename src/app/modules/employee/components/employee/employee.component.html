@@ -1,0 +1,66 @@
+<div class="container p-lg-5 p-md-5 p-0 h-100">
+    <div class="row p-lg-5 p-md-5 p-1 form-box-agendamentos">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 align-content-lg-start">
+            <span class="text-title-employee align-content-center">
+                <img class="default-height-width-icon mb-1" src="assets/icon-system/employee-primary.svg"
+                     alt="Employee">
+                Funcionário
+            </span>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-right align-content-lg-start">
+            <button type="button" class="btn btn-transparent">
+                <img class="default-height-width-icon" src="assets/icon-system/search-black-solid.svg" alt="search">
+            </button>
+        </div>
+        <div class="col-12 align-self-end text-right">
+            <button (click)="addEmployee()" class="btn btn-sm bg-transparent btn-add-employee">
+                <img class="mb-1 mr-1 default-height-width-icon-button" src="assets/icon-system/add-employee-primary.svg" alt="Add employee">
+                Adicionar funcionário
+            </button>
+        </div>
+        <div class="col-12 mt-5 mb-5 align-content-center">
+            <div class="table-responsive table-height">
+                <table class="table-employee table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">E-mail</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Link</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody *ngFor="let employee of employees; let i = index" >
+                    <tr [id]="employee.employeeId + i" >
+                        <th scope="row">{{employee.name}}</th>
+                        <td>{{employee.email}}</td>
+                        <td>{{employee.descricao}}</td>
+                        <td>
+                            <a >
+                                <img class="default-height-width-icon link" src="assets/icon-system/link.svg" alt="link employee">
+                            </a>
+                        </td>
+                        <td class="text-right">
+                            <div class="dropdown">
+                                <button class="btn-dot-menu" type="button" [id]="'dotMenu' + employee.employeeId + i"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="../../../../../assets/icon-system/three-dot-menu.svg" alt="dotMenu">
+                                </button>
+                                <div class="dropdown-menu" role="menu"
+                                     [attr.aria-labelledby]="'dotMenu' + employee.employeeId + i">
+                                    <button (click)="goToPerfil(employee.employeeId)" class="dropdown-item" type="button">
+                                        Ver perfil
+                                    </button>
+                                    <button (click)="goToPerfil(employee.employeeId)" class="dropdown-item" type="button">
+                                        Adicionar serviços
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,13 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {ClientService} from '../../../shared/services/client/client.service';
 import {CepService} from '../../../shared/services/cep/cep.service';
 import {NotificationService} from '../../../shared/services/notification/notification-service.service';
 import {DeviceService} from '../../../shared/services/device/device.service';
 import {MASKS, NgBrazilValidators} from 'ng-brazil';
 import {CompanyRegister} from '../../model/company-register.class';
-import {UserRegister} from '../../model/user-register.class';
 import {ResponseBase} from '../../../shared/models/response-base.class';
 import {GenericValidator} from '../../../shared/validators/validator-form/generic-validator.validator';
 import {Location} from '../../../shared/models/location.class';
@@ -52,9 +50,11 @@ export class RegisterCompanyComponent implements OnInit {
     get getLocation(): FormArray {
         return this.form.locations as FormArray;
     }
+
     public goToLogin(): void {
         this.router.navigate(['login']);
     }
+
     private createForm(company: CompanyRegister) {
         return this.fb.group({
             Name: new FormControl(company.name, [Validators.required]),

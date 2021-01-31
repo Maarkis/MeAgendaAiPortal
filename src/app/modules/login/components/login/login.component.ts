@@ -1,18 +1,20 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../../services/authentication.service';
-import {ResponseBase} from '../../../shared/models/response-base';
-import {User} from '../../../shared/models/User';
+
 import {SessionService} from '../../../shared/services/session.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {FormGroup, FormControl, Validators, FormBuilder, AbstractControl} from '@angular/forms';
-import {Authentication, UserAuthenticated} from '../../../shared/models/authentication/authentication';
+
 import {GenericValidator} from '../../../shared/validators/validator-form/generic-validator.validator';
 import {MatDialog} from '@angular/material/dialog';
-import {ModalComponent} from '../../../shared/components/modal/modal.component';
+
 import {Title} from '@angular/platform-browser';
 import {NotificationService} from '../../../shared/services/notification/notification-service.service';
 import {DeviceService} from '../../../shared/services/device/device.service';
 import {Roles} from '../../../shared/enums/roles.enum';
+import {User} from '../../../shared/models/user.class';
+import {Authentication, UserAuthenticated} from '../../../shared/models/authentication/authentication.class';
+import {ResponseBase} from '../../../shared/models/response-base.class';
 
 
 @Component({
@@ -112,6 +114,7 @@ export class LoginComponent implements OnInit {
                 break;
         }
     }
+
     public goToHome(): void {
         this.router.navigate(['']);
     }

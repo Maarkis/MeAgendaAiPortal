@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {SessionService} from '../../services/session.service';
 import {Router} from '@angular/router';
 import {MatSidenav} from '@angular/material/sidenav';

@@ -22,6 +22,7 @@ import {CommonModule} from '@angular/common';
 import {AppointmentsModule} from './modules/appointments/appointments.module';
 import {HistoricModule} from './modules/historic/historic.module';
 import {VerifiedUserInterceptor} from './modules/shared/interceptor/verified-user.interceptor';
+import {EmployeeModule} from './modules/employee/employee.module';
 
 @NgModule({
     declarations: [
@@ -46,7 +47,8 @@ import {VerifiedUserInterceptor} from './modules/shared/interceptor/verified-use
         BrowserModule,
         CommonModule,
         AppointmentsModule,
-        HistoricModule
+        HistoricModule,
+        EmployeeModule
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
