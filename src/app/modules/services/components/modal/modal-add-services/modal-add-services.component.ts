@@ -32,7 +32,6 @@ export class ModalAddServicesComponent implements OnInit {
 
     ngOnInit(): void {
         this.formGroupAddService = this.createForm(new AddMultipleServicesModel(this.companyId));
-        console.log(this.formGroupAddService);
     }
 
     private createForm(addMultipleServicesModel: AddMultipleServicesModel) {

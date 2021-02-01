@@ -9,8 +9,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { ModalEmailConfirmationComponent } from './components/modal-email-confirmation/modal-email-confirmation.component';
-import { ConfirmarEmailComponent } from './components/confirmar-email/confirmar-email.component';
+import {ModalEmailConfirmationComponent} from './components/modal-email-confirmation/modal-email-confirmation.component';
+import {ConfirmarEmailComponent} from './components/confirmar-email/confirmar-email.component';
+import {ClosingConfirmationModalComponent} from './components/closing-confirmation-modal/closing-confirmation-modal.component';
 
 @NgModule({
     declarations: [
@@ -19,7 +20,9 @@ import { ConfirmarEmailComponent } from './components/confirmar-email/confirmar-
         ModalComponent,
         UserProfileComponent,
         ModalEmailConfirmationComponent,
-        ConfirmarEmailComponent
+        ConfirmarEmailComponent,
+        ClosingConfirmationModalComponent
+
     ],
     imports: [
         MatSidenavModule,

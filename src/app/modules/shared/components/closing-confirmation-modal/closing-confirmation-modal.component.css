@@ -1,0 +1,42 @@
+/*Custom Switch end*/
+
+.alert-close {
+    padding-top: 10px;
+    padding-bottom: 25px;
+    height: 30px;
+    color: #000000;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 12px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.alert-close-option {
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/*Bootstrap Breakpoints*/
+
+/* Small devices (landscape phones, 576px and down) */
+
+@media (max-width: 576px) {
+    .custom-switch-responsive {
+        display: block;
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .alert-close {
+        height: 56px;
+    }
+}
+
+/* Medium devices (tablets, 768px and down) */
+
+@media (max-width: 768px) {}
+
+/* Large devices (desktops, 992px and down) */
+
+@media (max-width: 992px) {}

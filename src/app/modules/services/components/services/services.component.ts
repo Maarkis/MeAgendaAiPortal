@@ -37,7 +37,9 @@ export class ServicesComponent implements OnInit {
                 this.listServices = response.result;
                 console.log(this.listServices);
             } else {
-
+                this.deviceService.desktop ?
+                    this.notificationService.showMessageMatDialog('', response.message) :
+                    this.notificationService.showMessageSnackBar(response.message, true);
             }
         }, error => {
             console.log(error);

@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {Router} from '@angular/router';
 import {AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {EmployeeRegister} from '../../../model/employee-register.class';
@@ -14,6 +14,8 @@ import {EmployeeService} from '../../../../shared/services/employee/employee.ser
 import {ResponseBase} from '../../../../shared/models/response-base.class';
 import {DeviceService} from '../../../../shared/services/device/device.service';
 import {NotificationService} from '../../../../shared/services/notification/notification-service.service';
+import {ModalAddServicesToEmployeeComponent} from '../modal-add-services-to-employee/modal-add-services-to-employee.component';
+import {ClosingConfirmationModalComponent} from '../../../../shared/components/closing-confirmation-modal/closing-confirmation-modal.component';
 
 
 @Component({
@@ -24,15 +26,19 @@ import {NotificationService} from '../../../../shared/services/notification/noti
 export class ModalAddEmployeeComponent implements OnInit {
 
     private readonly companyId: string;
+
     public eyeHide = true;
     public step = 1;
     public phone: string;
     public MASKS = MASKS;
     public formGroupEmployeeRegister: FormGroup;
 
+    private employeeId: string;
+
     constructor(public dialogRef: MatDialogRef<ModalAddEmployeeComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: any,
                 private employeeService: EmployeeService,
+                private dialog: MatDialog,
                 private router: Router, private fb: FormBuilder, private cepService: CepService,
                 private deviceService: DeviceService, private notificationService: NotificationService) {
         if (data.companyId) {
@@ -141,7 +147,9 @@ export class ModalAddEmployeeComponent implements OnInit {
         this.employeeService.addEmployee(employeeRegister).subscribe((response: ResponseBase<string>) => {
             if (response.success) {
                 console.log(response.message);
-                this.close();
+                this.employeeId = response.result;
+                // this.close();
+                this.confirmModal();
             } else {
                 this.deviceService.desktop ?
                     this.notificationService.showMessageMatDialog('', response.message) :
@@ -149,6 +157,31 @@ export class ModalAddEmployeeComponent implements OnInit {
             }
         }, e => {
             console.log(e);
+        });
+    }
+
+
+    public confirmModal(): void {
+        const dialogRef = this.dialog.open(ClosingConfirmationModalComponent, {
+            panelClass: 'custom-modal', backdropClass: '', height: 'auto', width: 'auto',
+            data: {}
+        });
+        dialogRef.afterClosed().subscribe((response: boolean) => {
+            if (response) {
+                this.addServiceToEmployee(this.employeeId);
+            } else {
+                this.close();
+            }
+        });
+    }
+
+    public addServiceToEmployee(employeeId: string): void {
+        this.dialog.open(ModalAddServicesToEmployeeComponent, {
+            panelClass: 'custom-modal-register', backdropClass: '', height: 'auto', width: 'auto',
+            data: {
+                companyId: this.companyId,
+                employeeId
+            }
         });
     }
 }
