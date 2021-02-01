@@ -183,5 +183,6 @@ export class ModalAddEmployeeComponent implements OnInit {
                 employeeId
             }
         });
+        this.close();
     }
 }
