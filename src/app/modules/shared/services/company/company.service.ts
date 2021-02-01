@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from '../../../../../environments/environment';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {ResponseBase} from '../../models/response-base.class';
 import {CompanyRegister} from '../../../login/model/company-register.class';
 import {Company} from '../../models/company.class';
+import {AddMultipleServicesModel} from '../../../services/model/add-multiple-services-model.class';
+import {Service} from '../../models/service.class';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CompanyService {
 
@@ -15,6 +17,7 @@ export class CompanyService {
 
     constructor(private http: HttpClient) {
     }
+
     private getParams = (id: string): HttpParams => {
         let params = new HttpParams();
         params = params.append('companyId', id.toString());
@@ -29,6 +32,17 @@ export class CompanyService {
         const httpOptions = {
             params: this.getParams(companyId)
         };
-        return this.http.get<ResponseBase<Company>>(`${this.URL}/GetCompanyComplete`,  httpOptions);
+        return this.http.get<ResponseBase<Company>>(`${this.URL}/GetCompanyComplete`, httpOptions);
     }
+
+    public getServicesFromCompany(companyId: string): Observable<ResponseBase<Service[]>> {
+        return this.http.get<ResponseBase<Service[]>>(`${this.URL}/GetServicesFromCompany/${companyId}`);
+    }
+
+
+    public addServicesInCompany(addMultipleServicesModel: AddMultipleServicesModel): Observable<ResponseBase<any>> {
+        return this.http.post<ResponseBase<any>>(`${this.URL}/AddServicesInCompany`, addMultipleServicesModel);
+    }
+
+
 }

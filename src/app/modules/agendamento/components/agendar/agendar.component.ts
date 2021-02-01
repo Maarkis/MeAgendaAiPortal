@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ResponseBase} from '../../../shared/models/response-base.class';
-import {Company, Employee, Services} from '../../../shared/models/company.class';
+import {Company, Employee} from '../../../shared/models/company.class';
 import {NewScheduling} from '../../../shared/models/new-scheduling.class';
 import * as moment from 'moment';
 import {SessionService} from '../../../shared/services/session.service';
@@ -10,6 +10,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {ModalComponent} from '../../../shared/components/modal/modal.component';
 import {UserAuthenticated} from '../../../shared/models/authentication/authentication.class';
 import {CompanyService} from '../../../shared/services/company/company.service';
+import {Service} from '../../../shared/models/service.class';
 
 @Component({
     selector: 'app-agendar',
@@ -22,7 +23,7 @@ export class AgendarComponent implements OnInit {
     public employees: Employee[];
     public selectEmployee: string = null;
 
-    public servicesEmployee: Services[];
+    public servicesEmployee: Service[];
     public selectService: string = null;
 
     public personImageDatabase = [
@@ -168,7 +169,7 @@ export class AgendarComponent implements OnInit {
         const service = this.servicesEmployee.find(f => f.serviceId === this.selectService);
         if (service) {
             this.endTime = startTime.clone();
-            this.endTime.add(service.serviceDuration, 'minutes');
+            this.endTime.add(service.durationMinutes, 'minutes');
             console.log(this.dateSelect);
         }
 

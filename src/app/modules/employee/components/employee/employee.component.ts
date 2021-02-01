@@ -8,6 +8,7 @@ import {ModalAddEmployeeComponent} from '../modal/modal-add-employee/modal-add-e
 import {DeviceService} from '../../../shared/services/device/device.service';
 import {NotificationService} from '../../../shared/services/notification/notification-service.service';
 import {ListEmployee} from '../../model/list-employee.class';
+import {ModalAddServicesToEmployeeComponent} from '../modal/modal-add-services-to-employee/modal-add-services-to-employee.component';
 
 @Component({
     selector: 'app-employee',
@@ -47,7 +48,7 @@ export class EmployeeComponent implements OnInit {
         const dialogRef = this.dialog.open(ModalAddEmployeeComponent, {
             panelClass: 'custom-modal-register', backdropClass: '', height: 'auto', width: 'auto',
             data: {
-                companyId: this.userAuthenticated.secondaryId
+                companyId: this.userAuthenticated.secondaryId,
             }
         });
         dialogRef.afterClosed().subscribe(response => {
@@ -56,6 +57,23 @@ export class EmployeeComponent implements OnInit {
             console.log(error);
         });
     }
+
+    public addServiceToEmployee(employeeId: string): void {
+        const dialogRef = this.dialog.open(ModalAddServicesToEmployeeComponent, {
+            panelClass: 'custom-modal-register', backdropClass: '', height: 'auto', width: 'auto',
+            data: {
+                companyId: this.userAuthenticated.secondaryId,
+                employeeId
+            }
+        });
+        dialogRef.afterClosed().subscribe(response => {
+            this.getEmployeesByCompany(this.userAuthenticated.secondaryId);
+        }, error => {
+            console.log(error);
+        });
+    }
+
+
 
     public goToPerfil(employeeId: string): void {
 

@@ -1,4 +1,5 @@
-import {Company, Services} from '../../shared/models/company.class';
+import {Company} from '../../shared/models/company.class';
+import {Service} from '../../shared/models/service.class';
 
 
 export class ListEmployee {
@@ -8,8 +9,7 @@ export class ListEmployee {
     public email: string;
     public descricao: string;
     public image: File;
-    public services: Services[];
+    public services: Service[];
     public company: Company;
-
 
 }

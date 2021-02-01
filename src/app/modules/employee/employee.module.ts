@@ -10,13 +10,14 @@ import {EmployeeComponent} from './components/employee/employee.component';
 import {CommonModule} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import {MatRadioModule} from '@angular/material/radio';
-
+import { ModalAddServicesToEmployeeComponent } from './components/modal/modal-add-services-to-employee/modal-add-services-to-employee.component';
 
 
 @NgModule({
     declarations: [
         EmployeeComponent,
-        ModalAddEmployeeComponent
+        ModalAddEmployeeComponent,
+        ModalAddServicesToEmployeeComponent
     ],
     imports: [
         CommonModule,

@@ -105,6 +105,16 @@ const menuContentEmpresa: MenuContent[] = [
     },
     {
         id: 4,
+        routerLink: '/servicos',
+        menuItem: '/servicos',
+        name: 'Serviços',
+        img: {
+            src: 'assets/icon-system/employee-grey.svg',
+            alt: 'services'
+        }
+    },
+    {
+        id: 5,
         routerLink: '/conta',
         menuItem: '/conta',
         name: 'Conta',
@@ -114,7 +124,7 @@ const menuContentEmpresa: MenuContent[] = [
         }
     },
     {
-        id: 5,
+        id: 6,
         routerLink: '/ajuda',
         menuItem: '/ajuda',
         name: 'Ajuda',
@@ -124,7 +134,7 @@ const menuContentEmpresa: MenuContent[] = [
         }
     },
     {
-        id: 6,
+        id: 7,
         routerLink: '/sobre',
         menuItem: '/sobre',
         name: 'Sobre',

@@ -1,0 +1,39 @@
+<div class="container p-lg-5 p-md-5 p-0 h-100">
+    <div class="row p-lg-5 p-md-5 p-1 form-box-agendamentos">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 align-content-lg-start">
+            <span class="text-title-employee align-content-center">
+                <img class="default-height-width-icon mb-1" src="assets/icon-system/employee-primary.svg"
+                     alt="Employee">
+                Serviços
+            </span>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-right align-content-lg-start">
+            <button type="button" class="btn btn-transparent">
+                <img class="default-height-width-icon" src="assets/icon-system/search-black-solid.svg" alt="search">
+            </button>
+        </div>
+        <div class="col-12 align-self-end text-right">
+            <button (click)="addServices()" class="btn btn-sm bg-transparent btn-add-employee">
+                <img class="mb-1 mr-1 default-height-width-icon-button" src="assets/icon-system/add-employee-primary.svg" alt="Add employee">
+                Adicionar serviços
+            </button>
+        </div>
+        <div class="col-12 mt-5 mb-5 align-content-center">
+            <div class="table-responsive table-height">
+                <table class="table-employee table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Duração (em minutos)</th>
+                    </tr>
+                    </thead>
+                    <tbody *ngFor="let service of listServices; let i = index" >
+                    <tr [id]="service.serviceId + i" >
+                        <th scope="row">{{service.name}}</th>
+                        <td>{{service.durationMinutes}} minuto(s)</td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
