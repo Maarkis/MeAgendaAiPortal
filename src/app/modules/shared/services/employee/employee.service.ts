@@ -6,6 +6,7 @@ import {ResponseBase} from '../../models/response-base.class';
 import {EmployeeRegister} from '../../../employee/model/employee-register.class';
 import {ListEmployee} from '../../../employee/model/list-employee.class';
 import {AddServicesToEmployee} from '../../../employee/model/add-services-to-employee.class';
+import {Service} from '../../models/service.class';
 
 @Injectable({
     providedIn: 'root'
@@ -25,7 +26,10 @@ export class EmployeeService {
         return this.http.post<ResponseBase<string>>(`${this.URL}/AddEmployee`, employee);
     }
 
-    public addServicesToEmployee(addServicesToEmployee: AddServicesToEmployee): Observable<ResponseBase<any>>{
-        return this.http.post<ResponseBase<any>>(`${this.URL}/AddServicesToEmployee`, addServicesToEmployee);
+    public addServicesToEmployee(addServicesToEmployee: AddServicesToEmployee): Observable<ResponseBase<string>>{
+        return this.http.post<ResponseBase<string>>(`${this.URL}/AddServicesToEmployee`, addServicesToEmployee);
+    }
+    public getEmployeeServices(employeeId: string): Observable<ResponseBase<Service[]>> {
+        return this.http.get<ResponseBase<Service[]>>(`${this.URL}/GetEmployeeServices/${employeeId}`);
     }
 }

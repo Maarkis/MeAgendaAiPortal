@@ -1,15 +1,16 @@
-<div class="container p-lg-5 p-md-5 p-0 h-100">
+<div class="container p-lg-5 p-md-5 p-0 h-100" *ngIf="listServices && listServicesEmployee">
     <div class="row p-lg-5 p-md-5 p-1 form-box-agendamentos">
         <div class="col-12 align-content-lg-start">
             <span class="text-title-employee align-content-center">
                 <img class="default-height-width-icon mb-1" src="assets/icon-system/employee-primary.svg"
                      alt="Employee">
-                Adicionar Serviços para funcionário
+                Serviços do funcionário
             </span>
         </div>
         <div class="col-12 align-self-end text-right">
             <button (click)="addServices()" class="btn btn-sm bg-transparent btn-add-employee">
-                <img class="mb-1 mr-1 default-height-width-icon-button" src="assets/icon-system/add-employee-primary.svg" alt="Add employee">
+                <img class="mb-1 mr-1 default-height-width-icon-button"
+                     src="assets/icon-system/add-employee-primary.svg" alt="Add employee">
                 Adicionar serviços
             </button>
         </div>
@@ -23,15 +24,16 @@
                         <th></th>
                     </tr>
                     </thead>
-                    <tbody *ngFor="let service of listServices; let i = index" >
-                    <tr [id]="service.serviceId + i" >
+                    <tbody>
+                    <tr *ngFor="let service of listServices; let i = index" [id]="service.serviceId + i">
                         <th scope="row">{{service.name}}</th>
                         <td>{{service.durationMinutes}} minuto(s)</td>
                         <td>
-                            <label for="exampleCheck1">
-                                <input (click)="addServiceToEmployee(service.serviceId)"
+                            <label class="text-center align-content-center m-0">
+                                <input class="" (click)="addServiceToEmployee(service.serviceId)"
                                        [checked]="checkServiceToEmployee(service.serviceId)"
-                                       type="checkbox" class="form-check-input" id="exampleCheck1">
+                                       type="checkbox" name="service"
+                                       [id]="'check' + service.serviceId + i">
                             </label>
                         </td>
                     </tr>
@@ -40,10 +42,12 @@
             </div>
         </div>
         <div class="col-12" *ngIf="msgError">
-            <p>{{msgError}}</p>
+            <p class="text-light">{{msgError}}</p>
         </div>
         <div class="col-12">
-            <button class="btn btn-sm btn-add-services" (click)="saveService(formGroupAddServicesToEmployee.value)" >Adicionar serviços</button>
+            <button class="btn btn-sm btn-add-services" (click)="saveService(formGroupAddServicesToEmployee.value)">
+                Adicionar serviços
+            </button>
         </div>
     </div>
 </div>

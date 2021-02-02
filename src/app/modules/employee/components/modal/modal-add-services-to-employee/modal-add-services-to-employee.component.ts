@@ -26,6 +26,8 @@ export class ModalAddServicesToEmployeeComponent implements OnInit {
 
     public msgError: string;
 
+    public listServicesEmployee: Service[];
+
     constructor(public dialogRef: MatDialogRef<ModalAddServicesToEmployeeComponent>,
                 @Inject(MAT_DIALOG_DATA) public data: any,
                 private employeeService: EmployeeService,
@@ -42,20 +44,31 @@ export class ModalAddServicesToEmployeeComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.formGroupAddServicesToEmployee = this.createForm(new AddServicesToEmployee(this.employeeId));
         this.getServicesFromCompany(this.companyId);
-
+        this.getEmployeeServices(this.employeeId);
     }
+
 
     get form(): { [control: string]: AbstractControl } {
         return this.formGroupAddServicesToEmployee.controls;
     }
 
-    private createForm(addServicesToEmployee: AddServicesToEmployee): FormGroup {
+    private createForm(addServicesToEmployee: AddServicesToEmployee, listServicesEmployee: Service[]): FormGroup {
         return this.fb.group({
             employeeId: new FormControl(addServicesToEmployee.employeeId, [Validators.required]),
-            servicesIds: new FormArray(addServicesToEmployee.servicesIds = [], [])
+            servicesIds: this.fb.array(this.getServicesId(listServicesEmployee), [])
         });
+    }
+
+    private getServicesId(listServicesEmployee: Service[]): string[] {
+        if (listServicesEmployee) {
+            const arr = [];
+            listServicesEmployee.forEach(service => {
+                arr.push(service.serviceId);
+            });
+            return arr;
+        }
+        return [];
     }
 
     public addServices(): void {
@@ -87,21 +100,41 @@ export class ModalAddServicesToEmployeeComponent implements OnInit {
         });
     }
 
+    private getEmployeeServices(employeeId: string): void {
+        this.employeeService.getEmployeeServices(employeeId).subscribe((response: ResponseBase<any>) => {
+            if (response.success) {
+                console.log(response.message);
+                this.listServicesEmployee = response.result;
+
+                this.formGroupAddServicesToEmployee = this.createForm(
+                    new AddServicesToEmployee(this.employeeId),
+                    this.listServicesEmployee);
+                console.log(this.formGroupAddServicesToEmployee);
+            } else {
+                this.deviceService.desktop ?
+                    this.notificationService.showMessageMatDialog('', response.message) :
+                    this.notificationService.showMessageSnackBar(response.message, true);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+
     public addServiceToEmployee(serviceId: string): void {
         const services = this.form.servicesIds as FormArray;
         if (services) {
-            const service = services.controls.find(f => f.value === serviceId);
+            const service = services.controls.find(s => s.value === serviceId);
             if (!service) {
-                services.value.push(serviceId);
+                services.push(this.fb.control(serviceId));
             } else {
-                services.controls.splice(services.controls.indexOf(service));
+                services.removeAt(services.controls.findIndex(f => f.value === serviceId));
             }
         }
     }
 
     public saveService(addServicesToEmployee: AddServicesToEmployee): void {
         if (this.formGroupAddServicesToEmployee.valid) {
-            this.employeeService.addServicesToEmployee(addServicesToEmployee).subscribe((response: ResponseBase<any>) => {
+            this.employeeService.addServicesToEmployee(addServicesToEmployee).subscribe((response: ResponseBase<string>) => {
                 if (response.success) {
                     this.close();
                 } else {
@@ -118,6 +151,8 @@ export class ModalAddServicesToEmployeeComponent implements OnInit {
     }
 
     public checkServiceToEmployee(serviceId: string): boolean {
-        return false;
+        return !!this.listServicesEmployee.find(f => f.serviceId === serviceId);
     }
+
+
 }
