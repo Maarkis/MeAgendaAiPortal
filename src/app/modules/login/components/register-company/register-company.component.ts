@@ -13,6 +13,7 @@ import {PhoneNumbers} from '../../../shared/models/phone-numbers.class';
 import {Ng2TelInput} from 'ng2-tel-input';
 import {CEP} from '../../../shared/models/cep/CEP.class';
 import {CompanyService} from '../../../shared/services/company/company.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-register-company',
@@ -26,12 +27,14 @@ export class RegisterCompanyComponent implements OnInit {
     public step = 1;
     public phone: string;
 
-    constructor(private router: Router, private fb: FormBuilder, private companyService: CompanyService,
+    constructor(private title: Title,
+                private router: Router, private fb: FormBuilder, private companyService: CompanyService,
                 private cepService: CepService, private notificationService: NotificationService,
                 private deviceService: DeviceService) {
     }
 
     ngOnInit(): void {
+        this.title.setTitle('Registrar | Me Agenda Aí');
         this.formGroupCompanyRegister = this.createForm(new CompanyRegister());
     }
 

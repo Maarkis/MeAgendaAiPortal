@@ -7,6 +7,7 @@ import {Roles} from '../../../shared/enums/roles.enum';
 import {SchedulingService} from '../../../shared/services/scheduling.service';
 import {NotificationService} from '../../../shared/services/notification/notification-service.service';
 import {DeviceService} from '../../../shared/services/device/device.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-historic',
@@ -17,11 +18,12 @@ export class HistoricComponent implements OnInit {
     private user: UserAuthenticated;
     public historicScheduling: Scheduling[];
 
-    constructor(private sessionService: SessionService, private schedulingService: SchedulingService,
+    constructor(private title: Title, private sessionService: SessionService, private schedulingService: SchedulingService,
                 private notificationService: NotificationService, private deviceService: DeviceService) {
     }
 
     ngOnInit(): void {
+        this.title.setTitle('Histórico | Me Agenda Aí');
         this.user = this.sessionService.userAuthenticated;
         this.getHistoricScheduling(this.user.role);
     }

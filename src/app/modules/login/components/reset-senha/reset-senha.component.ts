@@ -8,6 +8,7 @@ import {ResponseBase} from '../../../shared/models/response-base.class';
 import {ModalComponent} from '../../../shared/components/modal/modal.component';
 import {MatDialog} from '@angular/material/dialog';
 import {SessionService} from '../../../shared/services/session.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-reset-senha',
@@ -22,7 +23,7 @@ export class ResetSenhaComponent implements OnInit {
     public eyeHide = true;
 
 
-    constructor(private route: ActivatedRoute,
+    constructor(private title: Title, private route: ActivatedRoute,
                 private router: Router, private fb: FormBuilder,
                 private dialog: MatDialog,
                 private sessionService: SessionService,
@@ -30,6 +31,7 @@ export class ResetSenhaComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        this.title.setTitle('Resetar senha | Me Agenda Aí');
         this.uui = this.route.snapshot.paramMap.get('uid');
         this.token = this.route.snapshot.paramMap.get('token');
         this.formResetPassword = this.createForm(new RequestResetPassword(this.uui, this.token));

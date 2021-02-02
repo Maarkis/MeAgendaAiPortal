@@ -13,6 +13,7 @@ import {CepService} from '../../../shared/services/cep/cep.service';
 import {CEP} from '../../../shared/models/cep/CEP.class';
 import {NotificationService} from '../../../shared/services/notification/notification-service.service';
 import {DeviceService} from '../../../shared/services/device/device.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-register-user',
@@ -26,12 +27,13 @@ export class RegisterUserComponent implements OnInit {
     public step = 1;
     public phone: string;
 
-    constructor(private router: Router, private fb: FormBuilder, private clientService: ClientService,
+    constructor(private title: Title, private router: Router, private fb: FormBuilder, private clientService: ClientService,
                 private cepService: CepService, private notificationService: NotificationService,
                 private deviceService: DeviceService) {
     }
 
     ngOnInit(): void {
+        this.title.setTitle('Registrar | Me Agenda Aí');
         this.formGroupUserRegister = this.createForm(new UserRegister());
     }
 

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserAuthenticated} from '../../../shared/models/authentication/authentication.class';
-import {DomSanitizer} from '@angular/platform-browser';
+import {DomSanitizer, Title} from '@angular/platform-browser';
 import {MatDialog} from '@angular/material/dialog';
 import {SessionService} from '../../../shared/services/session.service';
 import {UserService} from '../../../shared/services/user/user.service';
@@ -16,12 +16,13 @@ export class ProfileComponent implements OnInit {
 
     private uid: string;
 
-    constructor(private dialog: MatDialog, private sessionService: SessionService,
+    constructor(private title: Title, private dialog: MatDialog, private sessionService: SessionService,
                 private userService: UserService, private sanitizer: DomSanitizer, private router: Router,
                 private route: ActivatedRoute) {
     }
 
     ngOnInit(): void {
+        this.title.setTitle('Perfil | Me Agenda Aí');
         this.uid = this.route.snapshot.paramMap.get('uid');
         this.userAuthentication = this.sessionService.userAuthenticated;
         if (this.userAuthentication) {

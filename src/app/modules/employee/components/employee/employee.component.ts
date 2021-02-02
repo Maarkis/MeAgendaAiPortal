@@ -9,6 +9,7 @@ import {DeviceService} from '../../../shared/services/device/device.service';
 import {NotificationService} from '../../../shared/services/notification/notification-service.service';
 import {ListEmployee} from '../../model/list-employee.class';
 import {ModalAddServicesToEmployeeComponent} from '../modal/modal-add-services-to-employee/modal-add-services-to-employee.component';
+import {Title} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-employee',
@@ -20,11 +21,16 @@ export class EmployeeComponent implements OnInit {
 
     public employees: ListEmployee[];
 
-    constructor(private sessionService: SessionService, private employeeService: EmployeeService, private dialog: MatDialog,
-                private deviceService: DeviceService, private notificationService: NotificationService) {
+    constructor(private title: Title,
+                private sessionService: SessionService,
+                private employeeService: EmployeeService,
+                private dialog: MatDialog,
+                private deviceService: DeviceService,
+                private notificationService: NotificationService) {
     }
 
     ngOnInit(): void {
+        this.title.setTitle('Funcionários | Me Agenda Aí');
         this.userAuthenticated = this.sessionService.userAuthenticated;
         this.getEmployeesByCompany(this.userAuthenticated.secondaryId);
     }
@@ -72,7 +78,6 @@ export class EmployeeComponent implements OnInit {
             console.log(error);
         });
     }
-
 
 
     public goToPerfil(employeeId: string): void {

@@ -9,6 +9,7 @@ import {UserAuthenticated} from '../../../shared/models/authentication/authentic
 import {NotificationService} from '../../../shared/services/notification/notification-service.service';
 import {DeviceService} from '../../../shared/services/device/device.service';
 import {Roles} from '../../../shared/enums/roles.enum';
+import {Title} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-appointments',
@@ -20,12 +21,13 @@ export class AppointmentsComponent implements OnInit {
     public schedules: Scheduling[];
     private user: UserAuthenticated;
 
-    constructor(private schedulingService: SchedulingService,
+    constructor(private title: Title, private schedulingService: SchedulingService,
                 private dialog: MatDialog, private sessionService: SessionService,
                 private notificationService: NotificationService, private deviceService: DeviceService) {
     }
 
     ngOnInit(): void {
+        this.title.setTitle('Meus agendamentos | Me Agenda Aí');
         this.user = this.sessionService.userAuthenticated;
         this.getScheduling(this.user.role);
     }

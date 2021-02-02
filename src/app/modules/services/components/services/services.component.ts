@@ -9,6 +9,7 @@ import {CompanyService} from '../../../shared/services/company/company.service';
 import {ResponseBase} from '../../../shared/models/response-base.class';
 import {ModalAddServicesComponent} from '../modal/modal-add-services/modal-add-services.component';
 import {Service} from '../../../shared/models/service.class';
+import {Title} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-services',
@@ -20,12 +21,13 @@ export class ServicesComponent implements OnInit {
 
     public listServices: Service[];
 
-    constructor(private sessionService: SessionService, private companyService: CompanyService,
+    constructor(private title: Title, private sessionService: SessionService, private companyService: CompanyService,
                 private employeeService: EmployeeService, private dialog: MatDialog,
                 private deviceService: DeviceService, private notificationService: NotificationService) {
     }
 
     ngOnInit(): void {
+        this.title.setTitle('Serviços | Me Agenda Aí');
         this.userAuthenticated = this.sessionService.userAuthenticated;
         this.getServicesFromCompany(this.userAuthenticated.secondaryId);
     }
