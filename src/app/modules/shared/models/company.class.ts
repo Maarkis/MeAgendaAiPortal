@@ -3,8 +3,9 @@ import {Service} from './service.class';
 export class Company {
     public companyId: string;
     public companyName: string;
-    public CPF: string;
-    public CNPJ: string;
+    public link: string;
+    public descricao: string;
+    public cnpj: string;
     public limitCancelHours: number;
     public companyServices: Service[];
     public employees: Employee[];

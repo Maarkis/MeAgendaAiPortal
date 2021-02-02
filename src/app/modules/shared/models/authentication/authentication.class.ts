@@ -1,3 +1,5 @@
+import {Roles} from '../../enums/roles.enum';
+
 export class Authentication {
     public email: string;
     public password: string;
@@ -16,5 +18,5 @@ export class UserAuthenticated {
     public message: string;
     public userImage: string;
     public verified: boolean;
-    public role: number;
+    public role: Roles;
 }
