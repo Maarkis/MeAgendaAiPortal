@@ -1,4 +1,6 @@
-<div class="container p-lg-5 p-md-5 p-0 h-100">
+<!-- Client -->
+
+<div class="container p-lg-5 p-md-5 p-0 h-100" *ngIf="this.role === roles.Cliente">
     <div class="row p-lg-5 p-md-5 p-1 form-box-agendamentos">
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 align-content-lg-start">
             <span class="text-title-agendamento align-content-center">
@@ -30,8 +32,8 @@
                         <td class="text-center" colspan="7">Não há agendamento</td>
                     </tr>
                     </tbody>
-                    <tbody *ngFor="let scheduling of schedules; let i = index" >
-                    <tr [id]="scheduling.schedulingId + i" >
+                    <tbody>
+                    <tr [id]="scheduling.schedulingId + i" *ngFor="let scheduling of schedules; let i = index">
                         <th scope="row">{{scheduling.companyName ? scheduling.companyName : '-'}}</th>
                         <td>{{scheduling.service}}</td>
                         <td>{{scheduling.employeeName}}</td>
@@ -59,3 +61,70 @@
         </div>
     </div>
 </div>
+<!--End Client -->
+
+<!-- Employee -->
+<div class="container p-lg-5 p-md-5 p-0 h-100" *ngIf="this.role === roles.Funcionario">
+    <div class="row p-lg-5 p-md-5 p-1 form-box-agendamentos">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 align-content-lg-start">
+            <span class="text-title-agendamento align-content-center">
+                <img class="default-height-width-icon mb-1" src="assets/icon-system/calendar-day-primary.svg"
+                     alt="Agendamento">
+                Agendamentos
+            </span>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-right align-content-lg-start">
+            <button type="button" class="btn btn-transparent">
+                <img class="default-height-width-icon" src="assets/icon-system/search-black-solid.svg" alt="search">
+            </button>
+        </div>
+        <div class="col-12 mt-5 mb-5 align-content-center">
+            <div class="table-responsive table-height">
+                <table class="table-agendamento table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Serviço</th>
+                        <th scope="col">Funcionário</th>
+                        <th scope="col">Empresa</th>
+                        <th scope="col">Início</th>
+                        <th scope="col">Fim</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody *ngIf="!schedules || schedules.length <= 0">
+                    <tr>
+                        <td class="text-center" colspan="7">Não há agendamento</td>
+                    </tr>
+                    </tbody>
+                    <tbody>
+                    <tr [id]="scheduling.schedulingId + i" *ngFor="let scheduling of schedules; let i = index">
+                        <th scope="row">{{scheduling.clientName}}</th>
+                        <td>{{scheduling.service}}</td>
+                        <td>{{scheduling.employeeName}}</td>
+                        <td>{{scheduling.companyName}}</td>
+                        <td>{{scheduling.startTime  | date: 'dd/MM/yyyy HH:mm'}}</td>
+                        <td>{{scheduling.endTime | date: 'dd/MM/yyyy HH:mm'}}</td>
+                        <td class="text-right">
+                            <div class="dropdown">
+                                <button class="btn-dot-menu" type="button" [id]="scheduling.schedulingId + i"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="../../../../../assets/icon-system/three-dot-menu.svg" alt="dotMenu">
+                                </button>
+                                <div class="dropdown-menu" role="menu"
+                                     [attr.aria-labelledby]="scheduling.schedulingId + i">
+                                    <button (click)="cancelSchedule(scheduling)" class="dropdown-item" type="button">
+                                        Cancelar
+                                    </button>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Employee -->

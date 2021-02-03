@@ -2,10 +2,10 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {SessionService} from '../../services/session.service';
 import {Router} from '@angular/router';
 import {MatSidenav} from '@angular/material/sidenav';
-import {menuContentClient, menuContentEmpresa} from '../../constants/menu/menus.constants';
 import {MenuContent} from '../../models/menu/menu-content.class';
 import {UserAuthenticated} from '../../models/authentication/authentication.class';
 import {Roles} from '../../enums/roles.enum';
+import {menuContentClient, menuContentCompany, menuContentEmployee} from '../../constants/menu/menus.constants';
 
 @Component({
     selector: 'app-main-menu',
@@ -40,7 +40,20 @@ export class MainMenuComponent implements OnInit {
         this.menuItem = '/' + fragments[0];
         // Get type menus
         this.user = this.sessionService.userAuthenticated;
-        this.menuContent = this.user.role === Roles.Cliente ? menuContentClient : menuContentEmpresa;
+
+        switch (this.user.role) {
+            case Roles.Cliente:
+                this.menuContent = menuContentClient;
+                break;
+            case Roles.UsuarioEmpresa:
+                this.menuContent = menuContentCompany;
+                break;
+            case Roles.Funcionario:
+                this.menuContent = menuContentEmployee;
+                break;
+            default:
+                break;
+        }
     }
 
     public logoff(): void {

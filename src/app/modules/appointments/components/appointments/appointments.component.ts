@@ -20,6 +20,8 @@ export class AppointmentsComponent implements OnInit {
 
     public schedules: Scheduling[];
     private user: UserAuthenticated;
+    public roles = Roles;
+    public role: Roles;
 
     constructor(private title: Title, private schedulingService: SchedulingService,
                 private dialog: MatDialog, private sessionService: SessionService,
@@ -29,7 +31,8 @@ export class AppointmentsComponent implements OnInit {
     ngOnInit(): void {
         this.title.setTitle('Meus agendamentos | Me Agenda Aí');
         this.user = this.sessionService.userAuthenticated;
-        this.getScheduling(this.user.role);
+        this.role = this.user.role;
+        this.getScheduling(this.role);
     }
 
     private getScheduling(role: number): void {

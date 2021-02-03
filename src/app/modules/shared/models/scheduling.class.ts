@@ -1,6 +1,9 @@
 export class Scheduling {
-    public schedulingId: string;
     public clientName: string;
+    public schedulingId: string;
+
+    public companyLink: string;
+    public employeeLink: string;
     public employeeName: string;
     public companyName: string;
     public service: string;
@@ -9,8 +12,8 @@ export class Scheduling {
     public status: SchedulingStatus;
 
 }
-export enum SchedulingStatus
-{
+
+export enum SchedulingStatus {
     Scheduled,
     Canceled
 }
