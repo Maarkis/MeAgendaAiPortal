@@ -3,8 +3,8 @@ import {UserService} from '../../../shared/services/user/user.service';
 import {SessionService} from '../../../shared/services/session.service';
 import {UserAuthenticated} from '../../../shared/models/authentication/authentication.class';
 import {ResponseBase} from '../../../shared/models/response-base.class';
-import {User} from '../../../shared/models/user.class';
 import {Title} from '@angular/platform-browser';
+import {UserAccount} from '../../../shared/models/user-account.class';
 
 @Component({
     selector: 'app-account',
@@ -13,7 +13,7 @@ import {Title} from '@angular/platform-browser';
 })
 export class AccountComponent implements OnInit {
     private userAuthenticated: UserAuthenticated;
-    private user: User;
+    public user: UserAccount;
 
     constructor(private title: Title, private userService: UserService, private sessionService: SessionService) {
     }
@@ -21,7 +21,7 @@ export class AccountComponent implements OnInit {
     ngOnInit(): void {
         this.title.setTitle('Conta | Me Agenda Aí');
         this.userAuthenticated = this.sessionService.userAuthenticated;
-        this.userService.getById(this.userAuthenticated.id).subscribe((response: ResponseBase<User>) => {
+        this.userService.getAccount(this.userAuthenticated.id).subscribe((response: ResponseBase<UserAccount>) => {
             if (response.success) {
                 console.log(response.message);
                 this.user = response.result;
@@ -29,7 +29,6 @@ export class AccountComponent implements OnInit {
         }, error => {
             console.log(error);
         });
-
     }
 
 }

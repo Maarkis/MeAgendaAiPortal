@@ -4,6 +4,7 @@ import {ResponseBase} from '../../models/response-base.class';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../../../../environments/environment';
 import {User} from '../../models/user.class';
+import {UserAccount} from '../../models/user-account.class';
 
 @Injectable({
     providedIn: 'root'
@@ -32,5 +33,9 @@ export class UserService {
 
     public getById(id: string): Observable<ResponseBase<User>> {
         return this.http.get<ResponseBase<User>>(`${this.URL}/GetById/${id}`);
+    }
+
+    public getAccount(id: string): Observable<ResponseBase<UserAccount>> {
+        return this.http.get<ResponseBase<UserAccount>>(`${this.URL}/Account/${id}`);
     }
 }

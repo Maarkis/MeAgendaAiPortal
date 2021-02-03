@@ -7,6 +7,7 @@ import {PhoneNumbers} from '../../../shared/models/phone-numbers.class';
 import {Roles} from '../../../shared/enums/roles.enum';
 import {SessionService} from '../../../shared/services/session.service';
 import {UserAuthenticated} from '../../../shared/models/authentication/authentication.class';
+import {Title} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-company-profile-public',
@@ -19,11 +20,12 @@ export class CompanyProfilePublicComponent implements OnInit {
     private uid: string;
     private userAuthenticated: UserAuthenticated = null;
 
-    constructor(private companyService: CompanyService, private router: Router,
+    constructor(private title: Title, private companyService: CompanyService, private router: Router,
                 private route: ActivatedRoute, private sessionService: SessionService) {
     }
 
     ngOnInit(): void {
+        this.title.setTitle('Perfil | Me Agenda aí');
         this.uid = this.route.snapshot.paramMap.get('uid');
 
         this.userAuthenticated = this.sessionService.userAuthenticated;

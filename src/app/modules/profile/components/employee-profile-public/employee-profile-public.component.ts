@@ -7,6 +7,7 @@ import {ResponseBase} from '../../../shared/models/response-base.class';
 import {Employee} from '../../../shared/models/company.class';
 import {SessionService} from '../../../shared/services/session.service';
 import {UserAuthenticated} from '../../../shared/models/authentication/authentication.class';
+import {Title} from '@angular/platform-browser';
 
 @Component({
     selector: 'app-employee-profile-public',
@@ -19,11 +20,12 @@ export class EmployeeProfilePublicComponent implements OnInit {
     public employee: Employee;
     private userAuthenticated: UserAuthenticated = null;
 
-    constructor(private employeeService: EmployeeService, private router: Router,
+    constructor(private title: Title, private employeeService: EmployeeService, private router: Router,
                 private route: ActivatedRoute, private sessionService: SessionService) {
     }
 
     ngOnInit(): void {
+        this.title.setTitle('Perfil | Me Agenda aí');
         this.uid = this.route.snapshot.paramMap.get('uid');
         this.userAuthenticated = this.sessionService.userAuthenticated;
         if (this.userAuthenticated) {

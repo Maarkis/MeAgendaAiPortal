@@ -1,11 +1,18 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 import {AccountComponent} from './components/account/account.component';
+import {BrowserModule} from '@angular/platform-browser';
 
 
 @NgModule({
-    declarations: [AccountComponent],
+    declarations: [
+        AccountComponent
+    ],
+    exports: [
+        DatePipe
+    ],
     imports: [
+        BrowserModule,
         CommonModule
     ]
 })

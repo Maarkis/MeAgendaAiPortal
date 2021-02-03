@@ -1,9 +1,8 @@
 // Intercerceptor
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptor} from './modules/shared/interceptor/auth-interceptor';
-
 import {BrowserModule} from '@angular/platform-browser';
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, LOCALE_ID, NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
@@ -18,7 +17,7 @@ import {AgendamentoModule} from './modules/agendamento/agendamento.module';
 import {Ng2TelInputModule} from 'ng2-tel-input';
 import {NgBrazil} from 'ng-brazil';
 import {TextMaskModule} from 'angular2-text-mask';
-import {CommonModule} from '@angular/common';
+import {CommonModule, registerLocaleData} from '@angular/common';
 import {AppointmentsModule} from './modules/appointments/appointments.module';
 import {HistoricModule} from './modules/historic/historic.module';
 import {VerifiedUserInterceptor} from './modules/shared/interceptor/verified-user.interceptor';
@@ -27,10 +26,13 @@ import {ServicesModule} from './modules/services/services.module';
 import {ProfileModule} from './modules/profile/profile.module';
 import {ScheduleModule} from './modules/schedule/schedule.module';
 import {MAT_DATE_LOCALE} from '@angular/material/core';
+import {AccountModule} from './modules/account/account.module';
+import localePt from '@angular/common/locales/pt';
+registerLocaleData(localePt, 'pt-BR');
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
     ],
     imports: [
         ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
@@ -55,12 +57,15 @@ import {MAT_DATE_LOCALE} from '@angular/material/core';
         EmployeeModule,
         ServicesModule,
         ProfileModule,
-        ScheduleModule
+        ScheduleModule,
+        AccountModule
+
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
         {provide: HTTP_INTERCEPTORS, useClass: VerifiedUserInterceptor, multi: true},
         {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
+        {provide: LOCALE_ID, useValue: 'pt-BR' }, // replace "en-US" with your locale
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

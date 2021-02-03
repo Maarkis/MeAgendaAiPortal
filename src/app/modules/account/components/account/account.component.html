@@ -1,8 +1,8 @@
-<div class="container p-lg-5 p-md-5 p-0">
+<div class="container p-lg-5 p-md-5 p-0" *ngIf="user">
     <div class="row p-lg-5 p-md-5 p-1 form-box-profile">
         <div class="col-12">
             <span class="text-title-profile align-content-center">
-                <img class="default-height-width-icon mb-1" src="assets/icon-system/user-regular-primary.svg"
+                <img class="default-height-width-icon mb-1" [src]="user.image ? user.image : 'assets/icon-system/user-regular-primary.svg'"
                      alt="Profile">
                 Conta
             </span>
@@ -45,11 +45,7 @@
                     <div class="row">
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
                             <p class="profile-description">Nome</p>
-                            <p class="profile-tem">Jean Markis Costa Pereto</p>
-                            <p class="profile-description">CPF</p>
-                            <p class="profile-tem">111.111.111-01</p>
-                            <p class="profile-description">RG</p>
-                            <p class="profile-tem">65.413.497-7</p>
+                            <p class="profile-tem">{{user.name}}</p>
                         </div>
                         <div class="col text-right align-self-baseline">
                             <button class="btn btn-sm btn-edit-info-profile">Editar informações básicas</button>
@@ -61,11 +57,8 @@
                     <div class="row">
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
                             <p class="profile-description">E-mail</p>
-                            <p class="profile-tem">jeanmarkis85@gmail.com</p>
+                            <p class="profile-tem">{{user.email}}</p>
                         </div>
-                        <!--                        <div class="col text-right align-self-center">-->
-                        <!--                            <button class="btn btn-sm bg-transparent">Editar email</button>-->
-                        <!--                        </div>-->
                     </div>
                     <hr>
                 </div>
@@ -73,12 +66,13 @@
                     <div class="row">
                         <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 col-8">
                             <p class="profile-description">Cadastro feito</p>
-                            <p class="profile-tem">14 Jan. 2021</p>
+                            <p class="profile-tem">
+                                {{user.createAt | date:'dd MMM yyyy'}}
+                            </p>
                         </div>
                     </div>
                     <hr>
                 </div>
-
             </div>
         </div>
     </div>
