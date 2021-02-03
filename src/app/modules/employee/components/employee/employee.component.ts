@@ -10,6 +10,9 @@ import {NotificationService} from '../../../shared/services/notification/notific
 import {ListEmployee} from '../../model/list-employee.class';
 import {ModalAddServicesToEmployeeComponent} from '../modal/modal-add-services-to-employee/modal-add-services-to-employee.component';
 import {Title} from '@angular/platform-browser';
+import {Router} from '@angular/router';
+import {environment} from '../../../../../environments/environment';
+import {Roles} from '../../../shared/enums/roles.enum';
 
 @Component({
     selector: 'app-employee',
@@ -26,6 +29,7 @@ export class EmployeeComponent implements OnInit {
                 private employeeService: EmployeeService,
                 private dialog: MatDialog,
                 private deviceService: DeviceService,
+                private router: Router,
                 private notificationService: NotificationService) {
     }
 
@@ -79,12 +83,10 @@ export class EmployeeComponent implements OnInit {
         });
     }
 
-
-    public goToPerfil(employeeId: string): void {
-
-    }
-
     public getLink(link: string): string {
         return link;
+    }
+    public goToPerfilEmployee(employeeId: string): void {
+        this.router.navigate([`perfil/${employeeId}/${Roles.Funcionario}`]);
     }
 }

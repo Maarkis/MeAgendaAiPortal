@@ -37,7 +37,7 @@
                         <td>{{employee.descricao}}</td>
                         <td>
                             <a >
-                                <img class="default-height-width-icon link" src="assets/icon-system/link.svg" alt="link employee">
+                                <img (click)="goToPerfilEmployee(employee.employeeId)" class="clickable default-height-width-icon link" src="assets/icon-system/link.svg" alt="link employee">
                             </a>
                         </td>
                         <td class="text-right">
@@ -48,7 +48,7 @@
                                 </button>
                                 <div class="dropdown-menu" role="menu"
                                      [attr.aria-labelledby]="'dotMenu' + employee.employeeId + i">
-                                    <button (click)="goToPerfil(employee.employeeId)" class="dropdown-item" type="button">
+                                    <button (click)="goToPerfilEmployee(employee.employeeId)" class="dropdown-item" type="button">
                                         Ver perfil
                                     </button>
                                     <button (click)="addServiceToEmployee(employee.employeeId)" class="dropdown-item" type="button">
