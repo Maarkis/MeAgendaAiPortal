@@ -1,0 +1,11 @@
+<app-schedule-by-company
+    *ngIf="companyId"
+    [companyId]="companyId"
+    [userAuthenticated]="userAuthenticated"
+    [newScheduling]="newScheduling"></app-schedule-by-company>
+
+<app-schedule-by-employee
+    *ngIf="employeeId"
+    [employeeId]="employeeId"
+    [userAuthenticated]="userAuthenticated"
+    [newScheduling]="newScheduling"></app-schedule-by-employee>

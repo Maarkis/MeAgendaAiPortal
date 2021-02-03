@@ -1,0 +1,113 @@
+<div class="container p-lg-5 p-md-5 p-0 h-100" *ngIf="!serviceSelect">
+    <div class="text-right">
+        <img src="assets/icons/logo/logo-black.svg" alt="Me Agenda Aí">
+    </div>
+    <div class="row p-lg-5 p-md-5 p-1 form-box-schedule">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 align-content-lg-start">
+            <span class="text-title-employee align-content-center">
+               Escolha um serviço
+            </span>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-right align-content-lg-start">
+            <button type="button" class="btn btn-transparent">
+                <img class="default-height-width-icon" src="assets/icon-system/search-black-solid.svg" alt="search">
+            </button>
+        </div>
+        <div class="col-12 mt-5 mb-5 align-content-center">
+            <div class="table-responsive table-height">
+                <table class="table-employee table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Nome do serviço</th>
+                        <th scope="col">Duração (em minutos)</th>
+                    </tr>
+                    </thead>
+                    <tbody class="clickable"
+                           (click)="getEmployeeByCompany(service.serviceId);setServiceId(service.serviceId, service)"
+                           *ngFor="let service of listServices; let i = index">
+                    <tr [id]="service.serviceId + i">
+                        <th class="font-weight-bolder" scope="row">{{service.name}}</th>
+                        <td>{{service.durationMinutes}} minuto(s)</td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container p-lg-5 p-md-5 p-0 h-100" *ngIf="!employeeSelect">
+    <div class="text-right">
+        <img src="assets/icons/logo/logo-black.svg" alt="Me Agenda Aí">
+    </div>
+    <div class="row p-lg-5 p-md-5 p-1 form-box-schedule">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 align-content-lg-start">
+            <span class="text-title-employee align-content-center">
+               Escolha o profissional
+            </span>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-right align-content-lg-start">
+            <button type="button" class="btn btn-transparent">
+                <img class="default-height-width-icon" src="assets/icon-system/search-black-solid.svg" alt="search">
+            </button>
+        </div>
+        <div class="col-12 mt-5 mb-5 align-content-center">
+            <div class="table-responsive table-height">
+                <table class="table-employee table">
+                    <tbody class="clickable"
+                           *ngFor="let employee of listEmployee; let i = index">
+                    <tr [id]="employee.employeeId + i" (click)="setEmployee(employee.employeeId, employee)">
+                        <td class="text-right" colspan="3">
+                            <img class="img-profile"
+                                 [src]="employee.image ? employee.image : 'assets/icons/icon-512x512.png'"
+                                 alt="image profile employee">
+                        </td>
+                        <td class="font-weight-bolder align-middle">
+                            {{employee.name}}
+                        </td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container p-lg-5 p-md-5 p-0 h-100" *ngIf="serviceSelect && employeeSelect">
+    <div class="text-right">
+        <img src="assets/icons/logo/logo-black.svg" alt="Me Agenda Aí">
+    </div>
+    <div class="row p-lg-5 p-md-5 p-1 form-box-schedule">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 align-content-lg-start">
+            <span class="text-title-employee align-content-center">
+               Selecione o dia e horário
+            </span>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mt-5 text-center">
+            <mat-form-field appearance="outline">
+                <mat-label>Selecione uma data</mat-label>
+                <input [min]="dateNow" [(ngModel)]="dateSelect" matInput [matDatepicker]="picker"
+                       (dateChange)="getEmployeeAvailableHours()">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker [startAt]="dateNow" startView="multi-year" [touchUi]="true" [opened]="true"
+                                #picker></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 mt-5 text-center">
+            <div class="row">
+                <div class="col-3 m-1" *ngFor="let availableHours of listAvailableHours">
+                    <button mat-button color="primary"
+                            class="mat-button-custom"
+                            [ngClass]="availableHoursSelect === availableHours? 'select' : '' "
+                            (click)="setStartTime(availableHours)">
+                        {{availableHours | date: 'HH:mm'}}
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 text-right">
+            <button class="btn btn-schedule" [disabled]="!newScheduling.startTime && !newScheduling.endTime"
+                    (click)="createSchedule(newScheduling)">Realizar agendamento
+            </button>
+        </div>
+    </div>
+</div>
+

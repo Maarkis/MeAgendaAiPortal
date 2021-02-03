@@ -25,6 +25,8 @@ import {VerifiedUserInterceptor} from './modules/shared/interceptor/verified-use
 import {EmployeeModule} from './modules/employee/employee.module';
 import {ServicesModule} from './modules/services/services.module';
 import {ProfileModule} from './modules/profile/profile.module';
+import {ScheduleModule} from './modules/schedule/schedule.module';
+import {MAT_DATE_LOCALE} from '@angular/material/core';
 
 @NgModule({
     declarations: [
@@ -52,11 +54,13 @@ import {ProfileModule} from './modules/profile/profile.module';
         HistoricModule,
         EmployeeModule,
         ServicesModule,
-        ProfileModule
+        ProfileModule,
+        ScheduleModule
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-        {provide: HTTP_INTERCEPTORS, useClass: VerifiedUserInterceptor, multi: true}
+        {provide: HTTP_INTERCEPTORS, useClass: VerifiedUserInterceptor, multi: true},
+        {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
     ],
     bootstrap: [AppComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]

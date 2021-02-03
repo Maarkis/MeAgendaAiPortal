@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../../../../environments/environment';
 import {Observable} from 'rxjs';
 import {ResponseBase} from '../../models/response-base.class';
@@ -39,4 +39,15 @@ export class EmployeeService {
         return this.http.get<ResponseBase<Employee>>(`${this.URL}/GetEmployeeInfoComplete/${employeeId}`);
     }
 
+    public getEmployeesByServiceId(serviceId: string): Observable<ResponseBase<Employee[]>> {
+        return this.http.get<ResponseBase<Employee[]>>(`${this.URL}/GetEmployeesByServiceId/${serviceId}`);
+    }
+
+    public getEmployeeAvailableHours(employeeId: string, serviceId: string, date: Date): Observable<ResponseBase<Date[]>> {
+        let params = new HttpParams();
+        params = params.append('employeeId', employeeId.toString());
+        params = params.append('serviceId', serviceId.toString());
+        params = params.append('date', date.toString());
+        return this.http.get<ResponseBase<Date[]>>(`${this.URL}/GetEmployeeAvailableHours`, {params});
+    }
 }

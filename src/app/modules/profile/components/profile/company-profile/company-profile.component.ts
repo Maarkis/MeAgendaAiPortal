@@ -20,7 +20,6 @@ export class CompanyProfileComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log(this.company);
     }
 
     public getPhone(phone: PhoneNumbers): string {
@@ -36,6 +35,6 @@ export class CompanyProfileComponent implements OnInit {
     }
 
     public goToSchuling(): void {
-        // TODO
+        this.router.navigate(['agendar'], {queryParams: {companyId: this.company.companyId}});
     }
 }

@@ -177,7 +177,7 @@ export class AgendarComponent implements OnInit {
     }
 
     private createScheduling() {
-        this.newScheduling = new NewScheduling();
+        this.newScheduling = new NewScheduling('');
         this.newScheduling.employeeId = this.selectEmployee;
         this.newScheduling.serviceId = this.selectService;
         this.newScheduling.userId = this.userAuthenticated.id;

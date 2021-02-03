@@ -5,6 +5,8 @@ import {Roles} from '../../../shared/enums/roles.enum';
 import {EmployeeService} from '../../../shared/services/employee/employee.service';
 import {ResponseBase} from '../../../shared/models/response-base.class';
 import {Employee} from '../../../shared/models/company.class';
+import {SessionService} from '../../../shared/services/session.service';
+import {UserAuthenticated} from '../../../shared/models/authentication/authentication.class';
 
 @Component({
     selector: 'app-employee-profile-public',
@@ -15,13 +17,20 @@ export class EmployeeProfilePublicComponent implements OnInit {
 
     private uid: string;
     public employee: Employee;
+    private userAuthenticated: UserAuthenticated = null;
 
     constructor(private employeeService: EmployeeService, private router: Router,
-                private route: ActivatedRoute) {
+                private route: ActivatedRoute, private sessionService: SessionService) {
     }
 
     ngOnInit(): void {
-        this.getEmployeeComplete(this.uid = this.route.snapshot.paramMap.get('uid'));
+        this.uid = this.route.snapshot.paramMap.get('uid');
+        this.userAuthenticated = this.sessionService.userAuthenticated;
+        if (this.userAuthenticated) {
+            this.goToLogin();
+        } else {
+            this.getEmployeeComplete(this.uid);
+        }
     }
 
     public getPhone(phone: PhoneNumbers): string {

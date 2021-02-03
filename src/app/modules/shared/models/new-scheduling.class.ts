@@ -4,4 +4,8 @@ export class NewScheduling {
     public serviceId: string;
     public startTime: string;
     public endTime: string;
+
+    constructor(employeeId: string) {
+        this.employeeId = employeeId;
+    }
 }

@@ -19,6 +19,7 @@ import {ServicesComponent} from './modules/services/components/services/services
 import {CompanyProfilePublicComponent} from './modules/profile/components/company-profile-public/company-profile-public.component';
 import {EmployeeProfilePublicComponent} from './modules/profile/components/employee-profile-public/employee-profile-public.component';
 import {UserConfirmationComponent} from './modules/shared/components/user-confirmation/user-confirmation.component';
+import {ScheduleComponent} from './modules/schedule/components/schedule/schedule.component';
 
 
 const routes: Routes = [
@@ -64,6 +65,11 @@ const routes: Routes = [
     {
         path: 'servicos', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
             {path: '', component: ServicesComponent}
+        ]
+    },
+    {
+        path: 'agendar', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
+            {path: '', component: ScheduleComponent}
         ]
     },
     {path: '**', component: PageNotFoundComponent} // Wildcard route for a 404 page

@@ -5,6 +5,8 @@ import {CompanyService} from '../../../shared/services/company/company.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PhoneNumbers} from '../../../shared/models/phone-numbers.class';
 import {Roles} from '../../../shared/enums/roles.enum';
+import {SessionService} from '../../../shared/services/session.service';
+import {UserAuthenticated} from '../../../shared/models/authentication/authentication.class';
 
 @Component({
     selector: 'app-company-profile-public',
@@ -15,13 +17,22 @@ export class CompanyProfilePublicComponent implements OnInit {
 
     public company: Company;
     private uid: string;
+    private userAuthenticated: UserAuthenticated = null;
 
     constructor(private companyService: CompanyService, private router: Router,
-                private route: ActivatedRoute) {
+                private route: ActivatedRoute, private sessionService: SessionService) {
     }
 
     ngOnInit(): void {
-        this.getCompanyComplete(this.uid = this.route.snapshot.paramMap.get('uid'));
+        this.uid = this.route.snapshot.paramMap.get('uid');
+
+        this.userAuthenticated = this.sessionService.userAuthenticated;
+        if (this.userAuthenticated) {
+            this.goToLogin();
+        } else {
+            this.getCompanyComplete(this.uid);
+        }
+
     }
 
     private getCompanyComplete(uid: string): void {

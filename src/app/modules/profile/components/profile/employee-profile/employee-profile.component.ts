@@ -35,6 +35,6 @@ export class EmployeeProfileComponent implements OnInit {
     }
 
     public goToSchuling(): void {
-        // TODO
+        this.router.navigate(['agendar'], {queryParams: {employeeId: this.employee.employeeId}});
     }
 }
