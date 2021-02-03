@@ -12,7 +12,7 @@
                 <img class="default-height-width-icon" src="assets/icon-system/search-black-solid.svg" alt="search">
             </button>
         </div>
-        <div class="col-12 align-self-end text-right">
+        <div class="col-12 align-self-end text-right" *ngIf="hidder()">
             <button (click)="addServices()" class="btn btn-sm bg-transparent btn-add-employee">
                 <img class="mb-1 mr-1 default-height-width-icon-button" src="assets/icon-system/add-employee-primary.svg" alt="Add employee">
                 Adicionar serviços

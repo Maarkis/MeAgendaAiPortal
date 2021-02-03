@@ -34,18 +34,25 @@
 label {
     width: 100%;
 }
+
 .bg-dark {
     background: var(--color-system-secundary) !important;
+}
+
+.bg-system-primary {
+    background: var(--color-system-primary) !important;
 }
 
 .default-height-width-icon {
     width: 16px;
     height: 16px;
 }
+
 .default-height-width-icon-button {
     width: 16px;
     height: 16px;
 }
+
 html, body {
     height: 100%;
     /*height: 100vm;*/
@@ -71,12 +78,14 @@ body {
     border-radius: 10px;
     padding: 10px;
 }
+
 .custom-modal-register .mat-dialog-container {
     border-radius: 10px;
     padding: 0;
     background-color: var(--color-system-secundary);
     /*padding: 10px;*/
 }
+
 .blur {
     backdrop-filter: blur(20px);
 }

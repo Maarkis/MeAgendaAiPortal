@@ -14,7 +14,7 @@
                 <app-user-profile></app-user-profile>
             </div>
             <div class="list-group  list-group-flush">
-                <a *ngFor="let menu of menuContent" [routerLink]="menu.routerLink"
+                <a *ngFor="let menu of menuContent" [routerLink]="getLink(menu.routerLink)"
                    [class.active]="menuItem === menu.menuItem"
                    (click)="setMenuCurrent(menu.menuItem)"
                    class="mt-1 mb-1 list-group-item list-group-item-action bg-dark-menu">

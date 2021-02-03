@@ -10,6 +10,7 @@ import {ResponseBase} from '../../../shared/models/response-base.class';
 import {ModalAddServicesComponent} from '../modal/modal-add-services/modal-add-services.component';
 import {Service} from '../../../shared/models/service.class';
 import {Title} from '@angular/platform-browser';
+import {Roles} from '../../../shared/enums/roles.enum';
 
 @Component({
     selector: 'app-services',
@@ -20,6 +21,7 @@ export class ServicesComponent implements OnInit {
     private userAuthenticated: UserAuthenticated;
 
     public listServices: Service[];
+    public roles = Roles;
 
     constructor(private title: Title, private sessionService: SessionService, private companyService: CompanyService,
                 private employeeService: EmployeeService, private dialog: MatDialog,
@@ -29,12 +31,36 @@ export class ServicesComponent implements OnInit {
     ngOnInit(): void {
         this.title.setTitle('Serviços | Me Agenda Aí');
         this.userAuthenticated = this.sessionService.userAuthenticated;
-        this.getServicesFromCompany(this.userAuthenticated.secondaryId);
+        switch (this.userAuthenticated.role) {
+            case Roles.Funcionario:
+                this.getServicesFromEmployee(this.userAuthenticated.secondaryId);
+                break;
+            case Roles.UsuarioEmpresa:
+                this.getServicesFromCompany(this.userAuthenticated.secondaryId);
+                break;
+            default:
+                break;
+        }
     }
 
 
     private getServicesFromCompany(companyId: string) {
         this.companyService.getServicesFromCompany(companyId).subscribe((response: ResponseBase<Service[]>) => {
+            if (response.success) {
+                this.listServices = response.result;
+                console.log(this.listServices);
+            } else {
+                this.deviceService.desktop ?
+                    this.notificationService.showMessageMatDialog('', response.message) :
+                    this.notificationService.showMessageSnackBar(response.message, true);
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+
+    private getServicesFromEmployee(employeeId: string) {
+        this.employeeService.getEmployeeServices(employeeId).subscribe((response: ResponseBase<Service[]>) => {
             if (response.success) {
                 this.listServices = response.result;
                 console.log(this.listServices);
@@ -60,5 +86,9 @@ export class ServicesComponent implements OnInit {
         }, error => {
             console.log(error);
         });
+    }
+
+    public hidder(): boolean {
+        return this.userAuthenticated.role !== Roles.Funcionario;
     }
 }

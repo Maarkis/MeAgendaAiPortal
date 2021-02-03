@@ -16,6 +16,9 @@ import {RegisterUserComponent} from './modules/login/components/register-user/re
 import {HistoricComponent} from './modules/historic/components/historic/historic.component';
 import {EmployeeComponent} from './modules/employee/components/employee/employee.component';
 import {ServicesComponent} from './modules/services/components/services/services.component';
+import {CompanyProfilePublicComponent} from './modules/profile/components/company-profile-public/company-profile-public.component';
+import {EmployeeProfilePublicComponent} from './modules/profile/components/employee-profile-public/employee-profile-public.component';
+import {UserConfirmationComponent} from './modules/shared/components/user-confirmation/user-confirmation.component';
 
 
 const routes: Routes = [
@@ -25,14 +28,18 @@ const routes: Routes = [
     {path: 'register-company', component: RegisterCompanyComponent},
     {path: 'esqueceu-senha', component: EsqueceuSenhaComponent},
     {path: 'confirmar-email/:uid', component: ConfirmarEmailComponent},
+    {path: 'email-confirmado', component: UserConfirmationComponent},
     {path: 'redefinir-senha/:uid/:token', component: ResetSenhaComponent},
     {
-        path: 'perfil-publico/:uid', component: ProfileComponent, canActivate: [], children: []
+        path: 'perfil/:uid/:role', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
+            {path: '', component: ProfileComponent},
+        ]
     },
     {
-        path: 'perfil-privado/:uid', component: MainMenuComponent, canActivate: [], children: [
-            {path: '', component: ProfileComponent}
-        ]
+        path: 'perfil_empresa/:uid', component: CompanyProfilePublicComponent
+    },
+    {
+        path: 'perfil_funcionario/:uid', component: EmployeeProfilePublicComponent
     },
     {
         path: 'conta', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [

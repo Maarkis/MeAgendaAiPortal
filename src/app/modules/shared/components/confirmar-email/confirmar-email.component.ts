@@ -19,7 +19,7 @@ export class ConfirmarEmailComponent implements OnInit {
         this.userService.confirmationEmail(this.uui).subscribe((response: ResponseBase<string>) => {
             if (response.success) {
                 console.log(response.result);
-                this.router.navigate(['perfil']);
+                this.router.navigate(['email-confirmado']);
             } else {
                 console.log(response.result);
                 this.router.navigate(['']);

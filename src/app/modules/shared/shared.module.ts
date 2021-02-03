@@ -12,6 +12,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {ModalEmailConfirmationComponent} from './components/modal-email-confirmation/modal-email-confirmation.component';
 import {ConfirmarEmailComponent} from './components/confirmar-email/confirmar-email.component';
 import {ClosingConfirmationModalComponent} from './components/closing-confirmation-modal/closing-confirmation-modal.component';
+import { UserConfirmationComponent } from './components/user-confirmation/user-confirmation.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import {ClosingConfirmationModalComponent} from './components/closing-confirmati
         UserProfileComponent,
         ModalEmailConfirmationComponent,
         ConfirmarEmailComponent,
-        ClosingConfirmationModalComponent
+        ClosingConfirmationModalComponent,
+        UserConfirmationComponent
 
     ],
     imports: [

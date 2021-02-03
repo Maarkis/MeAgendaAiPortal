@@ -1,0 +1,4 @@
+.text-title {
+    color: var(--color-system-primary);
+    font: bold 36px/40px Roboto, "Helvetica Neue", sans-serif;
+}

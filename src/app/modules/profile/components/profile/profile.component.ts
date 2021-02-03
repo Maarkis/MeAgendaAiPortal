@@ -5,6 +5,11 @@ import {MatDialog} from '@angular/material/dialog';
 import {SessionService} from '../../../shared/services/session.service';
 import {UserService} from '../../../shared/services/user/user.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Roles} from '../../../shared/enums/roles.enum';
+import {CompanyService} from '../../../shared/services/company/company.service';
+import {EmployeeService} from '../../../shared/services/employee/employee.service';
+import {ResponseBase} from '../../../shared/models/response-base.class';
+import {Company, Employee} from '../../../shared/models/company.class';
 
 @Component({
     selector: 'app-profile',
@@ -12,38 +17,64 @@ import {ActivatedRoute, Router} from '@angular/router';
     styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-    private userAuthentication: UserAuthenticated;
+    public userAuthentication: UserAuthenticated;
 
     private uid: string;
 
+    public role: Roles;
+    public roles = Roles;
+
+    public company: Company = null;
+    public employee: Employee = null;
+
     constructor(private title: Title, private dialog: MatDialog, private sessionService: SessionService,
-                private userService: UserService, private sanitizer: DomSanitizer, private router: Router,
+                private companyService: CompanyService,
+                private employeeService: EmployeeService,
+                private sanitizer: DomSanitizer, private router: Router,
                 private route: ActivatedRoute) {
     }
 
     ngOnInit(): void {
         this.title.setTitle('Perfil | Me Agenda Aí');
         this.uid = this.route.snapshot.paramMap.get('uid');
+        this.role = Number(this.route.snapshot.paramMap.get('role')) === Roles.UsuarioEmpresa ? Roles.UsuarioEmpresa : Roles.Funcionario;
         this.userAuthentication = this.sessionService.userAuthenticated;
-        if (this.userAuthentication) {
-            this.router.navigate(['perfil-privado'], {queryParams: {uid: this.uid}});
-        } else {
-            // this.userService.clientVerified(this.userAuthentication.id).subscribe((response: ResponseBase<{ userVerified: boolean }>) => {
-            //     if (response.success) {
-            //         if (!response.result.userVerified) {
-            //             this.dialog.open(ModalEmailConfirmationComponent, {
-            //                 id: 'email-confirmation-modal', panelClass: 'custom-modal',
-            //                 width: '500px', height: 'auto', disableClose: true, data: {
-            //                     id: this.userAuthentication.id,
-            //                     email: this.userAuthentication.userEmail,
-            //                     nextRoute: ''
-            //                 }
-            //             });
-            //         }
-            //     }
-            // });
+
+        switch (this.role) {
+            case Roles.Funcionario:
+                this.getEmployeeComplete(this.uid);
+                break;
+            case Roles.UsuarioEmpresa:
+                this.getCompanyComplete(this.uid);
+                break;
+            default:
+                break;
         }
     }
 
+    private getEmployeeComplete(uid: string): void {
+        this.employeeService.getEmployeeComplete(uid).subscribe((response: ResponseBase<Employee>) => {
+            if (response.success) {
+                console.log(response.message);
+                this.employee = response.result;
+            } else {
 
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
+
+    private getCompanyComplete(uid: string): void {
+        this.companyService.getCompanyComplete(uid).subscribe((response: ResponseBase<Company>) => {
+            if (response.success) {
+                console.log(response.message);
+                this.company = response.result;
+            } else {
+
+            }
+        }, error => {
+            console.log(error);
+        });
+    }
 }

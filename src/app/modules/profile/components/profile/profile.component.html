@@ -1,44 +1,9 @@
-<div class="container p-lg-5 p-md-5 p-0">
-    <div class="text-right">
-        <img src="assets/icons/logo/logo-black.svg" alt="Me Agenda Aí">
-    </div>
-    <div class="row p-lg-5 p-md-5 p-1 form-box">
-        <div class="col-lg-4 col-md-6 col-sm-12 col-12 ">
-            <img src="assets/icons/icon-512x512.png" class="img-fluid border-photo-profile-company" alt="Photo profile company">
-        </div>
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-            <p class="name-company">Beauty Hair</p>
-            <p class="name-description">Salão de beleza e estética</p>
+<app-employee-profile
+    *ngIf="employee && role === roles.Funcionario"
+    [employee]="employee"
+    [userAuthenticated]="userAuthentication"></app-employee-profile>
 
-            <p class="recommendation-title">Recomendações</p>
-            <p class="recommendation-text">
-                Pedimos por gentileza que se atente
-                ao horário agendado, pois atrasos
-                superiores a 10 minutos podem
-                ocasionar o cancelamento do seu
-                atendimento sem a possibilidade
-                de novo agendamento.</p>
-
-            <button class="btn btn-lg btn-services">Serviços</button>
-        </div>
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-            <p class="opening-hours-title">Horário de funcionamento</p>
-            <p class="opening-hours-text">Segunda à sexta</p>
-            <p class="opening-hours-text">10h às 19h</p>
-
-            <p class="contact-tittle">Contatos</p>
-            <p class="contact-text">(11) 94962-0132</p>
-            <p class="contact-text">beuatyhair@gmail.com</p>
-
-            <p class="policy">Politicade cancelamento</p>
-            <p class="contact-text">Cancelamentos com apenas 24h de antecendência</p>
-        </div>
-        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
-            Mapa
-        </div>
-
-        <!--        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">-->
-
-        <!--        </div>-->
-    </div>
-</div>
+<app-company-profile
+    *ngIf="company && role === roles.UsuarioEmpresa"
+    [company]="company"
+    [userAuthenticated]="userAuthentication"></app-company-profile>

@@ -67,4 +67,11 @@ export class MainMenuComponent implements OnInit {
     public openMenu(): void {
         this.opened ? this.sidenav.close() : this.sidenav.open();
     }
+
+    public getLink(routerLink: string): string {
+        if (routerLink.includes('perfil')) {
+            return `${routerLink}/${this.user.secondaryId}/${this.user.role}`;
+        }
+        return routerLink;
+    }
 }

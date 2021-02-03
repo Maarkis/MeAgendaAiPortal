@@ -24,6 +24,7 @@ import {HistoricModule} from './modules/historic/historic.module';
 import {VerifiedUserInterceptor} from './modules/shared/interceptor/verified-user.interceptor';
 import {EmployeeModule} from './modules/employee/employee.module';
 import {ServicesModule} from './modules/services/services.module';
+import {ProfileModule} from './modules/profile/profile.module';
 
 @NgModule({
     declarations: [
@@ -50,7 +51,8 @@ import {ServicesModule} from './modules/services/services.module';
         AppointmentsModule,
         HistoricModule,
         EmployeeModule,
-        ServicesModule
+        ServicesModule,
+        ProfileModule
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},

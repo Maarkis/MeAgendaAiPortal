@@ -1,0 +1,44 @@
+<div class="container p-lg-5 p-md-5 p-0" *ngIf="company">
+    <div class="text-right">
+        <img src="assets/icons/logo/logo-black.svg" alt="Me Agenda Aí">
+    </div>
+    <div class="row p-lg-5 p-md-5 p-1 form-box">
+        <div class="col-lg-4 col-md-6 col-sm-12 col-12 ">
+            <img [src]="company.image ? company.image : 'assets/icons/icon-512x512.png'" class="img-fluid border-photo-profile-company"
+                 alt="Photo profile company">
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+            <p class="name-company">{{company.companyName}}</p>
+            <p class="name-description">{{company.descricao}}</p>
+
+            <p class="recommendation-title font-weight-bolder">Recomendações</p>
+            <p class="recommendation-text">
+                Pedimos por gentileza que se atente
+                ao horário agendado, pois atrasos
+                superiores a 10 minutos podem
+                ocasionar o cancelamento do seu
+                atendimento sem a possibilidade
+                de novo agendamento.
+            </p>
+            <button class="btn btn-lg btn-services m-1" (click)="goToLogin()">Login</button>
+        </div>
+        <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
+            <p class="opening-hours-title font-weight-bolder">Horário de funcionamento</p>
+            <p class="opening-hours-text">Segunda à sexta</p>
+            <p class="opening-hours-text">10h às 19h</p>
+
+            <p class="contact-tittle font-weight-bolder">Contatos</p>
+            <p class="contact-text" *ngFor="let phone of company.phoneNumbers | slice:0:3; ">
+                {{getPhone(phone)}}
+            </p>
+            <p class="contact-text">{{company.email}}</p>
+
+            <p class="policy font-weight-bolder">Politicade cancelamento</p>
+            <p class="contact-text">Cancelamentos com apenas
+                <span class="font-weight-bolder">
+                    {{company.limitCancelHours}} de antecendência
+                </span>
+            </p>
+        </div>
+    </div>
+</div>
