@@ -17,6 +17,8 @@ import {Title} from '@angular/platform-browser';
 export class HistoricComponent implements OnInit {
     private user: UserAuthenticated;
     public historicScheduling: Scheduling[];
+    public roles = Roles;
+    public role: Roles;
 
     constructor(private title: Title, private sessionService: SessionService, private schedulingService: SchedulingService,
                 private notificationService: NotificationService, private deviceService: DeviceService) {
@@ -25,6 +27,7 @@ export class HistoricComponent implements OnInit {
     ngOnInit(): void {
         this.title.setTitle('Histórico | Me Agenda Aí');
         this.user = this.sessionService.userAuthenticated;
+        this.role = this.user.role;
         this.getHistoricScheduling(this.user.role);
     }
 
