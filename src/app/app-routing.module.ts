@@ -21,7 +21,6 @@ import {EmployeeProfilePublicComponent} from './modules/profile/components/emplo
 import {UserConfirmationComponent} from './modules/shared/components/user-confirmation/user-confirmation.component';
 import {ScheduleComponent} from './modules/schedule/components/schedule/schedule.component';
 import {AboutComponent} from './modules/shared/components/about/about.component';
-import {HelpComponent} from './modules/shared/components/help/help.component';
 
 
 const routes: Routes = [
@@ -73,6 +72,9 @@ const routes: Routes = [
         path: 'agendar', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
             {path: '', component: ScheduleComponent}
         ]
+    },
+    {
+        path: 'about', component: AboutComponent, canActivate: [], children: [        ]
     },
     {
         path: 'sobre', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [

@@ -27,4 +27,8 @@ export class NavBarHomeComponent implements OnInit {
     }
 
 
+    public goToAbout(): void {
+        this.router.navigate(['about']);
+
+    }
 }
