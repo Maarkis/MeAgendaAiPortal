@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {SessionService} from '../../../services/session.service';
 import {UserAuthenticated} from '../../../models/authentication/authentication.class';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-user-profile',
@@ -12,7 +13,7 @@ export class UserProfileComponent implements OnInit {
     @Input() menuOpened: boolean = true;
     public userLogged: UserAuthenticated;
 
-    constructor(private sessionService: SessionService) {
+    constructor(private sessionService: SessionService, private router: Router) {
     }
 
     ngOnInit(): void {
@@ -31,5 +32,9 @@ export class UserProfileComponent implements OnInit {
             });
         });
         return names.slice(0, 2).join(' ');
+    }
+
+    goToAccount(): void {
+        this.router.navigate(['conta']);
     }
 }

@@ -29,8 +29,8 @@ export class ScheduleByCompanyComponent implements OnInit {
     public availableHoursSelect: Date;
 
 
-    public serviceSelect: Service;
-    public employeeSelect: Employee;
+    public serviceSelect: Service = null;
+    public employeeSelect: Employee = null;
 
     constructor(private companyService: CompanyService,
                 private employeeService: EmployeeService,
@@ -39,7 +39,6 @@ export class ScheduleByCompanyComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        console.log('ScheduleByCompanyComponent', this.companyId);
         this.getServiceByCompany(this.companyId);
     }
 
@@ -49,7 +48,6 @@ export class ScheduleByCompanyComponent implements OnInit {
                 console.log(response.message);
                 this.listServices = response.result;
             } else {
-
             }
         }, error => {
             console.log(error);
