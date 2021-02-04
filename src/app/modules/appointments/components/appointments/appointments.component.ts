@@ -57,20 +57,14 @@ export class AppointmentsComponent implements OnInit {
         };
         this.schedulingService.updateSchedulingStatus(updateScheduling).subscribe((response: ResponseBase<any>) => {
             if (response.success) {
-                const dialogRef = this.dialog.open(ModalComponent, {
-                    panelClass: 'custom-modais', backdropClass: 'blur',
-                    data: {
-                        title: 'Pronto!',
-                        text: response.result,
-                        button: 'Fechar',
-                        route: ''
-                    }
-                });
-                dialogRef.afterClosed().subscribe(resp => {
-                    this.getScheduling(this.user.role);
-                }, error => {
-                    console.log(error);
-                });
+                this.deviceService.desktop ?
+                    this.notificationService.showMessageMatDialog('Pronto', response.message) :
+                    this.notificationService.showMessageSnackBar(response.message, true);
+                this.getScheduling(this.role);
+            } else {
+                this.deviceService.desktop ?
+                    this.notificationService.showMessageMatDialog('', response.message) :
+                    this.notificationService.showMessageSnackBar(response.message, true);
             }
         }, error => {
             console.log(error);

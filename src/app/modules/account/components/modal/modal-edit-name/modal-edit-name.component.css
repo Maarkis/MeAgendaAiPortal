@@ -1,0 +1,130 @@
+/*.form-box {*/
+/*    border: 1px solid var(--color-system-secundary);*/
+/*    border-radius: 15px;*/
+/*    !*padding: 48px 40px 36px;*!*/
+/*}*/
+label {
+    width: 100%;
+}
+.text-new-account {
+    font: normal 14px/18px Roboto, "Helvetica Neue", sans-serif;
+    color: var(--color-system-secundary);
+}
+
+.card {
+    /*width: 522px;*/
+    padding: 0 30px;
+    border-radius: 30px;
+}
+
+.card-bg-black, .card-header, .card-body, .card-footer {
+    background-color: var(--color-system-secundary);
+    border: none;
+}
+
+.card-header {
+    border-bottom: 1px solid #707070;
+}
+
+.card-title {
+    font: 400 16px/20px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    color: #ffffff;
+}
+
+.card-subtitle {
+    font: 400 14px/18px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    color: #ffffff;
+}
+
+.mat-form-field {
+    font-size: inherit;
+    font-weight: 400;
+    line-height: 1.125;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    color: #6B6B6B; /* Color XD */
+    width: 100%;
+}
+
+/* Mat field login */
+/* input color class */
+::ng-deep .mat-form-custom.mat-input-element {
+    color: currentColor !important;
+}
+
+/* Change label color on focused */
+::ng-deep .mat-form-custom.mat-form-field.mat-focused .mat-form-field-label {
+    color: #0086F9;
+}
+
+/* underline border color on focused */
+::ng-deep .mat-form-custom.mat-focused .mat-form-field-underline .mat-form-field-ripple {
+    background-color: currentColor;
+}
+
+::ng-deep .mat-form-custom.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #0086F9 !important;
+}
+
+::ng-deep .mat-form-custom.mat-form-field-appearance-outline .mat-form-field-outline {
+    color: currentColor;
+}
+
+::ng-deep .mat-form-custom.mat-form-field-infix.mat-form-field-label {
+    color: currentColor;
+}
+
+::ng-deep .mat-form-field-placeholder {
+    color: currentColor;
+}
+
+::ng-deep .mat-form-field-empty.mat-form-field-label,
+.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    color: currentColor;
+}
+
+/* Placeholder opacity */
+::ng-deep .mat-input-element::placeholder {
+    color: currentColor;
+    opacity: 0.4;
+}
+
+/* Label */
+::ng-deep.mat-form-field-label {
+    color: currentColor;
+}
+
+.btn-registe-action {
+    color: #FFFFFF;
+}
+.bg-register {
+    background-color: var(--color-system-secundary);
+}
+.custom-radio-btn {
+    font-size: inherit;
+    font-weight: 400;
+    line-height: 1.125;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+    color: #6B6B6B; /* Color XD */
+}
+.label-manager {
+    color: #FFFFFF;
+}
+@media (max-width: 575.98px) {
+    .card {
+        /*width: 522px;*/
+        padding: 0;
+        border-radius: 30px;
+    }
+}
+@media (min-width: 576px) and (max-width: 767.98px) {
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) { }
+
+@media (min-width: 992px) and (max-width: 1199.98px) {  }
+
+@media (min-width: 1200px) { }

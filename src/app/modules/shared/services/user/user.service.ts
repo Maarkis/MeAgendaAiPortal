@@ -5,6 +5,7 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../../../../environments/environment';
 import {User} from '../../models/user.class';
 import {UserAccount} from '../../models/user-account.class';
+import {EditName} from '../../../account/components/model/edit-name.class';
 
 @Injectable({
     providedIn: 'root'
@@ -37,5 +38,9 @@ export class UserService {
 
     public getAccount(id: string): Observable<ResponseBase<UserAccount>> {
         return this.http.get<ResponseBase<UserAccount>>(`${this.URL}/Account/${id}`);
+    }
+
+    public editaName(editName: EditName): Observable<ResponseBase<string>> {
+        return this.http.put<ResponseBase<string>>(`${this.URL}/EditName`, editName);
     }
 }

@@ -48,7 +48,7 @@
                             <p class="profile-tem">{{user.name}}</p>
                         </div>
                         <div class="col text-right align-self-baseline">
-                            <button class="btn btn-sm btn-edit-info-profile">Editar informações básicas</button>
+                            <button class="btn btn-sm btn-edit-info-profile" (click)="editName(user.userId)">Editar nome</button>
                         </div>
                     </div>
                     <hr>
