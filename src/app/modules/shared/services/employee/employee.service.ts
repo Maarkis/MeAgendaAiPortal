@@ -47,7 +47,7 @@ export class EmployeeService {
         let params = new HttpParams();
         params = params.append('employeeId', employeeId.toString());
         params = params.append('serviceId', serviceId.toString());
-        params = params.append('date', date.toString());
+        params = params.append('date', date.toDateString());
         return this.http.get<ResponseBase<Date[]>>(`${this.URL}/GetEmployeeAvailableHours`, {params});
     }
 }
