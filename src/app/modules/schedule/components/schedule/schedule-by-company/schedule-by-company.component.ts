@@ -10,6 +10,8 @@ import {SchedulingService} from '../../../../shared/services/scheduling.service'
 import {Scheduling} from '../../../../shared/models/scheduling.class';
 import {Router} from '@angular/router';
 import {UserAuthenticated} from '../../../../shared/models/authentication/authentication.class';
+import {DeviceService} from '../../../../shared/services/device/device.service';
+import {NotificationService} from '../../../../shared/services/notification/notification-service.service';
 
 @Component({
     selector: 'app-schedule-by-company',
@@ -35,7 +37,9 @@ export class ScheduleByCompanyComponent implements OnInit {
     constructor(private companyService: CompanyService,
                 private employeeService: EmployeeService,
                 private router: Router,
-                private schedulingService: SchedulingService) {
+                private schedulingService: SchedulingService,
+                private deviceService: DeviceService,
+                private notificationService: NotificationService) {
     }
 
     ngOnInit(): void {
@@ -48,6 +52,9 @@ export class ScheduleByCompanyComponent implements OnInit {
                 console.log(response.message);
                 this.listServices = response.result;
             } else {
+                this.deviceService.desktop ?
+                    this.notificationService.showMessageMatDialog('', response.message) :
+                    this.notificationService.showMessageSnackBar(response.message, true);
             }
         }, error => {
             console.log(error);
@@ -59,6 +66,10 @@ export class ScheduleByCompanyComponent implements OnInit {
             if (response.success) {
                 console.log(response.message);
                 this.listEmployee = response.result;
+            } else {
+                this.deviceService.desktop ?
+                    this.notificationService.showMessageMatDialog('', response.message) :
+                    this.notificationService.showMessageSnackBar(response.message, true);
             }
         }, error => {
             console.log(error);
@@ -85,7 +96,9 @@ export class ScheduleByCompanyComponent implements OnInit {
                 console.log(response.message);
                 this.listAvailableHours = response.result;
             } else {
-
+                this.deviceService.desktop ?
+                    this.notificationService.showMessageMatDialog('', response.message) :
+                    this.notificationService.showMessageSnackBar(response.message, true);
             }
         }, error => {
             console.log(error);
@@ -122,6 +135,10 @@ export class ScheduleByCompanyComponent implements OnInit {
             if (response.success) {
                 console.log(response.message);
                 this.router.navigate(['meus-agendamentos']);
+            } else {
+                this.deviceService.desktop ?
+                    this.notificationService.showMessageMatDialog('', response.message) :
+                    this.notificationService.showMessageSnackBar(response.message, true);
             }
         }, error => {
             console.log(error);

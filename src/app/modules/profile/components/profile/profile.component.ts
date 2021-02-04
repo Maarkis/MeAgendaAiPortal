@@ -10,6 +10,8 @@ import {CompanyService} from '../../../shared/services/company/company.service';
 import {EmployeeService} from '../../../shared/services/employee/employee.service';
 import {ResponseBase} from '../../../shared/models/response-base.class';
 import {Company, Employee} from '../../../shared/models/company.class';
+import {DeviceService} from '../../../shared/services/device/device.service';
+import {NotificationService} from '../../../shared/services/notification/notification-service.service';
 
 @Component({
     selector: 'app-profile',
@@ -31,7 +33,9 @@ export class ProfileComponent implements OnInit {
                 private companyService: CompanyService,
                 private employeeService: EmployeeService,
                 private sanitizer: DomSanitizer, private router: Router,
-                private route: ActivatedRoute) {
+                private route: ActivatedRoute,
+                private deviceService: DeviceService,
+                private notificationService: NotificationService) {
     }
 
     ngOnInit(): void {
@@ -58,7 +62,9 @@ export class ProfileComponent implements OnInit {
                 console.log(response.message);
                 this.employee = response.result;
             } else {
-
+                this.deviceService.desktop ?
+                    this.notificationService.showMessageMatDialog('', response.message) :
+                    this.notificationService.showMessageSnackBar(response.message, true);
             }
         }, error => {
             console.log(error);
@@ -71,7 +77,9 @@ export class ProfileComponent implements OnInit {
                 console.log(response.message);
                 this.company = response.result;
             } else {
-
+                this.deviceService.desktop ?
+                    this.notificationService.showMessageMatDialog('', response.message) :
+                    this.notificationService.showMessageSnackBar(response.message, true);
             }
         }, error => {
             console.log(error);

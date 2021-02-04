@@ -32,7 +32,7 @@ export class HistoricComponent implements OnInit {
     }
 
     private getHistoricScheduling(role: number): void {
-        switch (this.user.role) {
+        switch (role) {
             case Roles.Cliente:
                 this.getHistoricSchedulingByClient(this.user.id);
                 break;
