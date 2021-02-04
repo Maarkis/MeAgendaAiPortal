@@ -21,6 +21,7 @@ import {EmployeeProfilePublicComponent} from './modules/profile/components/emplo
 import {UserConfirmationComponent} from './modules/shared/components/user-confirmation/user-confirmation.component';
 import {ScheduleComponent} from './modules/schedule/components/schedule/schedule.component';
 import {AboutComponent} from './modules/shared/components/about/about.component';
+import {HelpComponent} from './modules/shared/components/help/help.component';
 
 
 const routes: Routes = [
@@ -78,6 +79,11 @@ const routes: Routes = [
             {path: '', component: AboutComponent}
         ]
     },
+    // {
+    //     path: 'ajuda', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
+    //         {path: '', component: HelpComponent}
+    //     ]
+    // },
     {path: '**', component: PageNotFoundComponent} // Wildcard route for a 404 page
 ];
 

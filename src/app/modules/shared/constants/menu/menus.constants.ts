@@ -33,16 +33,6 @@ const menuContentClient: MenuContent[] = [
     },
     {
         id: 4,
-        routerLink: '/ajuda',
-        menuItem: '/ajuda',
-        name: 'Ajuda',
-        img: {
-            src: 'assets/icon-system/help-grey.svg',
-            alt: 'Help'
-        }
-    },
-    {
-        id: 5,
         routerLink: '/sobre',
         menuItem: '/sobre',
         name: 'Sobre',
@@ -95,16 +85,6 @@ const menuContentCompany: MenuContent[] = [
     },
     {
         id: 5,
-        routerLink: '/ajuda',
-        menuItem: '/ajuda',
-        name: 'Ajuda',
-        img: {
-            src: 'assets/icon-system/help-grey.svg',
-            alt: 'Help'
-        }
-    },
-    {
-        id: 6,
         routerLink: '/sobre',
         menuItem: '/sobre',
         name: 'Sobre',
@@ -167,16 +147,6 @@ const menuContentEmployee: MenuContent[] = [
     },
     {
         id: 6,
-        routerLink: '/ajuda',
-        menuItem: '/ajuda',
-        name: 'Ajuda',
-        img: {
-            src: 'assets/icon-system/help-grey.svg',
-            alt: 'Help'
-        }
-    },
-    {
-        id: 7,
         routerLink: '/sobre',
         menuItem: '/sobre',
         name: 'Sobre',

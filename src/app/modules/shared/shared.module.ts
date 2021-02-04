@@ -14,6 +14,7 @@ import {ConfirmarEmailComponent} from './components/confirmar-email/confirmar-em
 import {ClosingConfirmationModalComponent} from './components/closing-confirmation-modal/closing-confirmation-modal.component';
 import { UserConfirmationComponent } from './components/user-confirmation/user-confirmation.component';
 import { AboutComponent } from './components/about/about.component';
+import { HelpComponent } from './components/help/help.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +26,8 @@ import { AboutComponent } from './components/about/about.component';
         ConfirmarEmailComponent,
         ClosingConfirmationModalComponent,
         UserConfirmationComponent,
-        AboutComponent
+        AboutComponent,
+        HelpComponent
 
     ],
     imports: [
