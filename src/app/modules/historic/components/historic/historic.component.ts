@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ResponseBase} from '../../../shared/models/response-base.class';
-import {Scheduling} from '../../../shared/models/scheduling.class';
+import {Scheduling, SchedulingStatus} from '../../../shared/models/scheduling.class';
 import {SessionService} from '../../../shared/services/session.service';
 import {UserAuthenticated} from '../../../shared/models/authentication/authentication.class';
 import {Roles} from '../../../shared/enums/roles.enum';
@@ -19,6 +19,7 @@ export class HistoricComponent implements OnInit {
     public historicScheduling: Scheduling[];
     public roles = Roles;
     public role: Roles;
+    public schedulingStatus = SchedulingStatus;
 
     constructor(private title: Title, private sessionService: SessionService, private schedulingService: SchedulingService,
                 private notificationService: NotificationService, private deviceService: DeviceService) {

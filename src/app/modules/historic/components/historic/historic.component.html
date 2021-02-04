@@ -1,12 +1,11 @@
 <!-- Client -->
-
 <div class="container p-lg-5 p-md-5 p-0 h-100" *ngIf="this.role === roles.Cliente">
     <div class="row p-lg-5 p-md-5 p-1 form-box-agendamentos">
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 align-content-lg-start">
             <span class="text-title-agendamento align-content-center">
                 <img class="default-height-width-icon mb-1" src="assets/icon-system/calendar-day-primary.svg"
                      alt="Agendamento">
-                Agendamentos
+                Histórico
             </span>
         </div>
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-right align-content-lg-start">
@@ -24,7 +23,7 @@
                         <th scope="col">Funcionário</th>
                         <th scope="col">Início</th>
                         <th scope="col">Fim</th>
-                        <th scope="col"></th>
+                        <th scope="col">Status</th>
                     </tr>
                     </thead>
                     <tbody *ngIf="!historicScheduling || historicScheduling.length <= 0">
@@ -39,6 +38,7 @@
                         <td>{{scheduling.employeeName}}</td>
                         <td>{{scheduling.startTime  | date: 'dd/MM/yyyy HH:mm'}}</td>
                         <td>{{scheduling.endTime | date: 'dd/MM/yyyy HH:mm'}}</td>
+                        <td>{{scheduling.status ===  schedulingStatus.Canceled ? 'Cancelado' : 'Realizado' }}</td>
                     </tr>
                     </tbody>
 
@@ -56,7 +56,7 @@
             <span class="text-title-agendamento align-content-center">
                 <img class="default-height-width-icon mb-1" src="assets/icon-system/calendar-day-primary.svg"
                      alt="Agendamento">
-                Agendamentos
+                Histórico
             </span>
         </div>
         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 text-right align-content-lg-start">
@@ -75,7 +75,7 @@
                         <th scope="col">Empresa</th>
                         <th scope="col">Início</th>
                         <th scope="col">Fim</th>
-                        <th scope="col"></th>
+                        <th scope="col">Status</th>
                     </tr>
                     </thead>
                     <tbody *ngIf="!historicScheduling || historicScheduling.length <= 0">
@@ -91,6 +91,7 @@
                         <td>{{scheduling.companyName}}</td>
                         <td>{{scheduling.startTime  | date: 'dd/MM/yyyy HH:mm'}}</td>
                         <td>{{scheduling.endTime | date: 'dd/MM/yyyy HH:mm'}}</td>
+                        <td>{{scheduling.status ===  schedulingStatus.Canceled ? 'Cancelado' : 'Realizado' }}</td>
                     </tr>
                     </tbody>
 
