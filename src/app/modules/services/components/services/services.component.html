@@ -27,6 +27,11 @@
                         <th scope="col">Duração (em minutos)</th>
                     </tr>
                     </thead>
+                    <tbody *ngIf="listServices && listServices.length <= 0 ">
+                    <tr>
+                        <td colspan="5" class="text-center">Não há serviços</td>
+                    </tr>
+                    </tbody>
                     <tbody *ngFor="let service of listServices; let i = index" >
                     <tr [id]="service.serviceId + i" >
                         <th scope="row">{{service.name}}</th>

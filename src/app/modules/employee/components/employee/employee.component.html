@@ -14,7 +14,8 @@
         </div>
         <div class="col-12 align-self-end text-right">
             <button (click)="addEmployee()" class="btn btn-sm bg-transparent btn-add-employee">
-                <img class="mb-1 mr-1 default-height-width-icon-button" src="assets/icon-system/add-employee-primary.svg" alt="Add employee">
+                <img class="mb-1 mr-1 default-height-width-icon-button"
+                     src="assets/icon-system/add-employee-primary.svg" alt="Add employee">
                 Adicionar funcionário
             </button>
         </div>
@@ -30,14 +31,21 @@
                         <th scope="col"></th>
                     </tr>
                     </thead>
-                    <tbody *ngFor="let employee of employees; let i = index" >
-                    <tr [id]="employee.employeeId + i" >
+                    <tbody *ngIf="employees && employees.length <= 0 ">
+                    <tr>
+                        <td colspan="5" class="text-center">Não há funcionário</td>
+                    </tr>
+                    </tbody>
+                    <tbody *ngFor="let employee of employees; let i = index">
+                    <tr [id]="employee.employeeId + i">
                         <th scope="row">{{employee.name}}</th>
                         <td>{{employee.email}}</td>
                         <td>{{employee.descricao}}</td>
                         <td>
-                            <a >
-                                <img (click)="goToPerfilEmployee(employee.employeeId)" class="clickable default-height-width-icon link" src="assets/icon-system/link.svg" alt="link employee">
+                            <a>
+                                <img (click)="goToPerfilEmployee(employee.employeeId)"
+                                     class="clickable default-height-width-icon link" src="assets/icon-system/link.svg"
+                                     alt="link employee">
                             </a>
                         </td>
                         <td class="text-right">
@@ -48,10 +56,12 @@
                                 </button>
                                 <div class="dropdown-menu" role="menu"
                                      [attr.aria-labelledby]="'dotMenu' + employee.employeeId + i">
-                                    <button (click)="goToPerfilEmployee(employee.employeeId)" class="dropdown-item" type="button">
+                                    <button (click)="goToPerfilEmployee(employee.employeeId)" class="dropdown-item"
+                                            type="button">
                                         Ver perfil
                                     </button>
-                                    <button (click)="addServiceToEmployee(employee.employeeId)" class="dropdown-item" type="button">
+                                    <button (click)="addServiceToEmployee(employee.employeeId)" class="dropdown-item"
+                                            type="button">
                                         Adicionar serviços
                                     </button>
                                 </div>

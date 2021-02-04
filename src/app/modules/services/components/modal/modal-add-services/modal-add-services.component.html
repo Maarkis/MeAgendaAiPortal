@@ -8,7 +8,8 @@
                 </div>
                 <div class="card-body">
                     <form [formGroup]="formGroupAddService" (ngSubmit)="onSubmit(formGroupAddService.value)">
-                        <div class="row" formArrayName="services" *ngFor="let itemService of getServices.controls; let i = index">
+                        <div class="row" formArrayName="services"
+                             *ngFor="let itemService of getServices.controls; let i = index">
                             <div class="col-12" [formGroupName]="i">
                                 <mat-form-field class="mat-form-custom w-100" appearance="outline">
                                     <mat-label>Descrição</mat-label>
@@ -26,11 +27,14 @@
                                 <mat-form-field class="mat-form-custom w-100" appearance="outline">
                                     <mat-label>Duração do serviços (em minutos)</mat-label>
                                     <label>
-                                        <input type="number" matInput formControlName="durationMinutes"
+                                        <input min="0" type="number" matInput formControlName="durationMinutes"
                                                placeholder="Ex. 90 minutos">
                                     </label>
-                                    <mat-error *ngIf="itemService.get('name').hasError('required')">
+                                    <mat-error *ngIf="itemService.get('durationMinutes').hasError('required')">
                                         Duração do serviços é <strong>obrigatório</strong>.
+                                    </mat-error>
+                                    <mat-error *ngIf="itemService.get('durationMinutes').hasError('min')">
+                                        Duração do serviços é no <strong> mínimo 1</strong>.
                                     </mat-error>
                                 </mat-form-field>
                             </div>
