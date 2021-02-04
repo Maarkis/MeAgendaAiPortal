@@ -20,6 +20,7 @@ import {CompanyProfilePublicComponent} from './modules/profile/components/compan
 import {EmployeeProfilePublicComponent} from './modules/profile/components/employee-profile-public/employee-profile-public.component';
 import {UserConfirmationComponent} from './modules/shared/components/user-confirmation/user-confirmation.component';
 import {ScheduleComponent} from './modules/schedule/components/schedule/schedule.component';
+import {AboutComponent} from './modules/shared/components/about/about.component';
 
 
 const routes: Routes = [
@@ -70,6 +71,11 @@ const routes: Routes = [
     {
         path: 'agendar', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
             {path: '', component: ScheduleComponent}
+        ]
+    },
+    {
+        path: 'sobre', component: MainMenuComponent, canActivate: [AuthGuardGuard], children: [
+            {path: '', component: AboutComponent}
         ]
     },
     {path: '**', component: PageNotFoundComponent} // Wildcard route for a 404 page

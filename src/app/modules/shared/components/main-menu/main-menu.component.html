@@ -1,7 +1,6 @@
 <mat-drawer-container class="wrapper" [hasBackdrop]="menuConfig.hasBackdrop">
     <mat-drawer #sidenav [(opened)]="opened" [mode]="menuConfig.mode">
         <div class="bg-dark-menu sidebar-wrapper">
-
             <div class="sidebar-heading">
                 <mat-toolbar class="toolbar-display toolbar toolbar-row-reverse">
                     <button type="button" (click)="openMenu()" mat-icon-button
@@ -22,7 +21,6 @@
                          [src]="menu.img.src"
                          [attr.alt]="menu.img.alt">
                     <span>{{menu.name}}</span>
-
                 </a>
                 <a href="#" class="list-group-item list-group-item-action bg-dark-menu mt-5" (click)="logoff()">
                     <img class="icon-menu-margin default-height-width-icon" src="assets/icon-system/sign-out-grey.svg"

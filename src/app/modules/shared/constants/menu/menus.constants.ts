@@ -23,16 +23,6 @@ const menuContentClient: MenuContent[] = [
     },
     {
         id: 3,
-        routerLink: '/empresa-favoritas',
-        menuItem: '/empresa-favoritas',
-        name: 'Empresas favoritas',
-        img: {
-            src: 'assets/icon-system/company-regular-grey.svg',
-            alt: 'Favorite Companies'
-        }
-    },
-    {
-        id: 4,
         routerLink: '/conta',
         menuItem: '/conta',
         name: 'Conta',
@@ -42,7 +32,7 @@ const menuContentClient: MenuContent[] = [
         }
     },
     {
-        id: 5,
+        id: 4,
         routerLink: '/ajuda',
         menuItem: '/ajuda',
         name: 'Ajuda',
@@ -52,7 +42,7 @@ const menuContentClient: MenuContent[] = [
         }
     },
     {
-        id: 6,
+        id: 5,
         routerLink: '/sobre',
         menuItem: '/sobre',
         name: 'Sobre',
