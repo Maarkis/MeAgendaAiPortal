@@ -3,6 +3,11 @@
         <img src="assets/icons/logo/logo-black.svg" alt="Me Agenda Aí">
     </div>
     <div class="row p-lg-5 p-md-5 p-1 form-box">
+        <div class="col-12 mb-3" *ngIf="userAuthenticated.role === roles.UsuarioEmpresa">
+            <button class="btn btn-sm text-copy-link" id="copy-text"  [cdkCopyToClipboard]="company.link">
+                <img class="default-height-width-icon" src="assets/icon-system/link.svg" alt="copy link"> Copiar link
+            </button>
+        </div>
         <div class="col-lg-4 col-md-6 col-sm-12 col-12 ">
             <img src="assets/image/default-company.svg" class="img-fluid border-photo-profile-company"
                  alt="Photo profile company">

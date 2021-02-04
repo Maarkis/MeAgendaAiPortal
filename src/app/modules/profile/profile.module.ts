@@ -6,6 +6,7 @@ import {EmployeeProfileComponent} from './components/profile/employee-profile/em
 import {EmployeeProfilePublicComponent} from './components/employee-profile-public/employee-profile-public.component';
 import {CompanyProfilePublicComponent} from './components/company-profile-public/company-profile-public.component';
 import {BrowserModule} from '@angular/platform-browser';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {BrowserModule} from '@angular/platform-browser';
     ],
     imports: [
         BrowserModule,
-        CommonModule
+        CommonModule,
+        ClipboardModule
     ]
 })
 export class ProfileModule {

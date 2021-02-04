@@ -35,13 +35,14 @@
     width: auto;
     background-color: transparent;
 }
-.color-agendado {
-    color: #044894;
-}
-.color-cancelado {
-    color: #c30c0c;
-}
 
+
+.status-canceled {
+    color: #ff0000;
+}
+.status-scheduled{
+    color: #7aa90b;
+}
 
 @media (max-width: 376px) {
     .text-title-agendamento {

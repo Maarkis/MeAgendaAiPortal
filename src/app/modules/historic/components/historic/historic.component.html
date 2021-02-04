@@ -38,7 +38,12 @@
                         <td>{{scheduling.employeeName}}</td>
                         <td>{{scheduling.startTime  | date: 'dd/MM/yyyy HH:mm'}}</td>
                         <td>{{scheduling.endTime | date: 'dd/MM/yyyy HH:mm'}}</td>
-                        <td>{{scheduling.status ===  schedulingStatus.Canceled ? 'Cancelado' : 'Realizado' }}</td>
+                        <td>
+                            <span
+                                [ngClass]="scheduling.status === schedulingStatus.Canceled ? 'status-canceled': 'status-scheduled'">
+                                {{scheduling.status === schedulingStatus.Canceled ? 'Cancelado' : 'Realizado' }}
+                            </span>
+                        </td>
                     </tr>
                     </tbody>
 
@@ -91,7 +96,7 @@
                         <td>{{scheduling.companyName}}</td>
                         <td>{{scheduling.startTime  | date: 'dd/MM/yyyy HH:mm'}}</td>
                         <td>{{scheduling.endTime | date: 'dd/MM/yyyy HH:mm'}}</td>
-                        <td>{{scheduling.status ===  schedulingStatus.Canceled ? 'Cancelado' : 'Realizado' }}</td>
+                        <td>{{scheduling.status === schedulingStatus.Canceled ? 'Cancelado' : 'Realizado' }}</td>
                     </tr>
                     </tbody>
 

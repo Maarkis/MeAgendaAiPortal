@@ -23,3 +23,7 @@
     color: var(--color-system-secundary);
     font: normal 18px/22px Roboto, "Helvetica Neue", sans-serif;
 }
+.text-copy-link {
+    font: bold 12px/16px Roboto, "Helvetica Neue", sans-serif;
+    color: #0078FF;
+}
