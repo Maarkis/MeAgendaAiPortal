@@ -25,7 +25,7 @@ export class ScheduleByCompanyComponent implements OnInit {
     @Input() public userAuthenticated: UserAuthenticated;
     public listServices: Service[];
     public listEmployee: Employee[];
-    public dateNow = Date();
+    public dateNow = new Date();
     public dateSelect: Date;
     public listAvailableHours: Date[];
     public availableHoursSelect: Date;
@@ -33,6 +33,7 @@ export class ScheduleByCompanyComponent implements OnInit {
 
     public serviceSelect: Service = null;
     public employeeSelect: Employee = null;
+    public dateError: string = null;
 
     constructor(private companyService: CompanyService,
                 private employeeService: EmployeeService,
